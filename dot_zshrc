@@ -1,0 +1,55 @@
+# Uncomment the following line to display red dots whilst waiting for completion.
+COMPLETION_WAITING_DOTS="true"
+
+# don't "logout" (close window) with CTRL+D
+setopt IGNORE_EOF
+
+# shorten escape timeout
+KEYTIMEOUT=1
+
+# emacs mode (for ctrl+A, ctrl+E)
+# can still enter vim mode with ctrl+x then ctrl+v
+bindkey -e
+
+# ssh
+# export SSH_KEY_PATH="~/.ssh/rsa_id"
+
+# aliases
+alias vzf='nvim $(fzf)'
+if [[ $OSTYPE == "darwin"* ]]; then
+  # MacOS
+  alias ls='ls -G'
+elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
+  alias l='ls -al --color'
+fi
+
+# git
+alias g='git'
+alias ga='git add'
+alias gb='git branch'
+alias gbc='git branch | cat'
+alias gc='git commit -v'
+alias gco='git checkout'
+alias gd='git diff'
+alias gdc='git diff --cached'
+alias gf='git fetch'
+alias gl='git log'
+alias gsh='git show'
+alias gst='git status'
+
+# nnn file manager
+alias nnn='nnn-nerd-static -eoR'
+
+# asdf version manager
+# append completions to fpath
+fpath=(${ASDF_DIR}/completions $fpath)
+# initialise completions with ZSH's compinit
+autoload -Uz compinit
+compinit
+# source the main script
+. $ASDF_DIR/asdf.sh
+# hook direnv into shell for faster asdf
+eval "$(direnv hook zsh)"
+
+# starship prompt
+eval "$(starship init zsh)"

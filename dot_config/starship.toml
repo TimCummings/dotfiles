@@ -1,0 +1,38 @@
+format = """
+$username$hostname$directory$git_branch$git_commit$git_state$git_status$package$jobs
+$character"""
+
+# Inserts a blank line between shell prompts
+add_newline = true
+
+[character]
+success_symbol = "[ ](bold green)"
+# success_symbol = "[ ](bold green)"
+# success_symbol = "[  ](bold green)"
+# success_symbol = "[  ](bold green)"
+# success_symbol = "[  ](bold green)"
+error_symbol = "[ ](bold red)"
+vicmd_symbol = "[ ](bold blue)"
+
+[directory]
+style = "bold purple"
+
+[git_branch]
+style = "yellow"
+symbol = " "
+
+[git_commit]
+style = "yellow"
+
+[git_status]
+format = '([$all_status$ahead_behind]($style) )'
+style = "yellow"
+ahead = '[⇡ ](blue)'
+conflicted = '[ ](red)'
+# untracked = '[﬒](bright-black)'
+untracked = '[﬒](white)'
+stashed = '[ ](bright-black)'
+modified = '[ ](bright-red)'
+staged = '[ ](blue)'
+renamed = '[ﰴ ](bright-red)'
+deleted = '[ﴗ](bright-red)'
