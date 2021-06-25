@@ -14,11 +14,12 @@ echo "Starting non-packages installation..."
 # Periodically check the version number below and update it!
 echo -en "\tasdf..."
 if type asdf &> /dev/null; then
-  echo -e "\t${GREEN}found!${NONE}"
+  echo -e "\t\t${GREEN}found!${NONE}"
 else
-  echo -e "\t${RED}missing!${NONE}"
+  echo -e "\t\t${RED}missing!${NONE}"
   echo "Installing asdf..."
-  git clone https://github.com/asdf-vm/asdf.git "$XDG_DATA_HOME/.asdf" --branch v0.8.1
+  git clone https://github.com/asdf-vm/asdf.git "$XDG_DATA_HOME/asdf" --branch v0.8.1
+  source $ASDF_DIR/asdf.sh
 fi
 
 echo -e "\t\tplugins..."
@@ -35,9 +36,9 @@ fi
 
 echo -en "\t\t\truby..."
 if asdf which ruby &> /dev/null; then
-  echo -e "\t${GREEN}found!${NONE}"
+  echo -e "\t\t${GREEN}found!${NONE}"
 else
-  echo -e "\t${RED}missing!${NONE}"
+  echo -e "\t\t${RED}missing!${NONE}"
   echo "Installing ruby plugin..."
   asdf plugin add ruby
   asdf install ruby latest
@@ -57,9 +58,9 @@ fi
 
 echo -en "\t\t\tyarn..."
 if asdf which yarn &> /dev/null; then
-  echo -e "\t${GREEN}found!${NONE}"
+  echo -e "\t\t${GREEN}found!${NONE}"
 else
-  echo -e "\t${RED}missing!${NONE}"
+  echo -e "\t\t${RED}missing!${NONE}"
   echo "Installing yarn plugin..."
   asdf plugin add yarn
   asdf install yarn latest

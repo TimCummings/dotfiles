@@ -16,18 +16,19 @@ else
   echo "Install chezmoi, then try again - see dotfiles README."
 fi
 echo -en "\tchezmoi config?"
-if [ -d "$XDG_DATA_HOME/chezmoi" ]; then
+if [ -d ~/.local/share/chezmoi ]; then
   echo -e "\t\t${GREEN}found!${NONE}"
 else
   echo -e "\t\t${RED}missing!${NONE}"
   echo "Init and apply chezmoi, then try again - see dotfiles README."
+  exit 1
 fi
 
 echo -en "\tzsh?"
 if type zsh &> /dev/null; then
-  echo -e "\t${GREEN}found!${NONE}"
+  echo -e "\t\t${GREEN}found!${NONE}"
 else
-  echo -e "\t${RED}missing!${NONE}"
+  echo -e "\t\t${RED}missing!${NONE}"
   echo "Install zsh then, try again."
   exit 1
 fi
@@ -43,9 +44,9 @@ else
   echo -en "\tsourcing..."
   source ~/.zshenv
   if [ $DOTFILES ]; then
-    echo -e "\t${GREEN}done!${NONE}"
+    echo -e "\t\t${GREEN}done!${NONE}"
   else
-    echo -e "\t${RED}still missing!${NONE}"
+    echo -e "\t\t${RED}still missing!${NONE}"
     echo "Something is wrong with zshenv; stopping."
     exit 1
   fi
@@ -78,10 +79,10 @@ else
 fi
 
 echo
-echo "${GREEN}Bootstrapping successful!${NONE}"
+echo -e "${GREEN}Bootstrapping successful!${NONE}"
 
 echo
 echo "Handing off to non-package installation script..."
-./non_package_install.sh
+source ./scripts/non_package_install.sh
 
 exit 0
