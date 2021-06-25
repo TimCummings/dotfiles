@@ -1,0 +1,16 @@
+silversearcher-ag
+alacritty
+anki
+dconf-editor
+fzf
+gnome-tweaks
+neovim
+nnn
+pdfmod
+slack-desktop
+steam
+tldr
+tmux
+traceroute
+tree
+zsh
