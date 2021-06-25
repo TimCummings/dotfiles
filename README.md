@@ -23,4 +23,13 @@ chezmoi init https://github.com/TimCummings/chezmoi_dotfiles.git
 chezmoi apply
 ```
 
-Source environment: `source ~/.zshenv`
+### Install zsh
+
+`sudo apt install zsh`
+
+### Run bootstrap script
+
+```
+chezmoi cd
+./scripts/bootstrap.sh
+```
