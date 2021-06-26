@@ -31,7 +31,10 @@ export BUNDLE_USER_PLUGIN="$XDG_DATA_HOME/bundle"
 # set GOPATH, disable module-aware mode, and add Go to PATH
 export GOPATH="$HOME/code_projects/go"
 export GO111MODULE=off
-export PATH="$PATH:/usr/local/go/bin"
+# replace all occurrences - ${parameter//pattern/string}
+GO_BIN="/usr/local/go/bin"
+[[ ":$PATH:" == *":${GO_BIN}:"* ]] && PATH="${PATH//$GO_BIN:/}"
+export PATH="$PATH:${GO_BIN}"
 
 # less pager - no history
 export LESSHISTFILE=-
