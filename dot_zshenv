@@ -35,3 +35,11 @@ export PATH="$PATH:/usr/local/go/bin"
 
 # less pager - no history
 export LESSHISTFILE=-
+
+# Make sure ~/.local.bin is in PATH
+# if in $PATH, remove, regardless of if it is in the right place (at the front) or not.
+# replace all occurrences - ${parameter//pattern/string}
+LOCAL_BIN="${HOME}/.local/bin"
+[[ ":$PATH:" == *":${LOCAL_BIN}:"* ]] && PATH="${PATH//$LOCAL_BIN:/}"
+# add to front of $PATH
+PATH="${LOCAL_BIN}:$PATH"
