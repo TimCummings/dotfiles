@@ -29,10 +29,18 @@ format = '([$all_status$ahead_behind]($style) )'
 style = "yellow"
 ahead = '[⇡ ](blue)'
 conflicted = '[ ](red)'
-# untracked = '[﬒](bright-black)'
 untracked = '[﬒ ](white)'
 stashed = '[ ](bright-black)'
 modified = '[ ](bright-red)'
 staged = '[ ](blue)'
 renamed = '[ﰴ ](bright-red)'
 deleted = '[ﴗ ](bright-red)'
+
+[hostname]
+style = "bold blue"
+format = '[$hostname]($style)[| ](bold dimmed blue)'
+
+[username]
+style_root = "bold red"
+style_user = "bold blue"
+format = '[$user]($style)[@](bold dimmed blue)'
