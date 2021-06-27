@@ -41,15 +41,19 @@ alias gst='git status'
 alias nnn='nnn-nerd-static -eoR'
 
 # asdf version manager
-# append completions to fpath
-fpath=(${ASDF_DIR}/completions $fpath)
-# initialise completions with ZSH's compinit
-autoload -Uz compinit
-compinit
-# source the main script
-. $ASDF_DIR/asdf.sh
-# hook direnv into shell for faster asdf
-eval "$(direnv hook zsh)"
+if [ -d "$ASDF_DIR" ]; then
+  # append completions to fpath
+  fpath=(${ASDF_DIR}/completions $fpath)
+  # initialise completions with ZSH's compinit
+  autoload -Uz compinit
+  compinit
+  # source the main script
+  . $ASDF_DIR/asdf.sh
+  # hook direnv into shell for faster asdf
+  eval "$(direnv hook zsh)"
+else
+  echo "Asdf appears to not be installed, skipping."
+fi
 
 # starship prompt
 eval "$(starship init zsh)"
