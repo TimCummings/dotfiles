@@ -1,8 +1,8 @@
-# Uncomment the following line to display red dots whilst waiting for completion.
-COMPLETION_WAITING_DOTS="true"
-
 # don't "logout" (close window) with CTRL+D
 setopt IGNORE_EOF
+
+# immediately insert first match on ambiguos completion
+setopt MENU_COMPLETE
 
 # shorten escape timeout
 KEYTIMEOUT=1
@@ -39,6 +39,9 @@ alias gst='git status'
 
 # nnn file manager
 alias nnn='nnn-nerd-static -eoR'
+
+# highlight completion selection
+zstyle ':completion:*' menu select
 
 # asdf version manager
 if [ -d "$ASDF_DIR" ]; then
