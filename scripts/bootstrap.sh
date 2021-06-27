@@ -26,9 +26,9 @@ fi
 
 echo -en "\tzsh?"
 if type zsh &> /dev/null; then
-  echo -e "\t\t${GREEN}found!${NONE}"
+  echo -e "\t\t\t${GREEN}found!${NONE}"
 else
-  echo -e "\t\t${RED}missing!${NONE}"
+  echo -e "\t\t\t${RED}missing!${NONE}"
   echo "Install zsh then, try again."
   exit 1
 fi

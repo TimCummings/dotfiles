@@ -25,7 +25,12 @@ chezmoi apply
 
 ### Install zsh
 
-`sudo apt install zsh`
+```
+sudo apt install zsh
+chsh -s /usr/bin/zsh
+```
+
+Then logout and back in.
 
 ### Run bootstrap script
 

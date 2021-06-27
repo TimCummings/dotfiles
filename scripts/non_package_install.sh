@@ -22,8 +22,8 @@ else
   source $ASDF_DIR/asdf.sh
 fi
 
-echo -e "\t\tplugins..."
-echo -en "\t\t\tdirenv..."
+echo -e "\tplugins..."
+echo -en "\t\tdirenv..."
 if asdf which direnv &> /dev/null; then
   echo -e "\t${GREEN}found!${NONE}"
 else
@@ -34,18 +34,19 @@ else
   asdf global direnv latest
 fi
 
-echo -en "\t\t\truby..."
-if asdf which ruby &> /dev/null; then
-  echo -e "\t\t${GREEN}found!${NONE}"
-else
-  echo -e "\t\t${RED}missing!${NONE}"
-  echo "Installing ruby plugin..."
-  asdf plugin add ruby
-  asdf install ruby latest
-  asdf global ruby latest
-fi
+# takes a long time to install; do it manually
+# echo -en "\t\t\truby..."
+# if asdf which ruby &> /dev/null; then
+#   echo -e "\t\t${GREEN}found!${NONE}"
+# else
+#   echo -e "\t\t${RED}missing!${NONE}"
+#   echo "Installing ruby plugin..."
+#   asdf plugin add ruby
+#   asdf install ruby latest
+#   asdf global ruby latest
+# fi
 
-echo -en "\t\t\tnodejs..."
+echo -en "\t\tnodejs..."
 if asdf which node &> /dev/null; then
   echo -e "\t${GREEN}found!${NONE}"
 else
@@ -56,7 +57,7 @@ else
   asdf global nodejs latest
 fi
 
-echo -en "\t\t\tyarn..."
+echo -en "\t\tyarn..."
 if asdf which yarn &> /dev/null; then
   echo -e "\t\t${GREEN}found!${NONE}"
 else
@@ -67,16 +68,17 @@ else
   asdf global yarn latest
 fi
 
-echo -en "\t\t\tpython..."
-if asdf which python &> /dev/null; then
-  echo -e "\t${GREEN}found!${NONE}"
-else
-  echo -e "\t${RED}missing!${NONE}"
-  echo "Installing python plugin..."
-  asdf plugin add python
-  asdf install python latest
-  asdf global python latest
-fi
+# takes a long time to install; do it manually
+# echo -en "\t\t\tpython..."
+# if asdf which python &> /dev/null; then
+#   echo -e "\t${GREEN}found!${NONE}"
+# else
+#   echo -e "\t${RED}missing!${NONE}"
+#   echo "Installing python plugin..."
+#   asdf plugin add python
+#   asdf install python latest
+#   asdf global python latest
+# fi
 
 echo -en "\tstarship prompt..."
 if type starship &> /dev/null; then
