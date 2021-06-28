@@ -4,9 +4,13 @@ setopt IGNORE_EOF
 # shorten escape timeout
 KEYTIMEOUT=1
 
-# emacs mode (for ctrl+A, ctrl+E)
-# can still enter vim mode with ctrl+x then ctrl+v
+# emacs mode for `^a`, `^e`
 bindkey -e
+
+# "word characters" are alphanumerics only, like `w` in Vim
+# this should e.g. make `^w` stop at nonalphanumerics, not continue until whitespace
+autoload -U select-word-style
+select-word-style bash
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
