@@ -11,6 +11,7 @@ return require('packer').startup(function()
   use 'tpope/vim-surround'
   use 'tpope/vim-commentary'
   use 'tpope/vim-repeat'
+  use 'tpope/vim-fugitive'
   use 'mcchrish/nnn.vim'
   use { 'iamcco/markdown-preview.nvim', run = 'cd app && yarn install' }
   use 'norcalli/nvim-colorizer.lua'
