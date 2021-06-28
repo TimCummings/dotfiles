@@ -1,9 +1,6 @@
 # don't "logout" (close window) with CTRL+D
 setopt IGNORE_EOF
 
-# immediately insert first match on ambiguos completion
-setopt MENU_COMPLETE
-
 # shorten escape timeout
 KEYTIMEOUT=1
 
