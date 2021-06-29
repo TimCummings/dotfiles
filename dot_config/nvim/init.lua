@@ -58,8 +58,34 @@ o.termguicolors = true
 require('lspconfig').tsserver.setup{}
 
 require('plugins')
-require('treesitter_config').setup()
 require('mappings')
 require('lsp')
 require('statusline')
 require('colorizer').setup()
+require('treesitter_config').setup{
+  ensure_installed = {
+    "bash",
+    "comment",
+    "css",
+    "dockerfile",
+    "go",
+    "gomod",
+    "graphql",
+    "html",
+    "javascript",
+    "jsdoc",
+    "json",
+    "lua",
+    "python",
+    "query",
+    "regex",
+    "ruby",
+    "rust",
+    "scss",
+    "toml",
+    "tsx",
+    "typescript",
+    "vue",
+    "yaml"
+  }
+}
