@@ -1,0 +1,15 @@
+[user]
+	email = timjc86@gmail.com
+	name = Tim Cummings
+[alias]
+  a = add
+  b = branch
+  bc = branch | cat
+  c = commit -v
+  co = checkout
+  d = diff
+  dc = diff --cached
+  f = fetch
+  l = log
+  sh = show
+  st = status

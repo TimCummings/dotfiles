@@ -26,17 +26,7 @@ fi
 
 # git
 alias g='git'
-alias ga='git add'
-alias gb='git branch'
-alias gbc='git branch | cat'
-alias gc='git commit -v'
-alias gco='git checkout'
-alias gd='git diff'
-alias gdc='git diff --cached'
-alias gf='git fetch'
-alias gl='git log'
-alias gsh='git show'
-alias gst='git status'
+# other aliases moved to gitconfig
 
 # nnn file manager
 alias nnn='nnn-nerd-static -eoR'
