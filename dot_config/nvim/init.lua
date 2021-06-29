@@ -1,4 +1,5 @@
 local o = vim.o
+local bo = vim.bo
 local wo = vim.wo
 
 -- various tab related settings
@@ -6,7 +7,9 @@ o.expandtab = true
 o.tabstop = 2
 o.shiftwidth = 2
 o.shiftround = true  -- round indent to multiple of `shiftwidth`
+o.smarttab = true
 o.autoindent = true
+bo.smartindent = true
 o.joinspaces = false -- don't insert an extra space when joining lines (J)
 
 -- indent and wrap settings
