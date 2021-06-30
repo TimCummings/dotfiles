@@ -34,6 +34,12 @@ alias nnn='nnn-nerd-static -eoR'
 # highlight completion selection
 zstyle ':completion:*' menu select
 
+# auto completion:
+# - first try simple completion `''`
+# - then try case sensitive
+# - then try case insensitive
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z-_}={A-Za-z_-}' 'r:|=*' 'l:|=* r:|=*'
+
 # asdf version manager
 if [ -d "$ASDF_DIR" ]; then
   # append completions to fpath
