@@ -1,5 +1,11 @@
 require ('lualine').setup{
-  options = { theme = require('themes/challenger_deep_custom') },
+  options = {
+    symbols = {
+      modified = ' ',
+      readonly = ' '
+    },
+    theme = require('themes/challenger_deep_custom')
+  },
   sections = {
     lualine_a = {'mode'},
     lualine_b = {'filename'},
