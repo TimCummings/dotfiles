@@ -14,7 +14,6 @@ o.joinspaces = false -- don't insert an extra space when joining lines (J)
 
 -- indent and wrap settings
 wo.breakindent = true
-wo.breakindentopt = 'shift:1'
 wo.linebreak = true
 
 -- keep lines above/below cursor when at top/bottom of file
