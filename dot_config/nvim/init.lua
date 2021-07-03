@@ -75,9 +75,13 @@ o.termguicolors = true
 vim.g.onedark_style = 'cool'
 --vim.g.onedark_style = 'deep'
 
+-- vim.g.indent_blankline_char = '┊'
+vim.g.indent_blankline_char = '│'
+
 -- call plugins inside protected call in case they're not installed
 if pcall(function()
-    require('onedark').setup()
+    -- require('onedark').setup()
+    require('nord').set()
     require('colorizer').setup()
     require('statusline')
     require('lsp')
