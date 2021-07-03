@@ -78,6 +78,13 @@ vim.g.onedark_style = 'cool'
 -- vim.g.indent_blankline_char = '┊'
 vim.g.indent_blankline_char = '│'
 
+vim.api.nvim_exec([[
+  augroup Goyo
+    autocmd! User GoyoEnter Limelight
+    autocmd! User GoyoLeave Limelight!
+  augroup end
+]], false)
+
 -- call plugins inside protected call in case they're not installed
 if pcall(function()
     -- require('onedark').setup()

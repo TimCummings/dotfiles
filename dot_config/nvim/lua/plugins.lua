@@ -17,4 +17,6 @@ return require('packer').startup(function()
   use 'mcchrish/nnn.vim'
   use { 'iamcco/markdown-preview.nvim', run = 'cd app && yarn install' }
   use 'norcalli/nvim-colorizer.lua'
+  use 'junegunn/goyo.vim'
+  use 'junegunn/limelight.vim'
 end)
