@@ -63,13 +63,13 @@ o.smartcase = true
 wo.cursorline = true
 
 -- colorscheme
+o.termguicolors = true
 -- require('nord').set()
 -- vim.g.onedark_style = 'dark'
 -- vim.g.onedark_style = 'darker'
 vim.g.onedark_style = 'cool'
 --vim.g.onedark_style = 'deep'
 require('onedark').setup()
-o.termguicolors = true
 
 -- LSP language servers
 require('lspconfig').tsserver.setup{}
