@@ -9,6 +9,23 @@ local on_attach = function(client, bufnr)
   -- enable completion triggered by <c-x><c-o>
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
+  -- try to add borders to popup menus...
+  vim.lsp.handlers['textDocument/hover'] =
+    vim.lsp.with(
+      vim.lsp.handlers.hover,
+      {
+        border = {'╭', '─', '╮', '│', '╯', '─', '╰', '│'}
+      }
+    )
+
+  vim.lsp.handlers['textDocument/signatureHelp'] =
+    vim.lsp.with(
+      vim.lsp.handlers.signature_help,
+      {
+        border = {'╭', '─', '╮', '│', '╯', '─', '╰', '│'}
+      }
+    )
+
   -- Mappings
   local opts = { noremap = true, silent = true }
 
@@ -34,7 +51,7 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { "tsserver" }
+local servers = { 'tsserver' }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup { on_attach = on_attach }
 end

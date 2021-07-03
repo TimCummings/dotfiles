@@ -60,7 +60,7 @@ o.ignorecase = true
 o.smartcase = true
 
 -- required for compe
-o.completeopt = "menuone,noselect"
+o.completeopt = 'menuone,noselect'
 
 require('mappings')
 
@@ -69,14 +69,10 @@ wo.cursorline = true
 
 -- colorscheme
 o.termguicolors = true
--- require('nord').set()
 -- vim.g.onedark_style = 'dark'
 -- vim.g.onedark_style = 'darker'
 vim.g.onedark_style = 'cool'
 --vim.g.onedark_style = 'deep'
-
--- vim.g.indent_blankline_char = '┊'
-vim.g.indent_blankline_char = '│'
 
 vim.api.nvim_exec([[
   augroup Goyo
@@ -87,8 +83,8 @@ vim.api.nvim_exec([[
 
 -- call plugins inside protected call in case they're not installed
 if pcall(function()
-    -- require('onedark').setup()
-    require('nord').set()
+    require('onedark').setup()
+    -- require('nord').set()
     require('colorizer').setup()
     require('statusline')
     require('lsp')
@@ -136,8 +132,10 @@ if pcall(function()
       max_abbr_width = 100;
       max_kind_width = 100;
       max_menu_width = 100;
-      documentation = true;
-
+      documentation = {
+        border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' },
+        winhighlight = 'NormalFloat:Directory,FloatBorder:Directory',
+      };
       source = {
         path = true;
         nvim_lsp = true;
