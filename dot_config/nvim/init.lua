@@ -78,30 +78,34 @@ require('mappings')
 require('lsp')
 require('statusline')
 require('colorizer').setup()
-require('treesitter_config').setup{
-  ensure_installed = {
-    "bash",
-    "comment",
-    "css",
-    "dockerfile",
-    "go",
-    "gomod",
-    "graphql",
-    "html",
-    "javascript",
-    "jsdoc",
-    "json",
-    "lua",
-    "python",
-    "query",
-    "regex",
-    "ruby",
-    "rust",
-    "scss",
-    "toml",
-    "tsx",
-    "typescript",
-    "vue",
-    "yaml"
-  }
-}
+-- installing parsers currently locks up VPS
+-- manually install parsers one at a time for now with `:TSInstall`
+-- possible issue match: https://github.com/nvim-treesitter/nvim-treesitter/issues/1254
+require('treesitter_config').setup()
+-- require('treesitter_config').setup{
+--   ensure_installed = {
+--     "bash",
+--     "comment",
+--     "css",
+--     "dockerfile",
+--     "go",
+--     "gomod",
+--     "graphql",
+--     "html",
+--     "javascript",
+--     "jsdoc",
+--     "json",
+--     "lua",
+--     "python",
+--     "query",
+--     "regex",
+--     "ruby",
+--     "rust",
+--     "scss",
+--     "toml",
+--     "tsx",
+--     "typescript",
+--     "vue",
+--     "yaml"
+--   }
+-- }
