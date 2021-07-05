@@ -72,8 +72,10 @@ if pcall(function()
         winhighlight = 'NormalFloat:Directory,FloatBorder:Directory',
       };
       source = {
+        buffer = true;
         path = true;
         nvim_lsp = true;
+        nvim_lua = true;
       };
     }
   end) then
