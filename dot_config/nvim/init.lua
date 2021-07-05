@@ -1,6 +1,5 @@
 -- Install packer
 local execute = vim.api.nvim_command
-
 local install_path = vim.fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
@@ -88,7 +87,6 @@ if pcall(function()
     require('colorizer').setup()
     require('statusline')
     require('lsp')
-    require('lspconfig').tsserver.setup{}
     require('treesitter_config').setup()
     -- installing parsers currently locks up VPS
     -- manually install parsers one at a time for now with `:TSInstall`
