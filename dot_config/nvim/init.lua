@@ -68,7 +68,7 @@ if pcall(function()
       max_kind_width = 100;
       max_menu_width = 100;
       documentation = {
-        border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' },
+        border = 'single',
         winhighlight = 'NormalFloat:Directory,FloatBorder:Directory',
       };
       source = {
