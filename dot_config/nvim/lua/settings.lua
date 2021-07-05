@@ -1,0 +1,62 @@
+local o = vim.o
+local bo = vim.bo
+local wo = vim.wo
+
+-- various tab related settings
+o.expandtab = true
+o.tabstop = 2
+o.shiftwidth = 2
+o.shiftround = true  -- round indent to multiple of `shiftwidth`
+o.smarttab = true
+o.autoindent = true
+bo.smartindent = true
+o.joinspaces = false -- don't insert an extra space when joining lines (J)
+
+-- indent and wrap settings
+wo.breakindent = true
+wo.linebreak = true
+
+-- keep lines above/below cursor when at top/bottom of file
+o.scrolloff = 5
+
+-- show absolute line numbers
+o.number = true
+
+-- status line
+o.laststatus = 2
+o.showmode = false
+
+-- copy to system clipboard?
+o.clipboard = 'unnamed'
+
+-- open new split panes to right and bottom
+o.splitbelow = true
+o.splitright = true
+
+-- display hidden characters
+o.listchars = 'tab:>-,trail:~,extends:>,precedes:<,nbsp:~'
+wo.list = true
+o.showbreak = '↪ '
+
+o.ignorecase = true
+o.smartcase = true
+
+-- required for compe
+o.completeopt = 'menuone,noselect'
+
+-- highlight current cursor line
+wo.cursorline = true
+
+-- colorscheme
+o.termguicolors = true
+-- vim.g.onedark_style = 'dark'
+-- vim.g.onedark_style = 'darker'
+vim.g.onedark_style = 'cool'
+--vim.g.onedark_style = 'deep'
+
+vim.api.nvim_exec([[
+  augroup Goyo
+    autocmd! User GoyoEnter Limelight
+    autocmd! User GoyoLeave Limelight!
+  augroup end
+]], false)
