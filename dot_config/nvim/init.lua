@@ -16,6 +16,7 @@ vim.api.nvim_exec([[
 require('settings')
 require('plugins')
 require('mappings')
+require('tabline')
 
 -- call plugins inside protected call in case they're not installed
 if pcall(function()
@@ -23,6 +24,7 @@ if pcall(function()
     -- require('nord').set()
     require('colorizer').setup()
     require('statusline')
+
     require('lsp')
     require('treesitter_config').setup()
     -- installing parsers currently locks up VPS

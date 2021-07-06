@@ -45,12 +45,6 @@ local on_attach = function(client, bufnr)
     handler_opts = { border = 'single' },
     hint_enable = false,
   })
-
-  -- adjust border colors
-  vim.api.nvim_exec([[
-    highlight! link NormalFloat Title
-    highlight! link FloatBorder Title
-  ]], false)
 end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and

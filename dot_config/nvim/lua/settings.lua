@@ -60,3 +60,21 @@ vim.api.nvim_exec([[
     autocmd! User GoyoLeave Limelight!
   augroup end
 ]], false)
+
+-- color adjustments
+vim.api.nvim_exec([[
+  function! MyHighlights() abort
+    highlight link NormalFloat Title
+    highlight link FloatBorder Title
+    highlight TabLine gui=NONE guibg=#100e23 guifg=#565575
+    highlight TabLineSel gui=NONE guibg=#272638 guifg=#63f2f1
+    highlight TabLineFill gui=NONE guibg=#100e23 guifg=#272638
+    highlight TabLineFillInvert gui=NONE guibg=#272638 guifg=#100e23
+    highlight TabLineWarn gui=NONE guibg=#272638 guifg=#ffb378
+  endfunction
+
+  augroup MyColors
+    autocmd!
+    autocmd ColorScheme * call MyHighlights()
+  augroup END
+]], false)
