@@ -18,7 +18,9 @@ if type asdf &> /dev/null; then
 else
   echo -e "\t\t${RED}missing!${NONE}"
   echo "Installing asdf..."
-  git clone https://github.com/asdf-vm/asdf.git "$XDG_DATA_HOME/asdf" --branch v0.8.1
+  git clone https://github.com/asdf-vm/asdf.git "$XDG_DATA_HOME/asdf"
+  cd "$XDG_DATA_HOME/.asdf"
+  git checkout "$(git describe --abbrev=0 --tags)"
   source $ASDF_DIR/asdf.sh
 fi
 
