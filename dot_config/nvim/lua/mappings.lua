@@ -6,6 +6,7 @@ map('', '<Leader>y', '"+y', opts)
 map('', '<Leader>h', ':noh<CR>', opts)
 map('', '<Leader>rl', ':set rnu!<CR>', opts)
 map('i', '<Leader><Tab>', '<C-X><C-O>', opts)
+map('n', '<Leader>e', '<cmd>NvimTreeToggle<CR>', opts)
 map('n', '<Leader>n', '<cmd>NnnPicker<CR>', opts)
 
 -- Telescope Mappings

@@ -15,6 +15,7 @@ return require('packer').startup(function()
   use 'tpope/vim-repeat'
   use 'tpope/vim-fugitive'
   use 'mcchrish/nnn.vim'
+  use { 'kyazdani42/nvim-tree.lua', requires = { 'kyazdani42/nvim-web-devicons', opt = true }}
   use { 'iamcco/markdown-preview.nvim', run = 'cd app && yarn install' }
   use 'norcalli/nvim-colorizer.lua'
   use 'junegunn/goyo.vim'
