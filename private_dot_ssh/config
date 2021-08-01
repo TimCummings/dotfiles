@@ -1,2 +1,7 @@
 Host *
   ServerAliveInterval 120
+
+Host tjc
+  HostName timothyjcummings.com
+  User tjc
+  IdentityFile ~/.ssh/id_rsa
