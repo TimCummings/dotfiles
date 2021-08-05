@@ -31,6 +31,12 @@ alias g='git'
 # nnn file manager
 alias nnn='nnn-nerd-static -eoR'
 
+# ps -> fzf
+alias psf='ps -aux | fzf'
+
+# curl Mountebank (delete me after Capstone)
+alias cmb='curl -i http://localhost:2525'
+
 # highlight completion selection
 zstyle ':completion:*' menu select
 
