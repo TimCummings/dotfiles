@@ -1,6 +1,10 @@
 local map = vim.api.nvim_set_keymap
 opts = { noremap = true }
 
+-- center screen after searching
+map('n', 'n', 'nzz', opts)
+map('n', 'N', 'Nzz', opts)
+
 -- Leader Key Mappings
 map('', '<Leader>y', '"+y', opts)
 map('', '<Leader>h', ':noh<CR>', opts)
