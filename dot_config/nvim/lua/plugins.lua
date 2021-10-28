@@ -7,8 +7,9 @@ return require('packer').startup(function()
   }
   use { 'hrsh7th/nvim-compe' }
   use { 'ray-x/lsp_signature.nvim' }
-  -- use 'shaunsingh/nord.nvim'
-  use 'navarasu/onedark.nvim'
+  use 'shaunsingh/nord.nvim'
+  -- use 'arcticicestudio/nord-vim' -- vim/non-TreeSitter version
+  -- use 'navarasu/onedark.nvim'
   use { 'hoob3rt/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true }}
   use 'tpope/vim-surround'
   use 'tpope/vim-commentary'

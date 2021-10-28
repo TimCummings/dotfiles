@@ -20,8 +20,8 @@ require('tabline')
 
 -- call plugins inside protected call in case they're not installed
 if pcall(function()
-    require('onedark').setup()
-    -- require('nord').set()
+    require('nord').set()
+    -- require('onedark').setup()
     require('colorizer').setup()
     require('statusline')
 
