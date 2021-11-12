@@ -1,12 +1,25 @@
 return require('packer').startup(function()
   use 'wbthomason/packer.nvim'
-  use 'neovim/nvim-lspconfig'
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   use { 'nvim-telescope/telescope.nvim',
     requires = {{ 'nvim-lua/popup.nvim' }, { 'nvim-lua/plenary.nvim' }}
   }
-  use { 'hrsh7th/nvim-compe' }
-  use { 'ray-x/lsp_signature.nvim' }
+
+  -- LSP
+  use 'neovim/nvim-lspconfig'
+
+  -- LSP completion with sources
+  use 'hrsh7th/nvim-cmp'
+  use 'hrsh7th/cmp-nvim-lsp'
+  use 'hrsh7th/cmp-buffer'
+  use 'hrsh7th/cmp-path'
+  use 'hrsh7th/cmp-cmdline'
+  -- use { 'ray-x/lsp_signature.nvim' }
+
+  -- snippet engine and source - required for LSP completion
+  use 'L3MON4D3/LuaSnip'
+  use 'saadparwaiz1/cmp_luasnip'
+
   use 'shaunsingh/nord.nvim'
   -- use 'arcticicestudio/nord-vim' -- vim/non-TreeSitter version
   -- use 'navarasu/onedark.nvim'

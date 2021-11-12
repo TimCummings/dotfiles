@@ -41,9 +41,6 @@ o.showbreak = '↪ '
 o.ignorecase = true
 o.smartcase = true
 
--- required for compe
-o.completeopt = 'menuone,noselect'
-
 -- highlight current cursor line
 wo.cursorline = true
 
