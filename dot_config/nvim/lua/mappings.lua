@@ -5,6 +5,12 @@ opts = { noremap = true }
 map('n', 'n', 'nzz', opts)
 map('n', 'N', 'Nzz', opts)
 
+-- move lines easily
+map('n', '<C-j>', '<esc>:m .+1<CR>==', opts)
+map('n', '<C-k>', '<esc>:m .-2<CR>==', opts)
+map('v', '<C-j>', ":m '>+1<CR>gv=gv", opts)
+map('v', '<C-k>', ":m '<-2<CR>gv=gv", opts)
+
 -- Leader Key Mappings
 map('', '<Leader>y', '"+y', opts)
 map('', '<Leader>h', ':noh<CR>', opts)
