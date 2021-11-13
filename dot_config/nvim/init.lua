@@ -20,6 +20,8 @@ require('tabline')
 
 -- call plugins inside protected call in case they're not installed
 if pcall(function()
+    vim.g.nord_contrast = true
+    vim.g.nord_borders = true
     require('nord').set()
     -- require('onedark').setup()
     require('colorizer').setup()

@@ -46,9 +46,11 @@ wo.cursorline = true
 
 -- colorscheme
 o.termguicolors = true
+vim.g.nord_contrast = true
+vim.g.nord_borders = true
 -- vim.g.onedark_style = 'dark'
 -- vim.g.onedark_style = 'darker'
-vim.g.onedark_style = 'cool'
+-- vim.g.onedark_style = 'cool'
 --vim.g.onedark_style = 'deep'
 
 vim.api.nvim_exec([[
