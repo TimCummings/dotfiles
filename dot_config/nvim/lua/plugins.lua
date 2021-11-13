@@ -20,9 +20,14 @@ return require('packer').startup(function()
   use 'L3MON4D3/LuaSnip'
   use 'saadparwaiz1/cmp_luasnip'
 
+  -- colorschemes
   use 'shaunsingh/nord.nvim'
   -- use 'arcticicestudio/nord-vim' -- vim/non-TreeSitter version
-  -- use 'navarasu/onedark.nvim'
+  use 'navarasu/onedark.nvim'
+  use 'EdenEast/nightfox.nvim'
+  use 'rmehri01/onenord.nvim'
+  use 'marko-cerovac/material.nvim'
+
   use { 'hoob3rt/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true }}
   use 'tpope/vim-surround'
   use 'tpope/vim-commentary'
