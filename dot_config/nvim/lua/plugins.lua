@@ -28,7 +28,7 @@ return require('packer').startup(function()
   use 'rmehri01/onenord.nvim'
   use 'marko-cerovac/material.nvim'
 
-  use { 'hoob3rt/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true }}
+  use { 'nvim-lualine/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true }}
   use 'tpope/vim-surround'
   use 'tpope/vim-commentary'
   use 'tpope/vim-repeat'
