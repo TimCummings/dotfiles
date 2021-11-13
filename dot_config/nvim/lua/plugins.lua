@@ -38,4 +38,5 @@ return require('packer').startup(function()
   use 'norcalli/nvim-colorizer.lua'
   use 'junegunn/goyo.vim'
   use 'junegunn/limelight.vim'
+  use 'rcarriga/nvim-notify'
 end)

@@ -53,6 +53,8 @@ vim.g.nord_borders = true
 -- vim.g.onedark_style = 'cool'
 --vim.g.onedark_style = 'deep'
 
+vim.notify = require('notify')
+
 vim.api.nvim_exec([[
   augroup Goyo
     autocmd! User GoyoEnter Limelight
