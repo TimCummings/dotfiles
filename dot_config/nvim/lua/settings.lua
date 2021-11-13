@@ -62,6 +62,19 @@ vim.api.nvim_exec([[
   augroup end
 ]], false)
 
+-- nvim-tree highlight groups
+  -- NvimTreeFolderName
+  -- NvimTreeRootFolder
+  -- NvimTreeFolderIcon
+  -- NvimTreeEmptyFolderName
+  -- NvimTreeOpenedFolderName
+  -- NvimTreeExecFile
+  -- NvimTreeOpenedFile
+  -- NvimTreeSpecialFile
+  -- NvimTreeImageFile
+  -- NvimTreeMarkdownFile
+  -- NvimTreeIndentMarker
+
 -- color adjustments
 vim.api.nvim_exec([[
   function! MyHighlights() abort
@@ -72,6 +85,11 @@ vim.api.nvim_exec([[
     highlight TabLineFill gui=NONE guibg=#100e23 guifg=#272638
     highlight TabLineFillInvert gui=NONE guibg=#272638 guifg=#100e23
     highlight TabLineWarn gui=NONE guibg=#272638 guifg=#ffb378
+
+    highlight NvimTreeSymlink guifg=#63f2f1
+    highlight NvimTreeFolderName guifg=#00aeff
+    highlight NvimTreeFolderIcon guifg=#00aeff
+
   endfunction
 
   augroup MyColors
