@@ -11,15 +11,15 @@ map('n', 'n', 'nzz')
 map('n', 'N', 'Nzz')
 
 -- move lines easily
-map('n', '<C-j>', '<esc>:m .+1<CR>==')
-map('n', '<C-k>', '<esc>:m .-2<CR>==')
-map('v', '<C-j>', ":m '>+1<CR>gv=gv")
-map('v', '<C-k>', ":m '<-2<CR>gv=gv")
+map('n', '<C-j>', '<esc>:m .+1<CR>==', { silent = true })
+map('n', '<C-k>', '<esc>:m .-2<CR>==', { silent = true })
+map('v', '<C-j>', ":m '>+1<CR>gv=gv", { silent = true })
+map('v', '<C-k>', ":m '<-2<CR>gv=gv", { silent = true })
 
 -- Leader Key Mappings
 map('', '<Leader>y', '"+y')
-map('', '<Leader>h', ':noh<CR>')
-map('', '<Leader>rl', ':set rnu!<CR>')
+map('', '<Leader>h', ':noh<CR>', { silent = true })
+map('', '<Leader>rl', ':set rnu!<CR>', { silent = true })
 map('i', '<Leader><Tab>', '<C-X><C-O>')
 map('n', '<Leader>e', '<cmd>NvimTreeToggle<CR>')
 map('n', '<Leader>n', '<cmd>NnnPicker<CR>')
