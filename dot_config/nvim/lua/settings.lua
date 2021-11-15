@@ -83,6 +83,9 @@ vim.api.nvim_exec([[
 -- color adjustments
 vim.api.nvim_exec([[
   function! MyHighlights() abort
+    highlight NonText guifg=#a0a8b7
+    highlight Search guifg=#ffe9aa guibg=#000
+
     highlight link NormalFloat Title
     highlight link FloatBorder Title
     highlight TabLine gui=NONE guibg=#100e23 guifg=#565575
@@ -94,9 +97,7 @@ vim.api.nvim_exec([[
     highlight NvimTreeSymlink guifg=#63f2f1
     highlight NvimTreeFolderName guifg=#00aeff
     highlight NvimTreeFolderIcon guifg=#00aeff
-
   endfunction
-
   augroup MyColors
     autocmd!
     autocmd ColorScheme * call MyHighlights()
