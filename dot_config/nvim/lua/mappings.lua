@@ -12,6 +12,7 @@ map('v', '<C-k>', ":m '<-2<CR>gv=gv", { silent = true })
 
 -- Leader Key Mappings
 map('', '<Leader>y', '"+y')
+map('n', '<Leader>.', '<cmd>lua require("utils").yank_full_path()<CR>')
 map('', '<Leader>h', ':noh<CR>', { silent = true })
 map('', '<Leader>rl', ':set rnu!<CR>', { silent = true })
 map('i', '<Leader><Tab>', '<C-X><C-O>')

@@ -8,4 +8,15 @@ function M.map(mode, lhs, rhs, opts)
   vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
+function M.yank_full_path()
+  vim.api.nvim_exec(
+    [[
+    redir @+>
+    echo expand('%:p')
+    redir END
+    ]],
+    false
+  )
+end
+
 return M
