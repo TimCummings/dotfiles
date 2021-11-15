@@ -54,6 +54,11 @@ vim.g.nord_borders = true
 --vim.g.onedark_style = 'deep'
 
 vim.notify = require('notify')
+vim.notify.setup({
+  background_colour = '#2e3440',
+  stages = 'slide',
+})
+require('telescope').load_extension('notify')
 
 vim.api.nvim_exec([[
   augroup Goyo
