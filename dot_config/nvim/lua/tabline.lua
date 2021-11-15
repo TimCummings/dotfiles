@@ -107,16 +107,16 @@ local function decoration(current, isSelected, side)
   if isSelected then
     hl = '%#TabLineFillInvert#'
     if side == 'left' then
-      char = ' '
+      char = ''
     elseif side == 'right' then
-      char = ' '
+      char = ''
     end
   else
     hl = '%#TabLine#'
     if side == 'left' then
-      char = ' '
+      char = ''
     elseif side == 'right' then
-      char = ' '
+      char = ''
     end
   end
 
