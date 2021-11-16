@@ -1,15 +1,8 @@
 return {
   -- color_scheme = 'Ayu Mirage',
   -- color_scheme = 'Batman',
-  -- color_scheme = 'BlulocoDark',
+  color_scheme = 'BlulocoDark',
   -- color_scheme = 'ChallengerDeep',
-  -- color_scheme = 'Darkside',
-  -- color_scheme = 'FirefoxDev',
-  -- color_scheme = 'Firewatch',
-  -- color_scheme = 'MaterialDark',
-  -- color_scheme = 'OceanicMaterial',
-  -- color_scheme = 'Thayer Bright',
-  -- color_scheme = 'onedark',
 
   -- warning: `color_scheme` overrides all `colors` options!
   colors = {
