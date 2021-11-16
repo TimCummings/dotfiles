@@ -53,12 +53,17 @@ vim.g.nord_borders = true
 -- vim.g.onedark_style = 'cool'
 --vim.g.onedark_style = 'deep'
 
-vim.notify = require('notify')
-vim.notify.setup({
-  background_colour = '#2e3440',
-  stages = 'slide',
-})
-require('telescope').load_extension('notify')
+if pcall(function()
+  vim.notify = require('notify')
+  vim.notify.setup({
+    background_colour = '#2e3440',
+    stages = 'slide',
+  })
+  require('telescope').load_extension('notify')
+end) then
+else
+  print('One or more plugins missing. Run `:PackerInstall`!')
+end
 
 vim.api.nvim_exec([[
   augroup Goyo
