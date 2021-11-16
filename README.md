@@ -11,6 +11,12 @@ Dotfiles are now managed by [chezmoi](https://www.chezmoi.io/). Internally, `che
 
 ### Install [chezmoi](https://www.chezmoi.io/)
 
+Create ~/.local if it doesn't yet exist.
+
+```
+mkdir ~/.local
+```
+
 ```
 cd ~/.local
 sh -c "$(curl -fsLS git.io/chezmoi)"
