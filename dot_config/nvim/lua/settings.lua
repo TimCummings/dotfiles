@@ -88,7 +88,7 @@ vim.api.nvim_exec([[
 -- color adjustments
 vim.api.nvim_exec([[
   function! MyHighlights() abort
-    highlight NonText guifg=#a0a8b7
+    highlight NonText guifg=#565575
     highlight Search guifg=#ffe9aa guibg=#000
 
     highlight link NormalFloat Title
