@@ -15,9 +15,9 @@ return {
   colors = {
     foreground = "#cbe1e7",
     background = "#1e1c31",
-    cursor_bg = "#1e1c31",
-    cursor_border = "#ff6f00",
-    cursor_fg = "#ff6f00",
+    cursor_bg = "#cbe1e7",
+    cursor_border = "#cbe1e7",
+    cursor_fg = "#1e1c31",
     selection_bg = "#cbe1e7",
     selection_fg = "#1e1c31",
 
