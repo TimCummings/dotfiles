@@ -13,4 +13,5 @@ tldr
 tmux
 traceroute
 tree
+xclip
 zsh
