@@ -1,8 +1,8 @@
 require ('lualine').setup{
   options = {
     symbols = {
-      modified = ' ',
-      readonly = ' '
+      modified = ' ⊕',
+      readonly = ' ',
     },
     theme = require('themes/challenger_deep_custom')
   },

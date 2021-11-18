@@ -6,20 +6,16 @@ $character"""
 add_newline = true
 
 [character]
-success_symbol = "[ ](bold green)"
-# success_symbol = "[ ](bold green)"
-# success_symbol = "[  ](bold green)"
-# success_symbol = "[  ](bold green)"
-# success_symbol = "[  ](bold green)"
-error_symbol = "[ ](bold red)"
-vicmd_symbol = "[ ](bold blue)"
+success_symbol = "[ »](bold green)"
+error_symbol = "[ »](bold red)"
+vicmd_symbol = "[V:](bold italic fg:blue)"
 
 [directory]
 style = "bold purple"
 
 [git_branch]
 style = "yellow"
-symbol = " "
+symbol = " "
 
 [git_commit]
 style = "yellow"
@@ -27,18 +23,22 @@ style = "yellow"
 [git_status]
 format = '([$all_status$ahead_behind]($style) )'
 style = "yellow"
-ahead = '[⇡ ](blue)'
-conflicted = '[ ](red)'
-untracked = '[﬒ ](white)'
-stashed = '[ ](bright-black)'
-modified = '[ ](bright-red)'
-staged = '[ ](bright-yellow)'
-renamed = '[ﰴ ](bright-red)'
-deleted = '[ﴗ ](bright-red)'
+ahead = '[↑ ](blue)'
+conflicted = '[⚠ ](red)'
+
+untracked = '[⊎ ](white)'
+stashed = '[◫ ](white)'
+modified = '[⊕ ](bright-red)'
+staged = '[⊕ ](green)'
+renamed = '[⇔ ](bright-red)'
+deleted = '[∅ ](bright-red)'
 
 [hostname]
 style = "bold blue"
 format = '[$hostname]($style)[| ](bold dimmed blue)'
+
+[jobs]
+symbol = "✶"
 
 [username]
 style_root = "bold red"
