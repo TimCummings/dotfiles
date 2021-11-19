@@ -29,6 +29,7 @@
   * Source Code Pro
   * Fira Mono
   * Anonymous Pro
+  * JetBrains Mono (default in Wezterm)
 
 * fun
   * Inconsolata (~ look like -)
