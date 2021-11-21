@@ -1,3 +1,43 @@
+local wezterm = require 'wezterm';
+
+local my_keys = {
+  -- panes
+  { key="t", mods="LEADER",
+  action=wezterm.action{SplitHorizontal={domain="CurrentPaneDomain"}} },
+  { key="v", mods="LEADER",
+  action=wezterm.action{SplitVertical={domain="CurrentPaneDomain"}} },
+  { key="x", mods="LEADER",
+  action=wezterm.action{CloseCurrentPane={confirm=true}} },
+  { key = "h", mods="LEADER",
+  action=wezterm.action{ActivatePaneDirection="Left"} },
+  { key = "l", mods="LEADER",
+  action=wezterm.action{ActivatePaneDirection="Right"} },
+  { key = "k", mods="LEADER",
+  action=wezterm.action{ActivatePaneDirection="Up"} },
+  { key = "j", mods="LEADER",
+  action=wezterm.action{ActivatePaneDirection="Down"} },
+  { key = "<", mods = "LEADER", action=wezterm.action{AdjustPaneSize={"Left", 5}} },
+  { key = ">", mods = "LEADER", action=wezterm.action{AdjustPaneSize={"Right", 5}} },
+  { key = "+", mods = "LEADER", action=wezterm.action{AdjustPaneSize={"Up", 5}} },
+  { key = "-", mods = "LEADER", action=wezterm.action{AdjustPaneSize={"Down", 5}} },
+  { key = "z", mods="LEADER", action="TogglePaneZoomState" },
+
+  -- tabs (like tmux "windows")
+  { key="c", mods="LEADER",
+  action=wezterm.action{SpawnTab="CurrentPaneDomain"} },
+  { key="n", mods="LEADER", action=wezterm.action{ActivateTabRelative=1} },
+  { key="p", mods="LEADER", action=wezterm.action{ActivateTabRelative=-1} },
+  { key="w", mods="LEADER", action="ShowTabNavigator" },
+};
+
+for i = 0, 7 do
+  table.insert(my_keys, {
+    key=tostring(i),
+    mods="LEADER",
+    action=wezterm.action{ActivateTab=i},
+  })
+end
+
 return {
   -- color_scheme = 'Ayu Mirage',
   -- color_scheme = 'Batman',
@@ -63,4 +103,9 @@ return {
   bold_brightens_ansi_colors = false,
   harfbuzz_features = {"calt=0", "clig=0", "liga=0"},
   hide_tab_bar_if_only_one_tab = true,
+  tab_and_split_indices_are_zero_based = true,
+  -- tab_bar_at_bottom = true,
+
+  leader = { key="t", mods="CTRL", timeout_milliseconds=1000 },
+  keys = my_keys,
 }
