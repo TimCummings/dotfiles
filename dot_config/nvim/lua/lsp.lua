@@ -54,8 +54,7 @@ for _, lsp in ipairs(servers) do
 end
 
 -- Set completeopt to have a better completion experience
--- vim.o.completeopt = 'menu,menuone,noselect'
-vim.o.completeopt = 'menuone,noselect'
+vim.o.completeopt = 'menu,menuone,noselect'
 
 -- luasnip setup
 local luasnip = require('luasnip')
