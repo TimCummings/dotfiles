@@ -106,6 +106,6 @@ return {
   tab_and_split_indices_are_zero_based = true,
   -- tab_bar_at_bottom = true,
 
-  leader = { key="t", mods="CTRL", timeout_milliseconds=1000 },
+  leader = { key="Escape", mods="CTRL", timeout_milliseconds=1000 },
   keys = my_keys,
 }
