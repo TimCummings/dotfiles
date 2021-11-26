@@ -2,11 +2,11 @@ local wezterm = require 'wezterm';
 
 local my_keys = {
   -- panes
-  { key="t", mods="LEADER",
+  { key="x", mods="LEADER",
   action=wezterm.action{SplitHorizontal={domain="CurrentPaneDomain"}} },
   { key="v", mods="LEADER",
   action=wezterm.action{SplitVertical={domain="CurrentPaneDomain"}} },
-  { key="x", mods="LEADER",
+  { key="c", mods="LEADER",
   action=wezterm.action{CloseCurrentPane={confirm=true}} },
   { key = "h", mods="LEADER",
   action=wezterm.action{ActivatePaneDirection="Left"} },
@@ -23,7 +23,7 @@ local my_keys = {
   { key = "z", mods="LEADER", action="TogglePaneZoomState" },
 
   -- tabs (like tmux "windows")
-  { key="c", mods="LEADER",
+  { key="t", mods="LEADER",
   action=wezterm.action{SpawnTab="CurrentPaneDomain"} },
   { key="n", mods="LEADER", action=wezterm.action{ActivateTabRelative=1} },
   { key="p", mods="LEADER", action=wezterm.action{ActivateTabRelative=-1} },
