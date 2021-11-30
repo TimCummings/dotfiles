@@ -11,58 +11,25 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin()
-" Plug 'joshdick/onedark.vim'
-Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
 Plug 'arcticicestudio/nord-vim'
+" Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
+" Plug 'joshdick/onedark.vim'
 " Plug 'mhartington/oceanic-next'
 Plug 'sheerun/vim-polyglot'
 Plug 'itchyny/lightline.vim'
-Plug 'mcchrish/nnn.vim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
-Plug 'dense-analysis/ale'
 Plug 'ap/vim-css-color'
-Plug 'steven-liou/console-puts'  " Toggle print functions on and off
 Plug 'preservim/nerdtree'
 call plug#end()
 
 " ============================================================
 " Plugin-Specific Settings
 " ============================================================
-
-" nnn File Manager:
-  let g:nnn#command = 'nnn -eoR'
-  let g:nnn#set_default_mappings = 0
-  let g:nnn#action = {
-      \ '<c-t>': 'tab split',
-      \ '<c-x>': 'split',
-      \ '<c-v>': 'vsplit'
-      \}
-
-" ALE:
-  " go to next error
-  nmap <silent> <C-j> <Plug>(ale_next_wrap)
-  " go to previous error
-  nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-  " define fixers and linters
-  let g:ale_fixers = {
-  \ 'javascript': ['prettier'],
-  \ 'markdown': ['prettier'],
-  \ 'ruby' : ['prettier'],
-  \}
-  let g:ale_linters = {
-  \ 'javascript': ['eslint'],
-  \}
-  " fix on save
-  let g:ale_fix_on_save = 1
-  " lint on leaving insert mode and saving files; no other times
-  let g:ale_lint_on_text_changed = 'never'
-  let g:ale_lint_on_enter = 0
 
 " FZF:
   " show border
@@ -151,28 +118,10 @@ map <Leader>h :noh<CR>
 " file explorer
 " map <Leader>e :call OpenExplorer()<CR>
 map <Leader>e :NERDTreeToggle<CR>
-" nnn file manager
-map <Leader>n :NnnPicker<CR>
 " FZF
 map <Leader>f :FZF<CR>
 " toggle relative line numbers
 map <Leader>rl :set rnu!<CR>
-" simple snippets
-  " HTML
-  map <Leader>shtml :r ~/dotfiles/vim/snippets/skeleton.html<CR>
-  " PEDAC
-  map <Leader>sp :r ~/dotfiles/vim/snippets/pedac.md<CR>
-  " Markdown Solution Block (generic)
-  map <Leader>ss :r ~/dotfiles/vim/snippets/markdown_solution.md<CR>
-  " Markdown Solution Block (javascript)
-  map <Leader>ssj :r ~/dotfiles/vim/snippets/markdown_javascript_solution.md<CR>
-
-" ============================================================
-" Autocommands
-" ============================================================
-
-autocmd! FileType javascript nnoremap <leader>r :!node %:p<CR>
-autocmd! FileType ruby nnoremap <leader>r :!ruby %:p<CR>
 
 " ============================================================
 " Other Settings
