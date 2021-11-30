@@ -12,7 +12,7 @@ endif
 
 call plug#begin()
 Plug 'arcticicestudio/nord-vim'
-" Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
+Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
 " Plug 'joshdick/onedark.vim'
 " Plug 'mhartington/oceanic-next'
 Plug 'sheerun/vim-polyglot'
