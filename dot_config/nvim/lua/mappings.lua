@@ -19,7 +19,7 @@ map('i', '<Leader><Tab>', '<C-X><C-O>')
 map('n', '<Leader>e', '<cmd>NvimTreeToggle<CR>')
 
 -- Telescope Mappings
-map('n', '<Leader>tf', '<cmd>Telescope find_files<CR>')
+map('n', '<Leader>f', '<cmd>Telescope find_files<CR>')
 map('n', '<Leader>tb', '<cmd>Telescope buffers<CR>')
 map('n', '<Leader>tc', '<cmd>Telescope commands<CR>')
 map('n', '<Leader>tq', '<cmd>Telescope quickfix<CR>')
