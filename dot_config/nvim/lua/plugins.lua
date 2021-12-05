@@ -30,8 +30,13 @@ return require('packer').startup(function()
   -- use 'marko-cerovac/material.nvim'
 
   use { 'nvim-lualine/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true }}
+  use {
+    'numToStr/Comment.nvim',
+    config = function()
+      require('Comment').setup()
+    end
+  }
   use 'tpope/vim-surround'
-  use 'tpope/vim-commentary'
   use 'tpope/vim-repeat'
   use 'tpope/vim-fugitive'
   use { 'kyazdani42/nvim-tree.lua', requires = { 'kyazdani42/nvim-web-devicons', opt = true }}
