@@ -17,6 +17,8 @@ map('', '<Leader>h', ':noh<CR>', { silent = true })
 map('', '<Leader>rl', ':set rnu!<CR>', { silent = true })
 map('i', '<Leader><Tab>', '<C-X><C-O>')
 map('n', '<Leader>e', '<cmd>NvimTreeToggle<CR>')
+map('n', '<Leader>w', '<cmd>w<CR>')
+map('n', '<Leader>q', '<cmd>q<CR>')
 
 -- Telescope Mappings
 map('n', '<Leader>f', '<cmd>Telescope find_files<CR>')
