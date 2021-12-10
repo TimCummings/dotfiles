@@ -106,6 +106,11 @@ return {
   tab_and_split_indices_are_zero_based = true,
   -- tab_bar_at_bottom = true,
 
+  -- Font Settings; use `wezterm ls-fonts --list-system` to find exact font names
+  font = wezterm.font("JetBrainsMono NF"),
+  font_dirs = { wezterm.home_dir .. '/.local/share/fonts' },
+  font_locator = "ConfigDirsOnly",
+
   leader = { key="Escape", mods="CTRL", timeout_milliseconds=1000 },
   keys = my_keys,
 }
