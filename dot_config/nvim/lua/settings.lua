@@ -36,7 +36,7 @@ o.splitright = true
 -- display hidden characters
 o.listchars = 'tab:>-,trail:~,extends:>,precedes:<,nbsp:~'
 wo.list = true
-o.showbreak = '↪ '
+-- o.showbreak = '↪ '
 
 o.ignorecase = true
 o.smartcase = true
