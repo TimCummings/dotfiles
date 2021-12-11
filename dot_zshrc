@@ -24,9 +24,6 @@ fi
 autoload -U select-word-style
 select-word-style bash
 
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
-
 # aliases
 alias vzf='nvim $(fzf)'
 
