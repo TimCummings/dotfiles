@@ -25,6 +25,7 @@ autoload -U select-word-style
 select-word-style bash
 
 # aliases
+alias psf='ps -aux | fzf'
 alias vzf='nvim $(fzf)'
 
 alias l='ls -al --color'
@@ -39,9 +40,6 @@ alias g='git'
 
 # nnn file manager
 alias nnn='nnn-nerd-static -eoR'
-
-# ps -> fzf
-alias psf='ps -aux | fzf'
 
 # highlight completion selection
 zstyle ':completion:*' menu select
