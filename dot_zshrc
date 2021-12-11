@@ -7,6 +7,18 @@ KEYTIMEOUT=1
 # emacs mode for `^a`, `^e`
 bindkey -e
 
+# MacOS key bindings
+if [[ $OSTYPE == "darwin"* ]]; then
+  # real delete (delete forward)
+  bindkey "\e[3~" delete-char
+  # CTRL-Left-Right jumps words
+  bindkey "\e[1;5D" backward-word
+  bindkey "\e[1;5C" forward-word
+  # Home and end
+  bindkey "^[[H" beginning-of-line
+  bindkey "^[[F" end-of-line
+fi
+
 # "word characters" are alphanumerics only, like `w` in Vim
 # this should e.g. make `^w` stop at nonalphanumerics, not continue until whitespace
 autoload -U select-word-style
