@@ -7,14 +7,14 @@ KEYTIMEOUT=1
 # emacs mode for `^a`, `^e`
 bindkey -e
 
-# MacOS key bindings
+# CTRL-Left-Right jumps words
+bindkey "\e[1;5D" backward-word
+bindkey "\e[1;5C" forward-word
+# MacOS specific
 if [[ $OSTYPE == "darwin"* ]]; then
   # real delete (delete forward)
   bindkey "\e[3~" delete-char
-  # CTRL-Left-Right jumps words
-  bindkey "\e[1;5D" backward-word
-  bindkey "\e[1;5C" forward-word
-  # Home and end
+# Home and end
   bindkey "^[[H" beginning-of-line
   bindkey "^[[F" end-of-line
 fi
