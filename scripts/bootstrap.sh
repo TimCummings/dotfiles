@@ -29,7 +29,7 @@ if type zsh &> /dev/null; then
   echo -e "\t\t\t${GREEN}found!${NONE}"
 else
   echo -e "\t\t\t${RED}missing!${NONE}"
-  echo "Install zsh then, try again."
+  echo "Install zsh, then try again."
   exit 1
 fi
 

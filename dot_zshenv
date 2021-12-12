@@ -42,7 +42,7 @@ export PATH="$PATH:${CARGO_BIN}"
 # less pager - no history
 export LESSHISTFILE=-
 
-# Make sure ~/.local.bin is in PATH
+# Make sure ~/.local/bin is in PATH
 # if in $PATH, remove, regardless of if it is in the right place (at the front) or not.
 # replace all occurrences - ${parameter//pattern/string}
 LOCAL_BIN="${HOME}/.local/bin"
