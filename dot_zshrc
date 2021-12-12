@@ -50,6 +50,11 @@ zstyle ':completion:*' menu select
 # - then try case insensitive
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z-_}={A-Za-z_-}' 'r:|=*' 'l:|=* r:|=*'
 
+# MacOS Homebrew package manager
+if [[ $OSTYPE == "darwin"* ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
 # asdf version manager
 if [ -d "$ASDF_DIR" ]; then
   # append completions to fpath
