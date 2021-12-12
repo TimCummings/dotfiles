@@ -36,21 +36,7 @@ fi
 # setup environment
 echo
 echo -n "Checking environment..."
-
-if [ $DOTFILES ]; then
-  echo -e "\t\t${YELLOW}at least partly found.${NONE}"
-else
-  echo -e "\t\t${RED}missing!${NONE}"
-  echo -en "\tsourcing..."
-  source ~/.zshenv
-  if [ $DOTFILES ]; then
-    echo -e "\t\t${GREEN}done!${NONE}"
-  else
-    echo -e "\t\t${RED}still missing!${NONE}"
-    echo "Something is wrong with zshenv; stopping."
-    exit 1
-  fi
-fi
+source ~/.zshenv
 
 echo
 echo "Checking XDG directories..."
