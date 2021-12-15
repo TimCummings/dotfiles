@@ -1,6 +1,9 @@
 local wezterm = require 'wezterm';
 
 local my_keys = {
+  {key="PageUp", mods="SHIFT", action=wezterm.action{ScrollByLine=-20}},
+  {key="PageDown", mods="SHIFT", action=wezterm.action{ScrollByLine=20}},
+
   -- panes
   { key="x", mods="LEADER",
   action=wezterm.action{SplitHorizontal={domain="CurrentPaneDomain"}} },
