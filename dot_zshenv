@@ -34,15 +34,8 @@ export PATH="$PATH:${CARGO_BIN}"
 # less pager - no history
 export LESSHISTFILE=-
 
-# MacOS specific items
+# MacOS - Android Studio env vars
 if [[ $OSTYPE == "darwin"* ]]; then
-  # typescript language server
-  # replace all occurrences - ${parameter//pattern/string}
-  YARN_BIN="$(yarn global bin)"
-  [[ ":$PATH:" == *":${YARN_BIN}:"* ]] && PATH="${PATH//$YARN_BIN:/}"
-  export PATH="$PATH:${YARN_BIN}"
-
-  # Android Studio env vars
   export ANDROID_HOME=$HOME/Library/Android/sdk
   export PATH=$PATH:$ANDROID_HOME/emulator
   export PATH=$PATH:$ANDROID_HOME/tools

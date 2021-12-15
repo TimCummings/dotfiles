@@ -50,15 +50,15 @@ zstyle ':completion:*' menu select
 # - then try case insensitive
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z-_}={A-Za-z_-}' 'r:|=*' 'l:|=* r:|=*'
 
-# MacOS Homebrew package manager
-if [[ $OSTYPE == "darwin"* ]]; then
-  eval "$(/opt/homebrew/bin/brew shellenv)"
-fi
-
 # First and only argument is the desired term title
 function rename_wezterm_title {
   echo "\x1b]1337;SetUserVar=panetitle=$(echo -n $1 | base64)\x07"
 }
+
+# Homebrew package manager - must go before asdf
+if [[ $OSTYPE == "darwin"* ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
 
 # asdf version manager
 if [ -d "$ASDF_DIR" ]; then
@@ -73,6 +73,14 @@ if [ -d "$ASDF_DIR" ]; then
   eval "$(direnv hook zsh)"
 else
   echo "Asdf appears to not be installed, skipping."
+fi
+
+# typescript language server - must go after asdf
+if [[ $OSTYPE == "darwin"* ]]; then
+  # replace all occurrences - ${parameter//pattern/string}
+  YARN_BIN="$(yarn global bin)"
+  [[ ":$PATH:" == *":${YARN_BIN}:"* ]] && PATH="${PATH//$YARN_BIN:/}"
+  export PATH="$PATH:${YARN_BIN}"
 fi
 
 # starship prompt
