@@ -55,6 +55,11 @@ if [[ $OSTYPE == "darwin"* ]]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
+# First and only argument is the desired term title
+function rename_wezterm_title {
+  echo "\x1b]1337;SetUserVar=panetitle=$(echo -n $1 | base64)\x07"
+}
+
 # asdf version manager
 if [ -d "$ASDF_DIR" ]; then
   # append completions to fpath
