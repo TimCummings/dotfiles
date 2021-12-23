@@ -30,8 +30,8 @@ untracked = '[⊎ ](white)'
 stashed = '[◫ ](white)'
 modified = '[⊕ ](bright-red)'
 staged = '[⊕ ](green)'
-renamed = '[⇔ ](bright-red)'
-deleted = '[∅ ](bright-red)'
+renamed = '[⟷ ](bright-red)'
+deleted = '[✗ ](bright-red)'
 
 [hostname]
 style = "bold blue"
