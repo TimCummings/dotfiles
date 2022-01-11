@@ -26,7 +26,6 @@ select-word-style bash
 
 # aliases
 alias psf='ps -aux | fzf'
-alias vzf='nvim $(fzf)'
 
 alias l='ls -al --color'
 if [[ $OSTYPE == "darwin"* ]]; then
@@ -50,9 +49,17 @@ zstyle ':completion:*' menu select
 # - then try case insensitive
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z-_}={A-Za-z_-}' 'r:|=*' 'l:|=* r:|=*'
 
+# functions
+
 # First and only argument is the desired term title
 function rename_wezterm_title {
   echo "\x1b]1337;SetUserVar=panetitle=$(echo -n $1 | base64)\x07"
+}
+
+function vzf {
+  local file_path=$(fzf)
+  echo "$file_path"
+  nvim "$file_path"
 }
 
 # Homebrew package manager - must go before asdf
