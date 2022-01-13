@@ -59,6 +59,14 @@ if pcall(function()
     background_colour = '#2e3440',
     stages = 'slide',
   })
+  require('telescope').setup({
+    defaults = {
+      sorting_strategy = "ascending",
+      layout_config = {
+        horizontal = { prompt_position = "top" }
+      },
+    },
+  })
   require('telescope').load_extension('notify')
 end) then
 else
