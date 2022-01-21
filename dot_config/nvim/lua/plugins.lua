@@ -22,7 +22,29 @@ return require('packer').startup(function()
   use 'saadparwaiz1/cmp_luasnip'
 
   -- colorschemes
-  use 'shaunsingh/nord.nvim'
+  use {
+    'shaunsingh/nord.nvim',
+    config = function()
+      vim.cmd([[
+      colorscheme nord
+
+      highlight NonText guifg=#565575
+      highlight Search guifg=#ffe9aa guibg=#000
+
+      highlight link NormalFloat Title
+      highlight link FloatBorder Title
+      highlight TabLine gui=NONE guibg=#100e23 guifg=#565575
+      highlight TabLineSel gui=NONE guibg=#272638 guifg=#63f2f1
+      highlight TabLineFill gui=NONE guibg=#100e23 guifg=#272638
+      highlight TabLineFillInvert gui=NONE guibg=#272638 guifg=#100e23
+      highlight TabLineWarn gui=NONE guibg=#272638 guifg=#ffb378
+
+      highlight NvimTreeSymlink guifg=#63f2f1
+      highlight NvimTreeFolderName guifg=#00aeff
+      highlight NvimTreeFolderIcon guifg=#00aeff
+      ]])
+    end,
+  }
   -- use 'arcticicestudio/nord-vim' -- vim/non-TreeSitter version
   -- use 'navarasu/onedark.nvim'
   -- use 'EdenEast/nightfox.nvim'
