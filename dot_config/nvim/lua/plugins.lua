@@ -29,7 +29,6 @@ return require('packer').startup(function()
       colorscheme nord
 
       highlight NonText guifg=#565575
-      highlight Search guifg=#ffe9aa guibg=#000
 
       highlight link NormalFloat Title
       highlight link FloatBorder Title

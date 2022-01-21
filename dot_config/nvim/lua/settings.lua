@@ -81,24 +81,10 @@ vim.api.nvim_exec([[
   augroup end
 ]], false)
 
--- nvim-tree highlight groups
-  -- NvimTreeFolderName
-  -- NvimTreeRootFolder
-  -- NvimTreeFolderIcon
-  -- NvimTreeEmptyFolderName
-  -- NvimTreeOpenedFolderName
-  -- NvimTreeExecFile
-  -- NvimTreeOpenedFile
-  -- NvimTreeSpecialFile
-  -- NvimTreeImageFile
-  -- NvimTreeMarkdownFile
-  -- NvimTreeIndentMarker
-
 -- color adjustments
 vim.api.nvim_exec([[
   function! MyHighlights() abort
     highlight NonText guifg=#565575
-    highlight Search guifg=#ffe9aa guibg=#000
 
     highlight link NormalFloat Title
     highlight link FloatBorder Title
