@@ -24,14 +24,16 @@ style = "yellow"
 format = '([$all_status$ahead_behind]($style) )'
 style = "yellow"
 ahead = '[↑ ](blue)'
-conflicted = '[⚠ ](red)'
+behind = '[↓ ](blue)'
+conflicted = '[⚠ ](#f70067)'
+diverged = '[↕ ](#f70067)'
 
-untracked = '[⊎ ](white)'
-stashed = '[◫ ](white)'
-modified = '[⊕ ](bright-red)'
-staged = '[⊕ ](green)'
-renamed = '[⟷ ](bright-red)'
 deleted = '[✗ ](bright-red)'
+modified = '[⊕ ](bright-red)'
+renamed = '[⟷ ](bright-red)'
+staged = '[⊕ ](green)'
+stashed = '[◫ ](white)'
+untracked = '[? ](bright-yellow)'
 
 [hostname]
 style = "bold blue"
@@ -39,6 +41,7 @@ format = '[$hostname]($style)[| ](bold dimmed blue)'
 
 [jobs]
 symbol = "✶"
+style = "cyan"
 
 [username]
 style_root = "bold red"
