@@ -6,7 +6,10 @@ return require('packer').startup(function()
   }
 
   -- LSP
-  use 'neovim/nvim-lspconfig'
+  use {
+    'neovim/nvim-lspconfig',
+    'williamboman/nvim-lsp-installer',
+  }
 
   -- LSP completion with sources
   use 'hrsh7th/nvim-cmp'
