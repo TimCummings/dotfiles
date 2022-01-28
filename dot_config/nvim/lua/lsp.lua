@@ -1,6 +1,3 @@
--- NVIM LSP Config
-local nvim_lsp = require('lspconfig')
-
 -- use an on_attach function to only map the following keys after the language
 -- server attaches to the current buffer
 local on_attach = function(_, bufnr)
@@ -36,11 +33,12 @@ end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
--- LSP settings (for overriding per client)
-local handlers =  {
-  ['textDocument/hover'] =  vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' }),
-  ['textDocument/signatureHelp'] =  vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' }),
-}
+local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+  opts = opts or {}
+  opts.border = 'rounded'
+  return orig_util_open_floating_preview(contents, syntax, opts, ...)
+end
 
 local lsp_installer = require('nvim-lsp-installer')
 lsp_installer.settings({
@@ -56,7 +54,6 @@ lsp_installer.settings({
 lsp_installer.on_server_ready(function(server)
   local opts = {
     capabilities = capabilities,
-    handlers = handlers,
     on_attach = on_attach,
   }
   server:setup(opts)
@@ -87,6 +84,7 @@ cmp.setup({
     --   behavior = cmp.ConfirmBehavior.Replace,
     --   select = true,
     -- },
+
     ['<Tab>'] = function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
