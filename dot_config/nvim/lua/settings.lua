@@ -2,6 +2,9 @@ local o = vim.o
 local bo = vim.bo
 local wo = vim.wo
 
+-- disable "hidden" buffers
+o.hidden = false
+
 -- various tab related settings
 o.expandtab = true
 o.tabstop = 2
