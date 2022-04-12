@@ -8,14 +8,14 @@ add_newline = true
 [character]
 success_symbol = "[ »](bold green)"
 error_symbol = "[ »](bold red)"
-vicmd_symbol = "[V:](bold italic fg:blue)"
+vicmd_symbol = "[ ](bold italic fg:blue)"
 
 [directory]
 style = "bold purple"
 
 [git_branch]
 style = "yellow"
-symbol = " "
+symbol = " "
 
 [git_commit]
 style = "yellow"

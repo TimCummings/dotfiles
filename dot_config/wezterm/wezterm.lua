@@ -123,9 +123,7 @@ return {
   -- tab_bar_at_bottom = true,
 
   -- Font Settings; use `wezterm ls-fonts --list-system` to find exact font names
-  font = wezterm.font("JetBrainsMono NF"),
-  font_dirs = { wezterm.home_dir .. '/.local/share/fonts' },
-  font_locator = "ConfigDirsOnly",
+  -- my preferred fonts are now all bundled with Wezterm, yay!
 
   leader = { key="Escape", mods="CTRL", timeout_milliseconds=1000 },
   keys = my_keys,

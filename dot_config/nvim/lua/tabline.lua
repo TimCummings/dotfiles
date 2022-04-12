@@ -57,9 +57,9 @@ end
 local function tabModified(bufnr, isSelected)
   if vim.fn.getbufvar(bufnr, '&modified') == 1 then
     if isSelected then
-      return '%#TabLineWarn#樂'
+      return '%#TabLineWarn#✶'
     else
-      return '%#TabLine#樂'
+      return '%#TabLine#✶'
     end
   else
     return ''
@@ -134,7 +134,6 @@ local function formatTab(current)
     hl .. ' ' ..
     tabWindowCount(current) ..
     tabName(bufnr) .. ' ' ..
-    tabDevicon(bufnr, isSelected) ..
     tabModified(bufnr, isSelected) ..
     decoration(current, isSelected, 'right') ..
     tabSeparator(current)
