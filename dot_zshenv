@@ -10,7 +10,18 @@ export LANG=en_US.UTF-8
 export EDITOR='nvim'
 
 # default fzf options
-export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
+export FZF_DEFAULT_COMMAND='fd --color=always'
+export FZF_DEFAULT_OPTS="
+--ansi
+--border
+--header 'CTRL-D: Directories | CTRL-F: Files | CTRL-H: Hidden'
+--height 40%
+--info=inline
+--layout=reverse
+--prompt='All > '
+--bind 'ctrl-d:change-prompt(Directories > )+reload(fd --color=always --type d)'
+--bind 'ctrl-f:change-prompt(Files > )+reload(fd --color=always --type f)'
+--bind 'ctrl-h:change-prompt(Hidden > )+reload(fd --color=always --hidden)'"
 
 # nnn file manager
 export NNN_TRASH=2
