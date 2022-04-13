@@ -58,6 +58,7 @@ function rename_wezterm_title {
 
 function vzf {
   local file_path=$(fzf)
+  [[ -z "$file_path" ]] && return
   echo "$file_path"
   nvim "$file_path"
 }
