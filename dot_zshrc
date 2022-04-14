@@ -35,7 +35,18 @@ fi
 
 # git
 alias g='git'
-# other aliases moved to gitconfig
+# following aliases also in gitconfig (able to use e.g. in vim, but requires a space after `g`)
+alias ga='git add'
+alias gb='git branch'
+alias gbc='git branch | cat'
+alias gc='git commit -v'
+alias gco='git checkout'
+alias gd='git diff'
+alias gdc='git diff --cached'
+alias gf='git fetch'
+alias gl='git log'
+alias gsh='git show'
+alias gst='git status'
 
 # nnn file manager
 alias nnn='nnn-nerd-static -eoR'
