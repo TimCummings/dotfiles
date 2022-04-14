@@ -11,17 +11,25 @@ export EDITOR='nvim'
 
 # default fzf options
 export FZF_DEFAULT_COMMAND='fd --color=always'
-export FZF_DEFAULT_OPTS="
---ansi
---border
---header 'CTRL-D: Directories | CTRL-F: Files | CTRL-H: Hidden'
---height 40%
---info=inline
---layout=reverse
---prompt='All > '
---bind 'ctrl-d:change-prompt(Directories > )+reload(fd --color=always --type d)'
---bind 'ctrl-f:change-prompt(Files > )+reload(fd --color=always --type f)'
---bind 'ctrl-h:change-prompt(Hidden > )+reload(fd --color=always --hidden)'"
+FZF_DEFAULT_OPTS="
+  --ansi
+  --border
+  --header 'CTRL-D: Directories | CTRL-F: Files | CTRL-H: Hidden'
+  --height 40%
+  --info=inline
+  --layout=reverse
+  --prompt='All > '
+  --bind 'ctrl-d:change-prompt(Directories > )+reload(fd --color=always --type d)'
+  --bind 'ctrl-f:change-prompt(Files > )+reload(fd --color=always --type f)'
+  --bind 'ctrl-h:change-prompt(Hidden > )+reload(fd --color=always --hidden)'"
+
+if [[ $OSTYPE == "darwin"* ]]; then
+  export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS
+  --bind 'ctrl-y:execute-silent(echo {+} | pbcopy)+abort'"
+else
+  export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS
+  --bind 'ctrl-y:execute-silent(echo {+} | xclip -selection clipboard)+abort'"
+fi
 
 # nnn file manager
 export NNN_TRASH=2
