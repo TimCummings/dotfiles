@@ -2,6 +2,10 @@ local o = vim.o
 local bo = vim.bo
 local wo = vim.wo
 
+-- experiment with filetype.lua file type detection beta
+vim.g.do_filetype_lua = 1
+vim.g.did_load_filetypes = 0
+
 -- disable "hidden" buffers
 o.hidden = false
 
