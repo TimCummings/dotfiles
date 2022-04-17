@@ -82,6 +82,8 @@ else
   print('One or more plugins missing. Run `:PackerInstall`!')
 end
 
+-- autocommands & augroups
+vim.api.nvim_create_augroup('Goyo', { clear = true })
 vim.api.nvim_exec([[
   augroup Goyo
     autocmd! User GoyoEnter Limelight
