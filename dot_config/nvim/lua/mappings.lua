@@ -1,34 +1,45 @@
-local map = require('utils').map
-
 -- center screen after searching
-map('n', 'n', 'nzz')
-map('n', 'N', 'Nzz')
+vim.keymap.set('n', 'n', 'nzz')
+vim.keymap.set('n', 'N', 'Nzz')
 
 -- move lines easily
-map('n', '<C-j>', '<esc>:m .+1<CR>==', { silent = true })
-map('n', '<C-k>', '<esc>:m .-2<CR>==', { silent = true })
-map('v', '<C-j>', ":m '>+1<CR>gv=gv", { silent = true })
-map('v', '<C-k>', ":m '<-2<CR>gv=gv", { silent = true })
+vim.keymap.set('n', '<C-j>', '<esc>:m .+1<CR>==', { silent = true })
+vim.keymap.set('n', '<C-k>', '<esc>:m .-2<CR>==', { silent = true })
+vim.keymap.set('v', '<C-j>', ":m '>+1<CR>gv=gv", { silent = true })
+vim.keymap.set('v', '<C-k>', ":m '<-2<CR>gv=gv", { silent = true })
 
 -- Leader Key Mappings
-map('', '<Leader>y', '"+y')
-map('n', '<Leader>.', '<cmd>lua require("utils").yank_full_path()<CR>')
-map('', '<Leader>rl', ':set rnu!<CR>', { silent = true })
-map('i', '<Leader><Tab>', '<C-X><C-O>')
-map('n', '<Leader>e', '<cmd>NvimTreeToggle<CR>')
-map('n', '<Leader>w', '<cmd>w<CR>')
-map('n', '<Leader>wq', '<cmd>wq<CR>')
-map('n', '<Leader>q', '<cmd>q<CR>')
-map('n', '<Leader>Q', '<cmd>q!<CR>')
+vim.keymap.set('n', '<Leader>.', function()
+  vim.api.nvim_exec(
+    [[
+    redir @+>
+    echo expand('%:p')
+    redir END
+    ]],
+    false
+  )
+end, { desc = 'yank full path of current file to system clipboard' })
+vim.keymap.set('', '<Leader>y', '"+y', { desc = 'yank to system clipboard' })
+vim.keymap.set('', '<Leader>rl', ':set rnu!<CR>', { desc = 'toggle relative line numbers', silent = true })
+vim.keymap.set('n', '<Leader>e', '<cmd>NvimTreeToggle<CR>')
+vim.keymap.set('n', '<Leader>w', '<cmd>w<CR>', { desc = 'save file' })
+vim.keymap.set('n', '<Leader>wq', '<cmd>wq<CR>', { desc = 'save file and quit' })
+vim.keymap.set('n', '<Leader>q', '<cmd>q<CR>', { desc = 'quit' })
+vim.keymap.set('n', '<Leader>Q', '<cmd>q!<CR>', { desc = 'quit without saving' })
 
 -- Telescope Mappings
-map('n', '<Leader>f', '<cmd>Telescope find_files<CR>')
-map('n', '<Leader>tb', '<cmd>Telescope buffers<CR>')
-map('n', '<Leader>tc', '<cmd>Telescope commands<CR>')
-map('n', '<Leader>tq', '<cmd>Telescope quickfix<CR>')
-map('n', '<Leader>tl', '<cmd>Telescope loclist<CR>')
-map('n', '<Leader>tn', '<cmd>Telescope notify<CR>')
-map('n', '<Leader>tr', '<cmd>Telescope registers<CR>')
-map('n', '<Leader>tgc', '<cmd>Telescope git_commits<CR>')
-map('n', '<Leader>tgb', '<cmd>Telescope git_branches<CR>')
-map('n', '<Leader>tgs', '<cmd>Telescope git_status<CR>')
+vim.keymap.set('n', '<Leader>f', require('telescope.builtin').find_files)
+vim.keymap.set('n', '<Leader>tb', require('telescope.builtin').buffers)
+vim.keymap.set('n', '<Leader>tc', require('telescope.builtin').commands)
+vim.keymap.set('n', '<Leader>tq', require('telescope.builtin').quickfix)
+vim.keymap.set('n', '<Leader>tl', require('telescope.builtin').loclist)
+vim.keymap.set('n', '<Leader>tn', require('telescope').extensions.notify.notify)
+vim.keymap.set('n', '<Leader>tr', require('telescope.builtin').registers)
+vim.keymap.set('n', '<Leader>tgc', require('telescope.builtin').git_commits)
+vim.keymap.set('n', '<Leader>tgb', require('telescope.builtin').git_branches)
+vim.keymap.set('n', '<Leader>tgs', require('telescope.builtin').git_status)
+
+-- Diagnostics
+vim.keymap.set('n', '<Leader>d', vim.diagnostic.open_float)
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
