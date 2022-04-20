@@ -91,25 +91,29 @@ vim.api.nvim_exec([[
   augroup end
 ]], false)
 
--- color adjustments
-vim.api.nvim_exec([[
-  function! MyHighlights() abort
-    highlight NonText guifg=#565575
+local colorscheme_group = vim.api.nvim_create_augroup('Colorscheme', { clear = true })
+vim.api.nvim_create_autocmd('ColorScheme', {
+    group = colorscheme_group,
+    desc = 'set colorscheme and custom highlights',
+    callback = function()
+      vim.api.nvim_set_hl(0, 'NonText', { fg = '#565575' })
+      vim.api.nvim_set_hl(0, 'NormalFloat', { fg = '#a3be8c', bold = true })
+      vim.api.nvim_set_hl(0, 'FloatBorder', { fg = '#a3be8c', bold = true })
+      vim.api.nvim_set_hl(0, 'TabLine', { bg = '#100e23', fg = '#565575' })
+      vim.api.nvim_set_hl(0, 'TabLineSel', { bg = '#272638', fg = '#63f2f1' })
+      vim.api.nvim_set_hl(0, 'TabLineFill', { bg = '#100e23', fg = '#272638' })
+      vim.api.nvim_set_hl(0, 'TabLineFillInvert', { bg = '#272638', fg = '#100e23' })
+      vim.api.nvim_set_hl(0, 'TabLineWarn', { bg = '#272638', fg = '#ffb378' })
 
-    highlight link NormalFloat Title
-    highlight link FloatBorder Title
-    highlight TabLine gui=NONE guibg=#100e23 guifg=#565575
-    highlight TabLineSel gui=NONE guibg=#272638 guifg=#63f2f1
-    highlight TabLineFill gui=NONE guibg=#100e23 guifg=#272638
-    highlight TabLineFillInvert gui=NONE guibg=#272638 guifg=#100e23
-    highlight TabLineWarn gui=NONE guibg=#272638 guifg=#ffb378
+      vim.api.nvim_set_hl(0, 'NvimTreeSymlink', { fg = '#63f2f1' })
+      vim.api.nvim_set_hl(0, 'NvimTreeFolderName', { fg = '#00aeff' })
+      vim.api.nvim_set_hl(0, 'NvimTreeFolderIcon', { fg = '#00aeff' })
 
-    highlight NvimTreeSymlink guifg=#63f2f1
-    highlight NvimTreeFolderName guifg=#00aeff
-    highlight NvimTreeFolderIcon guifg=#00aeff
-  endfunction
-  augroup MyColors
-    autocmd!
-    autocmd ColorScheme * call MyHighlights()
-  augroup END
-]], false)
+      vim.api.nvim_set_hl(0, 'DiagnosticSignError', { fg = '#f70067' })
+      vim.api.nvim_set_hl(0, 'DiagnosticSignHint', { fg = '#d484ff' })
+      vim.api.nvim_set_hl(0, 'DiagnosticSignInfo', { fg = '#a9ff68' })
+      vim.api.nvim_set_hl(0, 'DiagnosticSignWarn', { fg = '#f79000' })
+    end,
+})
+
+vim.cmd('colorscheme nord')
