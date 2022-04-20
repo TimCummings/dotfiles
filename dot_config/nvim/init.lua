@@ -1,6 +1,7 @@
 require('plugins')
-require('settings')
+require('highlights')
 require('mappings')
+require('settings')
 require('tabline')
 
 -- call plugins inside protected call in case they're not installed
