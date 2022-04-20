@@ -6,6 +6,17 @@ local wo = vim.wo
 vim.g.do_filetype_lua = 1
 vim.g.did_load_filetypes = 0
 
+-- diagnostics settings
+vim.diagnostic.config({
+  virtual_text = false,
+})
+
+local signs = { Error = ' ', Hint = ' ', Info = ' ', Warn = ' ' }
+for type, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
+
 -- disable "hidden" buffers
 o.hidden = false
 
