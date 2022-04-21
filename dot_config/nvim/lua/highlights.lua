@@ -24,11 +24,19 @@ vim.api.nvim_create_autocmd('ColorScheme', {
       vim.api.nvim_set_hl(0, 'TabLineFillInvert', { bg = '#272638', fg = '#100e23' })
       vim.api.nvim_set_hl(0, 'TabLineWarn', { bg = '#272638', fg = '#ffb378' })
 
+      vim.api.nvim_set_hl(0, 'FloatBorder', { fg = '#81a1c1', bold = true })
+
       -- diagnostics
       vim.api.nvim_set_hl(0, 'DiagnosticSignError', { fg = '#f70067' })
       vim.api.nvim_set_hl(0, 'DiagnosticSignHint', { fg = '#d484ff' })
       vim.api.nvim_set_hl(0, 'DiagnosticSignInfo', { fg = '#a9ff68' })
       vim.api.nvim_set_hl(0, 'DiagnosticSignWarn', { fg = '#f79000' })
+
+      -- Telescope plugin
+      vim.api.nvim_set_hl(0, 'TelescopePromptPrefix', { fg = '#7495ba', bold = true })
+      vim.api.nvim_set_hl(0, 'TelescopePreviewBorder', { fg = '#81a1c1' })
+      vim.api.nvim_set_hl(0, 'TelescopeResultsBorder', { fg = '#81a1c1' })
+      vim.api.nvim_set_hl(0, 'TelescopeSelectionCaret', { fg = '#d7005f', bold = true })
 
       -- NvimTree file explorer plugin
       vim.api.nvim_set_hl(0, 'NvimTreeSymlink', { fg = '#63f2f1' })
