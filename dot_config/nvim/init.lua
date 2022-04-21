@@ -9,9 +9,7 @@ if pcall(function()
     -- require('onedark').setup()
     require('colorizer').setup()
     require('statusline')
-    require('nvim-tree').setup {
-      auto_close = true,
-    }
+    require('nvim-tree').setup()
 
     require('lsp')
     require('treesitter_config').setup()
