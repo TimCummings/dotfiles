@@ -48,6 +48,8 @@ alias gl='git log'
 alias gsh='git show'
 alias gst='git status'
 
+alias lg='lazygit'
+
 # nnn file manager
 alias nnn='nnn-nerd-static -eoR'
 
