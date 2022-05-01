@@ -71,6 +71,7 @@ return require('packer').startup(function(use)
   use 'junegunn/goyo.vim'
   use 'junegunn/limelight.vim'
   use 'rcarriga/nvim-notify'
+  use 'dhruvasagar/vim-table-mode'
   use {
     'iamcco/markdown-preview.nvim',
     run = 'cd app && yarn install',
