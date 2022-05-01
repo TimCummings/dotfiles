@@ -33,11 +33,13 @@ return require('packer').startup(function(use)
   use 'hrsh7th/cmp-path'
   use 'hrsh7th/cmp-cmdline'
   use 'hrsh7th/cmp-nvim-lua'
-  -- use { 'ray-x/lsp_signature.nvim' }
 
   -- snippet engine and source - required for LSP completion
   use 'L3MON4D3/LuaSnip'
   use 'saadparwaiz1/cmp_luasnip'
+
+  -- linting tie-ins with LSP
+  use  { 'jose-elias-alvarez/null-ls.nvim', requires = { 'nvim-lua/plenary.nvim' }}
 
   -- colorschemes
   use 'shaunsingh/nord.nvim'

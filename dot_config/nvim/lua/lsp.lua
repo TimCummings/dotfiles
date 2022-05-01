@@ -1,3 +1,14 @@
+-- linting tie-ins with LSP
+require("null-ls").setup({
+    sources = {
+      require("null-ls").builtins.diagnostics.actionlint,
+      require("null-ls").builtins.diagnostics.eslint,
+      require("null-ls").builtins.diagnostics.rubocop,
+      require("null-ls").builtins.diagnostics.shellcheck,
+      require("null-ls").builtins.diagnostics.yamllint,
+    },
+})
+
 -- use an on_attach function to only map the following keys after the language
 -- server attaches to the current buffer
 local on_attach = function(_, bufnr)
