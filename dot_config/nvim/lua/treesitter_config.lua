@@ -1,8 +1,8 @@
 local M = {}
-local conf = require 'nvim-treesitter.configs'
 
 function M.setup()
-  conf.setup{
+  require('nvim-treesitter.configs').setup{
+    ensure_installed = { 'norg' },
     highlight = {
       enable = true,              -- false will disable the whole extension
     },
