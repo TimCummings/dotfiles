@@ -39,6 +39,7 @@ o.scrolloff = 5
 
 -- show absolute line numbers
 o.number = true
+o.relativenumber = true
 
 -- status line
 o.laststatus = 2
