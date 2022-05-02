@@ -79,6 +79,8 @@ if pcall(function()
   })
   require('telescope').load_extension('fzf')
   require('telescope').load_extension('notify')
+
+  vim.g.table_mode_corner = '|'
 end) then
 else
   print('One or more plugins missing. Run `:PackerInstall`!')
