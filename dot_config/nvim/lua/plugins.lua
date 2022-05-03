@@ -58,7 +58,8 @@ return require('packer').startup(function(use)
         action_keys = {
           cancel = {},
           close = '<esc>',
-        }
+        },
+        auto_close = true,
       }
     end
   }

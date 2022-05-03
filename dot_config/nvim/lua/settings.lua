@@ -8,6 +8,7 @@ vim.g.did_load_filetypes = 0
 
 -- diagnostics settings
 vim.diagnostic.config({
+  underline = false,
   virtual_text = false,
 })
 
