@@ -110,9 +110,18 @@ fi
 
 # golang
 # replace all occurrences - ${parameter//pattern/string}
-GO_BIN="$(go env GOPATH)/bin"
-[[ ":$PATH:" == *":${GO_BIN}:"* ]] && PATH="${PATH//$GO_BIN:/}"
-export PATH="$PATH:${GO_BIN}"
+if type go &> /dev/null; then
+  GO_BIN="$(go env GOPATH)/bin"
+  [[ ":$PATH:" == *":${GO_BIN}:"* ]] && PATH="${PATH//$GO_BIN:/}"
+  export PATH="$PATH:${GO_BIN}"
+else
+  echo "Golang is not installed; skipping!"
+fi
+
 
 # starship prompt
-eval "$(starship init zsh)"
+if type starship &> /dev/null; then
+  eval "$(starship init zsh)"
+else
+  echo "Starship is not installed; skipping!"
+fi
