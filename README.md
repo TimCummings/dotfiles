@@ -11,7 +11,7 @@ Dotfiles are now managed by [chezmoi](https://www.chezmoi.io/). Internally, `che
 
 ### Install [chezmoi](https://www.chezmoi.io/)
 
-Create ~/.local if it doesn't yet exist.
+Create `~/.local` if it doesn't yet exist.
 
 ```
 mkdir ~/.local
@@ -19,7 +19,7 @@ mkdir ~/.local
 
 ```
 cd ~/.local
-sh -c "$(curl -fsLS git.io/chezmoi)"
+sh -c "$(curl -fsLS chezmoi.io/get)"
 ```
 
 ### Initialize Existing Repo
@@ -39,6 +39,8 @@ chsh -s /usr/bin/zsh
 Then logout and back in.
 
 ### Run bootstrap script
+
+**Note:** `chezmoi` may not be in `PATH` yet. Either prefix with it's location, eg. `./.local/bin/chezmoi` or `source .zshenv`.
 
 ```
 chezmoi cd
