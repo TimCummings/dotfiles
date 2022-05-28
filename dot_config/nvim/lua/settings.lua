@@ -6,6 +6,9 @@ local wo = vim.wo
 vim.g.do_filetype_lua = 1
 vim.g.did_load_filetypes = 0
 
+-- disable "hidden" buffers
+o.hidden = false
+
 -- diagnostics settings
 vim.diagnostic.config({
   underline = false,
@@ -18,8 +21,9 @@ for type, icon in pairs(signs) do
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
--- disable "hidden" buffers
-o.hidden = false
+-- always show sign column, even if empty
+-- prevents annoying "stutter" as signs come and go
+wo.signcolumn = 'yes:1'
 
 -- various tab related settings
 o.expandtab = true
