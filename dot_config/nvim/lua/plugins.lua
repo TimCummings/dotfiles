@@ -80,8 +80,6 @@ return require('packer').startup(function(use)
   use 'dhruvasagar/vim-table-mode'
   use {
     'iamcco/markdown-preview.nvim',
-    run = 'cd app && yarn install',
-    setup = function() vim.g.mkdp_filetypes = { 'markdown' } end,
-    ft = { 'markdown' },
+    run = function() vim.fn["mkdp#util#install"]() end,
   }
 end)
