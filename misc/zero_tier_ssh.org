@@ -1,0 +1,65 @@
+* Optional Setup for ZeroTier & SSH
+
+** ZeroTier
+
+*** Installation
+
+    [[https://www.zerotier.com/download/]]
+
+    #+BEGIN_SRC
+    curl -s 'https://raw.githubusercontent.com/zerotier/ZeroTierOne/master/doc/contact%40zerotier.com.gpg' | gpg --import && \
+    if z=$(curl -s 'https://install.zerotier.com/' | gpg); then echo "$z" | sudo bash; fi
+    #+END_SRC
+
+*** Network Management
+
+    [[https://my.zerotier.com]]
+
+*** Joining a network
+
+    : sudo zerotier-cli join <16_DIGIT_NETWORK_ID>
+
+    Then authorize the device from the web console.
+
+** SSH
+
+*** Server Installation
+
+    - : sudo apt install openssh-server
+
+*** Server Configuration
+
+    #+NAME: /etc/ssh/sshd_config
+    #+BEGIN_SRC
+    MaxStartups 3
+    PasswordAuthentication no
+    PermitEmptyPasswords no
+    PermitRootLogin No
+    ListenAddress <ZEROTIER_IP_ADDRESS>
+    #+END_SRC
+
+    - copy or generate ssh key pair
+    - add public ssh key to =authorized_keys= file
+
+    #+BEGIN_SRC
+    cd ~/.ssh
+    cat id_rsa.pub >> authorized_keys
+    #+END_SRC
+
+*** Permissions
+
+    : chmod 700 ~/.ssh
+    : chmod 600 ~/.ssh/authorized_keys
+
+*** Command Reference
+
+    : sudo systemctl status ssh
+    : sudo systemctl restart ssh
+
+    check on which IP addresses =sshd= is listening
+    : netstat -tulpn | grep :<PORT_NUMBER>
+
+** Sources
+
+   - [[https://zduey.github.io/tutorials/ssh-server-on-home-computer]]
+   - [[https://www.digitalocean.com/community/tutorials/ssh-essentials-working-with-ssh-servers-clients-and-keys]]
