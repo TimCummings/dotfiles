@@ -4,7 +4,7 @@ function M.setup()
   -- Load custom tree-sitter grammar for org filetype
   require('orgmode').setup_ts_grammar()
 
-  require('nvim-treesitter.configs').setup{
+  require('nvim-treesitter.configs').setup({
     ensure_installed = {
       'bash',
       'css',
@@ -30,7 +30,7 @@ function M.setup()
     indent = {
       enable = false,
     },
-  }
+  })
 end
 
 return M
