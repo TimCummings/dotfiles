@@ -62,6 +62,10 @@ o.listchars = 'tab:>-,trail:~,extends:>,precedes:<,nbsp:~'
 wo.list = true
 -- o.showbreak = '↪ '
 
+-- conceal settings, mostly for orgmode files
+o.conceallevel = 2
+o.concealcursor = 'nc'
+
 o.ignorecase = true
 o.smartcase = true
 
