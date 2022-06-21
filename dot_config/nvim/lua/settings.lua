@@ -62,10 +62,6 @@ o.listchars = 'tab:>-,trail:~,extends:>,precedes:<,nbsp:~'
 wo.list = true
 -- o.showbreak = '↪ '
 
--- conceal settings, mostly for orgmode files
-o.conceallevel = 2
-o.concealcursor = 'nc'
-
 o.ignorecase = true
 o.smartcase = true
 
@@ -96,6 +92,7 @@ else
 end
 
 -- autocommands & augroups
+-- Goyo & Limelight
 vim.api.nvim_create_augroup('Goyo', { clear = true })
 vim.api.nvim_exec([[
   augroup Goyo
@@ -103,3 +100,16 @@ vim.api.nvim_exec([[
     autocmd! User GoyoLeave Limelight!
   augroup end
 ]], false)
+
+vim.api.nvim_create_augroup('Org', { clear = true })
+vim.api.nvim_create_autocmd('BufEnter',
+{
+  desc = 'aggressive conceal for org files',
+  group = 'Org',
+  pattern = '*.org',
+  callback = function()
+    print('SET FILETYPE!')
+    vim.opt_local.conceallevel = 2
+    -- vim.opt_local.concealcursor = 'nc'
+  end,
+})
