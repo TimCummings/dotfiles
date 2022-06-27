@@ -25,9 +25,11 @@
 
 *** Server Installation
 
-    - : sudo apt install openssh-server
+    : sudo apt install openssh-server
 
 *** Server Configuration
+
+    Also consider enabling =ufw= if it isn't already!
 
     #+NAME: /etc/ssh/sshd_config
     #+BEGIN_SRC
@@ -46,6 +48,18 @@
     cat id_rsa.pub >> authorized_keys
     #+END_SRC
 
+**** ListenAddress Workaround
+
+     =sshd= can error after system boot due to not be able to bind the IP address specified with =ListenAddress=. This is due to =sshd= starting before ZeroTier has finished connecting. One potential workaround is to allow binding to non-local addresses:
+
+     - edit =/etc/sysctl.conf= or custom configuration, eg. =/etc/sysctl.ld/99-custom.conf=
+     - add:
+
+       #+BEGIN_SRC
+       # allow sshd to bind before zerotier starts
+       net.ipv4.ip_nonlocal_bind=1
+       #+END_SRC
+
 *** Permissions
 
     : chmod 700 ~/.ssh
@@ -63,3 +77,4 @@
 
    - [[https://zduey.github.io/tutorials/ssh-server-on-home-computer]]
    - [[https://www.digitalocean.com/community/tutorials/ssh-essentials-working-with-ssh-servers-clients-and-keys]]
+   - [[https://www.cyberciti.biz/faq/linux-bind-ip-that-doesnt-exist-with-net-ipv4-ip_nonlocal_bind/]]
