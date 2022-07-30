@@ -108,7 +108,6 @@ vim.api.nvim_create_autocmd('BufEnter',
   group = 'Org',
   pattern = '*.org',
   callback = function()
-    print('SET FILETYPE!')
     vim.opt_local.conceallevel = 2
     -- vim.opt_local.concealcursor = 'nc'
   end,
