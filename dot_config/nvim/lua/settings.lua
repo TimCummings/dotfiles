@@ -53,6 +53,9 @@ o.showmode = false
 -- copy to system clipboard?
 o.clipboard = 'unnamed'
 
+-- mouse
+o.mouse = 'a'
+
 -- open new split panes to right and bottom
 o.splitbelow = true
 o.splitright = true
@@ -67,6 +70,11 @@ o.smartcase = true
 
 -- highlight current cursor line
 wo.cursorline = true
+
+-- neovide GUI
+if vim.g.neovide == true then
+  vim.o.guifont = 'JetBrains Mono NL,Symbols Nerd Font Mono:h12'
+end
 
 if pcall(function()
   vim.notify = require('notify')
