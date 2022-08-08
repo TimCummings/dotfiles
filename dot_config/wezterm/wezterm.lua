@@ -122,8 +122,14 @@ return {
   hide_tab_bar_if_only_one_tab = true,
   tab_and_split_indices_are_zero_based = true,
   -- tab_bar_at_bottom = true,
-  -- try to fix terminal disallowing keyboard input after window resizing
-  use_ime = false,
+  use_ime = false, -- try to fix terminal disallowing keyboard input after window resizing
+  window_decorations = "RESIZE",
+  window_padding = {
+    left = 3,
+    right = 3,
+    top = 3,
+    bottom = 3,
+  },
 
   -- Font Settings; use `wezterm ls-fonts --list-system` to find exact font names
   -- my preferred fonts are now all bundled with Wezterm, yay!
