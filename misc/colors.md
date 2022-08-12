@@ -10,3 +10,15 @@ The colors from [nvim-notify](https://github.com/rcarriga/nvim-notify) are one p
 - info:  #a9ff68
 - debug: #8b8b8b
 - trace: #d484ff
+
+## Thematic Colors
+
+### Characters
+
+- Locke Cole #192e55
+- Flik #1e4dab
+
+### KAT Atlantis
+
+- #7eedd8
+- #1c2131 (this might be too dark, pulled from `tmux.conf`)

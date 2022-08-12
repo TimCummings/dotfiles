@@ -1,5 +1,5 @@
 format = """
-$username$hostname$directory$git_branch$git_commit$git_state$git_status$package$jobs
+$username$hostname$directory$git_branch$git_commit$git_state$git_status$package$jobs$fill[╮](bright-black)
 $character"""
 
 # Inserts a blank line between shell prompts
@@ -12,6 +12,10 @@ vicmd_symbol = "[ ](bold italic fg:blue)"
 
 [directory]
 style = "bold purple"
+
+[fill]
+style = 'bright-black'
+symbol = '─'
 
 [git_branch]
 style = "yellow"
@@ -36,8 +40,8 @@ stashed = '[◫ ](white)'
 untracked = '[? ](bright-yellow)'
 
 [hostname]
-style = "bold blue"
-format = '[$hostname]($style)[| ](bold dimmed blue)'
+style = "bold #1e4dab"
+format = '[$hostname| ]($style)'
 
 [jobs]
 symbol = "✶"
@@ -45,5 +49,5 @@ style = "cyan"
 
 [username]
 style_root = "bold red"
-style_user = "bold blue"
-format = '[$user]($style)[@](bold dimmed blue)'
+style_user = "bold #1e4dab"
+format = '[$user]($style)[@](dimmed $style)'
