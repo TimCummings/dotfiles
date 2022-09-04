@@ -6,9 +6,6 @@ local wo = vim.wo
 vim.g.do_filetype_lua = 1
 vim.g.did_load_filetypes = 0
 
--- disable "hidden" buffers
-o.hidden = false
-
 -- diagnostics settings
 vim.diagnostic.config({
   underline = false,
@@ -40,7 +37,7 @@ wo.breakindent = true
 wo.linebreak = true
 
 -- keep lines above/below cursor when at top/bottom of file
-o.scrolloff = 5
+o.scrolloff = 3
 
 -- show absolute line numbers
 o.number = true
