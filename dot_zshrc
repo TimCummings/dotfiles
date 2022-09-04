@@ -48,6 +48,8 @@ alias gf='git fetch'
 alias gfa='git fetch -a'
 alias gl='git log'
 alias gp='git pull'
+alias gr='git rebase'
+alias gri='git rebase --interactive'
 alias gsh='git show'
 alias gst='git status'
 
@@ -70,13 +72,6 @@ zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z-_}={A-Za-z_-}' 'r:|=*' 'l:|=* 
 # First and only argument is the desired term title
 function rename_wezterm_title {
   echo "\x1b]1337;SetUserVar=panetitle=$(echo -n $1 | base64)\x07"
-}
-
-function vzf {
-  local file_path=$(fzf)
-  [[ -z "$file_path" ]] && return
-  echo "$file_path"
-  nvim "$file_path"
 }
 
 # fzf autocomplete & keybindings

@@ -14,5 +14,7 @@
   fa = fetch -a
   l = log
   p = pull
+  r = rebase
+  ri = rebase --interactive
   sh = show
   st = status
