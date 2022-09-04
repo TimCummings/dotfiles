@@ -44,12 +44,6 @@ export BUNDLE_USER_CONFIG="$XDG_CONFIG_HOME/bundle"
 export BUNDLE_USER_CACHE="$XDG_CACHE_HOME/bundle"
 export BUNDLE_USER_PLUGIN="$XDG_DATA_HOME/bundle"
 
-# ensure Rust Cargo bin directory is in PATH
-# replace all occurrences - ${parameter//pattern/string}
-CARGO_BIN="$XDG_DATA_HOME/asdf/installs/rust/stable/bin"
-[[ ":$PATH:" == *":${CARGO_BIN}:"* ]] && PATH="${PATH//$CARGO_BIN:/}"
-export PATH="$PATH:${CARGO_BIN}"
-
 # less pager - no history
 export LESSHISTFILE=-
 

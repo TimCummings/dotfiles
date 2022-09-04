@@ -103,15 +103,8 @@ else
 fi
 
 # asdf managed executables - must go after asdf
-# typescript language server
-if [[ $OSTYPE == "darwin"* ]]; then
-  # replace all occurrences - ${parameter//pattern/string}
-  YARN_BIN="$(yarn global bin)"
-  [[ ":$PATH:" == *":${YARN_BIN}:"* ]] && PATH="${PATH//$YARN_BIN:/}"
-  export PATH="$PATH:${YARN_BIN}"
-fi
 
-# golang
+# Golang
 # replace all occurrences - ${parameter//pattern/string}
 if type go &> /dev/null; then
   GO_BIN="$(go env GOPATH)/bin"
@@ -121,6 +114,21 @@ else
   echo "Golang is not installed; skipping!"
 fi
 
+# Rust
+if type cargo &> /dev/null; then
+  # replace all occurrences - ${parameter//pattern/string}
+  CARGO_BIN="$(asdf where rust)/bin"
+  [[ ":$PATH:" == *":${CARGO_BIN}:"* ]] && PATH="${PATH//$CARGO_BIN:/}"
+  export PATH="$PATH:${CARGO_BIN}"
+fi
+
+# TypeScript language server
+if [[ $OSTYPE == "darwin"* ]]; then
+  # replace all occurrences - ${parameter//pattern/string}
+  YARN_BIN="$(yarn global bin)"
+  [[ ":$PATH:" == *":${YARN_BIN}:"* ]] && PATH="${PATH//$YARN_BIN:/}"
+  export PATH="$PATH:${YARN_BIN}"
+fi
 
 # starship prompt
 if type starship &> /dev/null; then
