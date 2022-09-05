@@ -1,19 +1,21 @@
--- linting tie-ins with LSP
-require("null-ls").setup({
-    sources = {
-      require("null-ls").builtins.diagnostics.actionlint,
-      require("null-ls").builtins.diagnostics.eslint,
-      require("null-ls").builtins.diagnostics.rubocop,
-      require("null-ls").builtins.diagnostics.shellcheck,
-      require("null-ls").builtins.diagnostics.yamllint,
+require('mason').setup({
+  ui = {
+    border = 'single',
+    icons = {
+      package_installed = '✓ ',
+      package_pending = '┄ ',
+      package_uninstalled = '✗ '
     },
+  }
+})
+
+require('mason-lspconfig').setup({
+  ensure_installed = { 'gopls', 'sumneko_lua', 'tsserver', 'yamlls' },
 })
 
 -- use an on_attach function to only map the following keys after the language
 -- server attaches to the current buffer
 local on_attach = function(_, bufnr)
-  -- Mappings
-  -- local opts = { silent = true }
   local opts = { buffer = bufnr }
 
   -- See `:help vim.lsp.*` for documentation on any of the below functions
@@ -44,34 +46,31 @@ function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
   return orig_util_open_floating_preview(contents, syntax, opts, ...)
 end
 
-local lsp_installer = require('nvim-lsp-installer')
-lsp_installer.settings({
-  ui = {
-    icons = {
-      server_installed = '✓ ',
-      server_pending = '┄ ',
-      server_uninstalled = '✗ '
+require('mason-lspconfig').setup_handlers({
+  -- The first entry (without a key) will be the default handler
+  -- and will be called for each installed server that doesn't have
+  -- a dedicated handler.
+  function (server_name) -- default handler (optional)
+    require('lspconfig')[server_name].setup {
+      on_attach = on_attach,
+      capabilities = capabilities,
     }
-  }
-})
-
-lsp_installer.on_server_ready(function(server)
-  local opts = {
-    capabilities = capabilities,
-    on_attach = on_attach,
-  }
-
-  if server.name == 'sumneko_lua' then
-    opts.settings = {
-      Lua = {
-        diagnostics = {
-          globals = { 'vim' }
+  end,
+  -- Next, you can provide targeted overrides for specific servers.
+  ['sumneko_lua'] = function ()
+    require('lspconfig').sumneko_lua.setup {
+      on_attach = on_attach,
+      capabilities = capabilities,
+      settings = {
+        Lua = {
+          diagnostics = {
+            globals = { 'vim' }
+          }
         }
       }
     }
-  end
-  server:setup(opts)
-end)
+  end,
+})
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menu,menuone,noselect'
@@ -84,7 +83,7 @@ local cmp = require('cmp')
 cmp.setup({
   snippet = {
     expand = function(args)
-      require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+      luasnip.lsp_expand(args.body) -- For `luasnip` users.
     end,
   },
   mapping = {
@@ -126,4 +125,15 @@ cmp.setup({
     { name = 'buffer' },
     { name = 'nvim_lua' },
   })
+})
+
+-- linting tie-ins with LSP
+require('null-ls').setup({
+    sources = {
+      require('null-ls').builtins.diagnostics.actionlint,
+      require('null-ls').builtins.diagnostics.eslint,
+      require('null-ls').builtins.diagnostics.rubocop,
+      require('null-ls').builtins.diagnostics.shellcheck,
+      require('null-ls').builtins.diagnostics.yamllint,
+    },
 })
