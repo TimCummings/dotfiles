@@ -44,7 +44,7 @@ return require('packer').startup(function(use)
 
   -- colorschemes
   use 'shaunsingh/nord.nvim'
-  -- use 'arcticicestudio/nord-vim' -- vim/non-TreeSitter version
+  use { "catppuccin/nvim", as = "catppuccin" }
   -- use 'navarasu/onedark.nvim'
   -- use 'EdenEast/nightfox.nvim'
   -- use 'rmehri01/onenord.nvim'

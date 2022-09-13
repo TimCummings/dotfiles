@@ -63,4 +63,15 @@ vim.api.nvim_create_autocmd('ColorScheme', {
 })
 
 -- LUA alternative wasn't triggering `ColorScheme` event
-vim.cmd('colorscheme nord')
+-- vim.cmd('colorscheme nord')
+-- don't italicize
+require('catppuccin').setup({
+  compile = {
+    enabled = true,
+  },
+  styles = {
+    comments = {},
+    conditionals = {},
+  },
+})
+vim.cmd('colorscheme catppuccin')
