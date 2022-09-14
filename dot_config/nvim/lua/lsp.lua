@@ -124,7 +124,15 @@ cmp.setup({
   }, {
     { name = 'buffer' },
     { name = 'nvim_lua' },
-  })
+  }),
+  window = {
+    -- completion uses the "Pmenu" highlight group and is fine as-is
+    documentation = cmp.config.window.bordered({
+      border = 'none',
+      side_padding = 4, -- this doesn't appear to be working
+      winhighlight = 'Normal:Pmenu,FloatBorder:FloatBorder,CursorLine:CursorLine,Search:None',
+    }),
+  },
 })
 
 -- linting tie-ins with LSP
