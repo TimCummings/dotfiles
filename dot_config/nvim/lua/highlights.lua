@@ -17,14 +17,12 @@ vim.api.nvim_create_autocmd('ColorScheme', {
       -- general
       vim.api.nvim_set_hl(0, 'NonText', { fg = '#565575' })
       vim.api.nvim_set_hl(0, 'NormalFloat', { fg = '#a3be8c', bold = true })
-      vim.api.nvim_set_hl(0, 'FloatBorder', { fg = '#a3be8c', bold = true })
+      vim.api.nvim_set_hl(0, 'FloatBorder', { fg = '#81a1c1', bold = true })
       vim.api.nvim_set_hl(0, 'TabLine', { bg = '#100e23', fg = '#565575' })
       vim.api.nvim_set_hl(0, 'TabLineSel', { bg = '#272638', fg = '#63f2f1' })
       vim.api.nvim_set_hl(0, 'TabLineFill', { bg = '#100e23', fg = '#272638' })
       vim.api.nvim_set_hl(0, 'TabLineFillInvert', { bg = '#272638', fg = '#100e23' })
       vim.api.nvim_set_hl(0, 'TabLineWarn', { bg = '#272638', fg = '#ffb378' })
-
-      vim.api.nvim_set_hl(0, 'FloatBorder', { fg = '#81a1c1', bold = true })
 
       -- diagnostics
       vim.api.nvim_set_hl(0, 'DiagnosticSignError', { fg = '#f70067' })
