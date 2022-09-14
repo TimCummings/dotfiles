@@ -21,30 +21,43 @@ local colors = {
 
 local challenger_deep_custom = {
   normal = {
-    a = { fg = colors.black, bg = colors.cyan , gui = "bold", },
-    b = { fg = colors.black, bg = colors.darkcyan },
-    c = { fg = colors.white, bg = colors.black },
+    a = { fg = colors.black, bg = colors.darkcyan, gui = "bold", },
+    b = { fg = colors.white, bg = colors.black },
+    x = { fg = colors.white, bg = colors.black },
+    y = { fg = colors.black, bg = colors.cyan },
+    z = { fg = colors.black, bg = colors.darkcyan },
   },
   visual = {
-    a = { fg = colors.black, bg = colors.yellow , gui = "bold", },
-    b = { fg = colors.black, bg = colors.darkyellow },
+    a = { fg = colors.black, bg = colors.darkyellow, gui = "bold", },
+    b = { fg = colors.white, bg = colors.black },
+    x = { fg = colors.white, bg = colors.black },
+    y = { fg = colors.black, bg = colors.yellow, },
+    z = { fg = colors.black, bg = colors.darkyellow, },
   },
   command = {
-    a = { fg = colors.black, bg = colors.yellow , gui = "bold", },
-    b = { fg = colors.black, bg = colors.darkyellow },
+    a = { fg = colors.black, bg = colors.darkyellow, gui = "bold", },
+    b = { fg = colors.white, bg = colors.black },
+    x = { fg = colors.white, bg = colors.black },
+    y = { fg = colors.black, bg = colors.yellow, },
+    z = { fg = colors.black, bg = colors.darkyellow, },
   },
   inactive = {
-    a = { fg = colors.foreground, bg = colors.black , gui = "bold", },
+    a = { fg = colors.foreground, bg = colors.black, gui = "bold", },
     b = { fg = colors.foreground, bg = colors.black },
-    c = { fg = colors.foreground, bg = colors.black },
   },
   replace = {
-    a = { fg = colors.black, bg = colors.red , gui = "bold", },
-    b = { fg = colors.black, bg = colors.darkred },
+    a = { fg = colors.black, bg = colors.darkred, gui = "bold", },
+    b = { fg = colors.white, bg = colors.black },
+    x = { fg = colors.white, bg = colors.black },
+    y = { fg = colors.black, bg = colors.red, },
+    z = { fg = colors.black, bg = colors.darkred, },
   },
   insert = {
-    a = { fg = colors.black, bg = colors.green , gui = "bold", },
-    b = { fg = colors.black, bg = colors.darkgreen },
+    a = { fg = colors.black, bg = colors.darkgreen, gui = "bold", },
+    b = { fg = colors.white, bg = colors.black },
+    x = { fg = colors.white, bg = colors.black },
+    y = { fg = colors.black, bg = colors.green, },
+    z = { fg = colors.black, bg = colors.darkgreen, },
   },
 }
 
