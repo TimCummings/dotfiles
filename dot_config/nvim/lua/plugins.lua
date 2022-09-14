@@ -14,6 +14,10 @@ vim.api.nvim_create_autocmd('BufWritePost',
 -- manage plugins
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
+
+  -- performance improvements via compiling and caching
+  use 'lewis6991/impatient.nvim'
+
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   use { 'nvim-telescope/telescope.nvim',
     requires = {{ 'nvim-lua/popup.nvim' }, { 'nvim-lua/plenary.nvim' }}

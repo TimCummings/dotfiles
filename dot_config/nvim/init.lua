@@ -1,4 +1,5 @@
 require('plugins')
+require('impatient').enable_profile()
 require('highlights')
 require('mappings')
 require('settings')
