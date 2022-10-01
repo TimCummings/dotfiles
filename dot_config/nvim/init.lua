@@ -15,6 +15,7 @@ if pcall(function()
     require('nvim-tree').setup()
     require('lsp')
     require('treesitter_config').setup()
+    require('orgmode_config').setup()
   end) then
 else
   print('One or more plugins missing. Run `:PackerInstall`!')

@@ -88,7 +88,11 @@ return require('packer').startup(function(use)
   use 'junegunn/limelight.vim'
   use 'rcarriga/nvim-notify'
   use 'dhruvasagar/vim-table-mode'
-  use { 'nvim-orgmode/orgmode', config = require('orgmode_config').setup() }
+  use { 'nvim-orgmode/orgmode',
+    config = function()
+      require('orgmode').setup{}
+    end
+  }
   use {
     'iamcco/markdown-preview.nvim',
     run = function() vim.fn['mkdp#util#install']() end,

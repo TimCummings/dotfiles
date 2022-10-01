@@ -24,7 +24,6 @@ function M.setup()
     },
     highlight = {
       enable = true,              -- false will disable the whole extension
-      disable = { 'org' },        -- TS highlighthing is still experimental
       additional_vim_regex_highlighting = { 'org' }, -- TS doesn't support all features, eg. conceal
     },
     indent = {
