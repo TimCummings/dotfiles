@@ -52,7 +52,7 @@ return require('packer').startup(function(use)
   -- use 'rmehri01/onenord.nvim'
   -- use 'marko-cerovac/material.nvim'
 
-  use { 'nvim-lualine/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true }}
+  use 'rebelot/heirline.nvim'
   use {
     'folke/trouble.nvim',
     requires = 'kyazdani42/nvim-web-devicons',
