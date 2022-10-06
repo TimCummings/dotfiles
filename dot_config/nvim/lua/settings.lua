@@ -2,10 +2,6 @@ local o = vim.o
 local bo = vim.bo
 local wo = vim.wo
 
--- experiment with filetype.lua file type detection beta
-vim.g.do_filetype_lua = 1
-vim.g.did_load_filetypes = 0
-
 -- diagnostics settings
 vim.diagnostic.config({
   underline = false,
@@ -27,10 +23,7 @@ o.expandtab = true
 o.tabstop = 2
 o.shiftwidth = 2
 o.shiftround = true  -- round indent to multiple of `shiftwidth`
-o.smarttab = true
-o.autoindent = true
 bo.smartindent = true
-o.joinspaces = false -- don't insert an extra space when joining lines (J)
 
 -- indent and wrap settings
 wo.breakindent = true
@@ -50,9 +43,6 @@ o.showmode = false
 -- copy to system clipboard?
 o.clipboard = 'unnamed'
 
--- mouse
-o.mouse = 'a'
-
 -- open new split panes to right and bottom
 o.splitbelow = true
 o.splitright = true
@@ -60,7 +50,6 @@ o.splitright = true
 -- display hidden characters
 o.listchars = 'tab:>-,trail:~,extends:>,precedes:<,nbsp:~'
 wo.list = true
--- o.showbreak = '↪ '
 
 o.ignorecase = true
 o.smartcase = true
