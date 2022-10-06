@@ -36,6 +36,9 @@ o.scrolloff = 3
 o.number = true
 o.relativenumber = true
 
+-- experiment with hiding command line (new & experimental with nvim 0.8)
+o.ch = 0
+
 -- status line
 o.laststatus = 2
 o.showmode = false
