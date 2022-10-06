@@ -10,7 +10,7 @@ vim.diagnostic.config({
 
 local signs = { Error = ' ', Hint = ' ', Info = ' ', Warn = ' ' }
 for type, icon in pairs(signs) do
-  local hl = "DiagnosticSign" .. type
+  local hl = 'DiagnosticSign' .. type
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
@@ -74,9 +74,9 @@ if pcall(function()
   })
   require('telescope').setup({
     defaults = {
-      sorting_strategy = "ascending",
+      sorting_strategy = 'ascending',
       layout_config = {
-        horizontal = { prompt_position = "top" }
+        horizontal = { prompt_position = 'top' }
       },
     },
   })

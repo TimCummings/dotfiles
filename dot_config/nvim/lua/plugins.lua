@@ -24,9 +24,9 @@ return require('packer').startup(function(use)
 
   -- LSP
   use {
-    "williamboman/mason.nvim",
-    "williamboman/mason-lspconfig.nvim",
-    "neovim/nvim-lspconfig",
+    'williamboman/mason.nvim',
+    'williamboman/mason-lspconfig.nvim',
+    'neovim/nvim-lspconfig',
   }
 
   -- LSP completion with sources
@@ -54,10 +54,10 @@ return require('packer').startup(function(use)
 
   use { 'nvim-lualine/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true }}
   use {
-    "folke/trouble.nvim",
-    requires = "kyazdani42/nvim-web-devicons",
+    'folke/trouble.nvim',
+    requires = 'kyazdani42/nvim-web-devicons',
     config = function()
-      require("trouble").setup {
+      require('trouble').setup {
         action_keys = {
           cancel = {},
           close = '<esc>',
@@ -84,6 +84,6 @@ return require('packer').startup(function(use)
   use { 'nvim-orgmode/orgmode', config = require('orgmode_config').setup() }
   use {
     'iamcco/markdown-preview.nvim',
-    run = function() vim.fn["mkdp#util#install"]() end,
+    run = function() vim.fn['mkdp#util#install']() end,
   }
 end)
