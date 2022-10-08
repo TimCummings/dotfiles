@@ -26,6 +26,7 @@ vim.keymap.set('n', '<Leader>w', '<cmd>w<CR>', { desc = 'save file' })
 vim.keymap.set('n', '<Leader>wq', '<cmd>wq<CR>', { desc = 'save file and quit' })
 vim.keymap.set('n', '<Leader>q', '<cmd>q<CR>', { desc = 'quit' })
 vim.keymap.set('n', '<Leader>Q', '<cmd>q!<CR>', { desc = 'quit without saving' })
+vim.keymap.set('n', '<Leader>ct', '<cmd>ColorizerToggle<CR>', { desc = 'toggle Colorizer plugin' })
 
 -- Telescope Mappings
 vim.keymap.set('n', '<Leader>f', require('telescope.builtin').find_files)
