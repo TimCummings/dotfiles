@@ -44,3 +44,15 @@ vim.keymap.set('n', '<Leader>tgs', require('telescope.builtin').git_status)
 vim.keymap.set('n', '<Leader>d', '<cmd>Trouble document_diagnostics<CR>')
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
+
+-- Notify
+vim.keymap.set('n', '<C-l>', function()
+  pcall(function()
+      require('notify').dismiss()
+    end)
+
+  vim.cmd([[
+    nohlsearch
+    diffupdate
+  ]])
+end, { desc = 'clear the screen and dismiss notifications', silent = true })
