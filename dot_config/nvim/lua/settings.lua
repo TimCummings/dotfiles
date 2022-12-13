@@ -57,9 +57,6 @@ wo.list = true
 o.ignorecase = true
 o.smartcase = true
 
--- highlight current cursor line
-wo.cursorline = true
-
 -- neovide GUI
 if vim.g.neovide == true then
   vim.o.guifont = 'JetBrains Mono NL,Symbols Nerd Font Mono:h12'
