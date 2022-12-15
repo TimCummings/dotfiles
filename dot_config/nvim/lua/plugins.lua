@@ -88,11 +88,36 @@ return require('packer').startup(function(use)
   use 'junegunn/limelight.vim'
   use 'rcarriga/nvim-notify'
   use 'dhruvasagar/vim-table-mode'
+
+  -- Org Mode
   use { 'nvim-orgmode/orgmode',
     config = function()
-      require('orgmode').setup{}
+      require('orgmode').setup({})
     end
   }
+  use { 'akinsho/org-bullets.nvim',
+    config = function()
+      require('org-bullets').setup({
+        symbols = {
+          checkboxes = {
+            half = { '◯', 'OrgTSCheckboxHalfChecked' },
+            done = { '✓', 'OrgDone' },
+            todo = { '✕', 'OrgTODO' },
+          },
+          headlines = { '◆', '◇', '●', '◯', '▶', '▷' },
+        },
+      })
+    end
+  }
+  use { 'lukas-reineke/headlines.nvim',
+    config = function()
+      require('headlines').setup({
+        markdown = { dash_string = '─' },
+        org = { dash_string = '─' },
+      })
+    end,
+  }
+
   use {
     'iamcco/markdown-preview.nvim',
     run = function() vim.fn['mkdp#util#install']() end,

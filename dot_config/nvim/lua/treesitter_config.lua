@@ -15,6 +15,7 @@ function M.setup()
       'javascript',
       'json',
       'lua',
+      'markdown',
       'org',
       'ruby',
       'rust',
