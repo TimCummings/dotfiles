@@ -1,4 +1,6 @@
-require('mason').setup({
+local protected_require = require('utils').protected_require
+
+protected_require('mason', {
   ui = {
     border = 'single',
     icons = {
@@ -9,7 +11,7 @@ require('mason').setup({
   }
 })
 
-require('mason-lspconfig').setup({
+protected_require('mason-lspconfig', {
   ensure_installed = { 'gopls', 'sumneko_lua', 'tsserver', 'yamlls' },
 })
 
@@ -72,6 +74,7 @@ require('mason-lspconfig').setup_handlers({
   end,
 })
 
+-- TODO: move to settings
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menu,menuone,noselect'
 
@@ -135,13 +138,12 @@ cmp.setup({
   },
 })
 
--- linting tie-ins with LSP
-require('null-ls').setup({
-    sources = {
-      require('null-ls').builtins.diagnostics.actionlint,
-      require('null-ls').builtins.diagnostics.eslint,
-      require('null-ls').builtins.diagnostics.rubocop,
-      require('null-ls').builtins.diagnostics.shellcheck,
-      require('null-ls').builtins.diagnostics.yamllint,
-    },
+protected_require('null-ls', {
+  sources = {
+    require('null-ls').builtins.diagnostics.actionlint,
+    require('null-ls').builtins.diagnostics.eslint,
+    require('null-ls').builtins.diagnostics.rubocop,
+    require('null-ls').builtins.diagnostics.shellcheck,
+    require('null-ls').builtins.diagnostics.yamllint,
+  },
 })

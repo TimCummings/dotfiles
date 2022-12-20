@@ -60,70 +60,26 @@ return require('packer').startup(function(use)
   -- use 'marko-cerovac/material.nvim'
 
   use 'rebelot/heirline.nvim'
-  use {
-    'folke/trouble.nvim',
-    requires = 'kyazdani42/nvim-web-devicons',
-    config = function()
-      require('trouble').setup {
-        action_keys = {
-          cancel = {},
-          close = '<esc>',
-        },
-        auto_close = true,
-      }
-    end
-  }
+  use 'tpope/vim-surround'
+  use 'tpope/vim-repeat'
+  use 'tpope/vim-fugitive'
+  use 'NvChad/nvim-colorizer.lua'
+  use 'junegunn/goyo.vim'
+  use 'junegunn/limelight.vim'
+  use 'rcarriga/nvim-notify'
+  use 'dhruvasagar/vim-table-mode'
+  use { 'folke/trouble.nvim', requires = 'kyazdani42/nvim-web-devicons' }
+  use { 'kyazdani42/nvim-tree.lua', requires = { 'kyazdani42/nvim-web-devicons', opt = true }}
   use {
     'numToStr/Comment.nvim',
     config = function()
       require('Comment').setup()
     end
   }
-  use 'tpope/vim-surround'
-  use 'tpope/vim-repeat'
-  use 'tpope/vim-fugitive'
-  use { 'kyazdani42/nvim-tree.lua', requires = { 'kyazdani42/nvim-web-devicons', opt = true }}
-  use {
-    'NvChad/nvim-colorizer.lua',
-    config = function()
-      require('colorizer').setup({
-        user_default_options = { names = false }
-      })
-    end
-  }
-  use 'junegunn/goyo.vim'
-  use 'junegunn/limelight.vim'
-  use 'rcarriga/nvim-notify'
-  use 'dhruvasagar/vim-table-mode'
 
-  -- Org Mode
-  use { 'nvim-orgmode/orgmode',
-    config = function()
-      require('orgmode').setup({})
-    end
-  }
-  use { 'akinsho/org-bullets.nvim',
-    config = function()
-      require('org-bullets').setup({
-        symbols = {
-          checkboxes = {
-            half = { '◯', 'OrgTSCheckboxHalfChecked' },
-            done = { '✓', 'OrgDone' },
-            todo = { '✕', 'OrgTODO' },
-          },
-          headlines = { '◆', '◇', '●', '◯', '▶', '▷' },
-        },
-      })
-    end
-  }
-  use { 'lukas-reineke/headlines.nvim',
-    config = function()
-      require('headlines').setup({
-        markdown = { dash_string = '─' },
-        org = { dash_string = '─' },
-      })
-    end,
-  }
+  use 'nvim-orgmode/orgmode'
+  use 'akinsho/org-bullets.nvim'
+  use 'lukas-reineke/headlines.nvim'
 
   use {
     'iamcco/markdown-preview.nvim',
@@ -133,7 +89,13 @@ return require('packer').startup(function(use)
   -- continuation of bootstrap process:
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
+  -- printed notice from kickstart.nvim
   if packer_bootstrap then
     require('packer').sync()
+    print '=================================='
+    print '    Plugins are being installed'
+    print '    Wait until Packer completes,'
+    print '       then restart nvim'
+    print '=================================='
   end
 end)
