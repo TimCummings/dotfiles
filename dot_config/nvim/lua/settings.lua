@@ -59,29 +59,7 @@ if vim.g.neovide == true then
   vim.o.guifont = 'JetBrains Mono NL,Symbols Nerd Font Mono:h12'
 end
 
-if pcall(function()
-  vim.notify = require('notify')
-  vim.notify.setup({
-    background_colour = '#2e3440',
-    -- level = 'trace',   -- minimum level of notifications to display; default is info
-    stages = 'slide',
-  })
-  require('telescope').setup({
-    defaults = {
-      sorting_strategy = 'ascending',
-      layout_config = {
-        horizontal = { prompt_position = 'top' }
-      },
-    },
-  })
-  require('telescope').load_extension('fzf')
-  require('telescope').load_extension('notify')
-
-  vim.g.table_mode_corner = '|'
-end) then
-else
-  print('One or more plugins missing. Run `:PackerInstall`!')
-end
+vim.g.table_mode_corner = '|'
 
 -- autocommands & augroups
 -- Goyo & Limelight
