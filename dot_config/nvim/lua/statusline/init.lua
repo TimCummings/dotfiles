@@ -1,9 +1,15 @@
+local ok, _ = pcall(require, 'heirline')
+if not ok then
+  print('Error requiring heirline plugin in statusline init')
+  return
+end
+
 -- evaluation order inside a component: condition, update, init, hl, on_click, provider, pick_child;
 -- static and restrict are only available during instantiation, so put them before `init`
 
 -- built-in helpers provided by heirline plugin
 local conditions = require('heirline.conditions')
-local utils = require('heirline.utils')
+-- local utils = require('heirline.utils')
 
 -- custom components
 local FileInfoBlock = require('statusline.file_info_block')
