@@ -20,6 +20,7 @@ vim.keymap.set('n', '<Leader>.', function()
   )
 end, { desc = 'yank full path of current file to system clipboard' })
 vim.keymap.set('', '<Leader>y', '"+y', { desc = 'yank to system clipboard' })
+vim.keymap.set('x', '<Leader>p', '"_dP', { desc = 'paste without overwriting register' })
 vim.keymap.set('', '<Leader>rl', ':set rnu!<CR>', { desc = 'toggle relative line numbers', silent = true })
 vim.keymap.set('n', '<Leader>e', '<cmd>NvimTreeToggle<CR>')
 vim.keymap.set('n', '<Leader>w', '<cmd>w<CR>', { desc = 'save file' })
@@ -33,16 +34,11 @@ vim.keymap.set('n', '<Leader>d', '<cmd>Trouble document_diagnostics<CR>')
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
 
-vim.keymap.set('n', '<C-l>', function()
-  pcall(function()
-      require('notify').dismiss()
-    end)
-
-  vim.cmd([[
-    nohlsearch
-    diffupdate
-  ]])
-end, { desc = 'clear the screen and dismiss notifications', silent = true })
+vim.keymap.set('n', '<Esc>', function()
+  vim.cmd.nohlsearch()
+  vim.cmd.echo()
+  pcall(function() require('notify').dismiss() end)
+end, { desc = 'clear search highlights, short-message, and notifications', silent = true })
 
 -- plugin specifc mappings: moved to their own files in `after` directory,
 -- but copied here for comprehensive list of mappings
