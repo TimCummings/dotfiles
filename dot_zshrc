@@ -69,6 +69,26 @@ zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z-_}={A-Za-z_-}' 'r:|=*' 'l:|=* 
 
 # functions
 
+# NNN: enable cd on quit with ^G
+function n {
+  # Block nesting of nnn in subshells
+  if [[ "${NNNLVL:-0}" -ge 1 ]]; then
+    echo "nnn is already running"
+    return
+  fi
+
+  NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
+
+  # The backslash allows one to alias n to nnn if desired without making an
+  # infinitely recursive alias
+  \nnn-nerd-static -eoR "$@"
+
+  if [ -f "$NNN_TMPFILE" ]; then
+    . "$NNN_TMPFILE"
+    rm -f "$NNN_TMPFILE" > /dev/null
+  fi
+}
+
 # First and only argument is the desired term title
 function rename_wezterm_title {
   echo "\x1b]1337;SetUserVar=panetitle=$(echo -n $1 | base64)\x07"
