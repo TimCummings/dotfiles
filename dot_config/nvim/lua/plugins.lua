@@ -63,13 +63,13 @@ return require('packer').startup(function(use)
   use 'tpope/vim-surround'
   use 'tpope/vim-repeat'
   use 'tpope/vim-fugitive'
+  use 'luukvbaal/nnn.nvim'
   use 'NvChad/nvim-colorizer.lua'
   use 'junegunn/goyo.vim'
   use 'junegunn/limelight.vim'
   use 'rcarriga/nvim-notify'
   use 'dhruvasagar/vim-table-mode'
   use { 'folke/trouble.nvim', requires = 'kyazdani42/nvim-web-devicons' }
-  use { 'kyazdani42/nvim-tree.lua', requires = { 'kyazdani42/nvim-web-devicons', opt = true }}
   use {
     'numToStr/Comment.nvim',
     config = function()
