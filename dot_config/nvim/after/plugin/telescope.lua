@@ -15,6 +15,7 @@ if ok then
   telescope.load_extension('notify')
 
   vim.keymap.set('n', '<Leader>f', require('telescope.builtin').find_files)
+  vim.keymap.set('n', '<Leader>rg', require('telescope.builtin').live_grep)
   vim.keymap.set('n', '<Leader>tb', require('telescope.builtin').buffers)
   vim.keymap.set('n', '<Leader>tc', require('telescope.builtin').commands)
   vim.keymap.set('n', '<Leader>tq', require('telescope.builtin').quickfix)
