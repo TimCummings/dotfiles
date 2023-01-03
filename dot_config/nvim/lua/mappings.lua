@@ -20,7 +20,10 @@ vim.keymap.set('n', '<Leader>.', function()
   )
 end, { desc = 'yank full path of current file to system clipboard' })
 vim.keymap.set('', '<Leader>y', '"+y', { desc = 'yank to system clipboard' })
-vim.keymap.set('x', '<Leader>p', '"_dP', { desc = 'paste without overwriting register' })
+vim.keymap.set('n', '<Leader>d', '"_d', { desc = 'delete without overwriting register' })
+vim.keymap.set('v', '<Leader>d', '"_d', { desc = 'delete without overwriting register' })
+vim.keymap.set('x', '<Leader>p', '"_dp', { desc = 'paste after without overwriting register' })
+vim.keymap.set('x', '<Leader>P', '"_dP', { desc = 'paste before without overwriting register' })
 vim.keymap.set('', '<Leader>rl', ':set rnu!<CR>', { desc = 'toggle relative line numbers', silent = true })
 vim.keymap.set('n', '<Leader>e', '<cmd>NnnExplorer<CR>')
 vim.keymap.set('n', '<Leader>n', '<cmd>NnnPicker<CR>')
@@ -31,7 +34,7 @@ vim.keymap.set('n', '<Leader>Q', '<cmd>q!<CR>', { desc = 'quit without saving' }
 vim.keymap.set('n', '<Leader>ct', '<cmd>ColorizerToggle<CR>', { desc = 'toggle Colorizer plugin' })
 
 -- Diagnostics
-vim.keymap.set('n', '<Leader>d', '<cmd>Trouble document_diagnostics<CR>')
+vim.keymap.set('n', '<Leader>cd', '<cmd>Trouble document_diagnostics<CR>')
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
 
