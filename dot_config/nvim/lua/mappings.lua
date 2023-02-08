@@ -32,6 +32,8 @@ vim.keymap.set('n', '<Leader>wq', '<cmd>wq<CR>', { desc = 'save file and quit' }
 vim.keymap.set('n', '<Leader>q', '<cmd>q<CR>', { desc = 'quit' })
 vim.keymap.set('n', '<Leader>Q', '<cmd>q!<CR>', { desc = 'quit without saving' })
 vim.keymap.set('n', '<Leader>ct', '<cmd>ColorizerToggle<CR>', { desc = 'toggle Colorizer plugin' })
+vim.keymap.set('n', '<Leader>td', 'a<C-R>=strftime("<%Y-%m-%d %a>")<CR>', { desc = 'insert date', silent = true })
+vim.keymap.set('n', '<Leader>ts', 'a<C-R>=strftime("<%Y-%m-%d %a %X %Z>")<CR>', { desc = 'insert timestamp', silent = true })
 
 -- Diagnostics
 vim.keymap.set('n', '<Leader>cd', '<cmd>Trouble document_diagnostics<CR>')
@@ -49,6 +51,7 @@ end, { desc = 'clear search highlights, short-message, and notifications', silen
 
 -- Telescope Mappings
 -- vim.keymap.set('n', '<Leader>f', require('telescope.builtin').find_files)
+-- vim.keymap.set('n', '<Leader>rg', require('telescope.builtin').live_grep)
 -- vim.keymap.set('n', '<Leader>tb', require('telescope.builtin').buffers)
 -- vim.keymap.set('n', '<Leader>tc', require('telescope.builtin').commands)
 -- vim.keymap.set('n', '<Leader>tq', require('telescope.builtin').quickfix)
