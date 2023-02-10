@@ -20,6 +20,7 @@ protected_require('nvim-treesitter.configs', {
     'lua',
     'markdown',
     'org',
+    'query', -- for Treesitter Playground
     'ruby',
     'rust',
     'scss',
