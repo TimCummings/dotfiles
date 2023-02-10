@@ -15,8 +15,6 @@ return {
       self.search_count = vim.fn.searchcount()
     end,
 
-    hl = { bold = true },
-
     provider = function(self)
       return ' ' .. (self.search_count['current'] or '0') .. '/' .. (self.search_count['total'] or '0')
     end,

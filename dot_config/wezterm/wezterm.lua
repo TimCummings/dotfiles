@@ -126,7 +126,7 @@ return {
   window_decorations = "RESIZE",
 
   -- Font Settings; use `wezterm ls-fonts --list-system` to find exact font names
-  -- my preferred fonts are now all bundled with Wezterm, yay!
+  font = wezterm.font 'Fira Mono',
 
   leader = { key="Escape", mods="CTRL", timeout_milliseconds=1000 },
   keys = my_keys,
