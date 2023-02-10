@@ -15,6 +15,8 @@ vim.api.nvim_create_autocmd('ColorScheme', {
     desc = 'set colorscheme and custom highlights',
     callback = function()
       -- general
+      vim.api.nvim_set_hl(0, 'Title', { fg = '#5E81AC', bold = true }) -- nord10
+      vim.api.nvim_set_hl(0, 'Constant', { bold = true })
       vim.api.nvim_set_hl(0, 'NonText', { fg = '#565575' })
       vim.api.nvim_set_hl(0, 'NormalFloat', { fg = '#a3be8c', bold = true })
       vim.api.nvim_set_hl(0, 'FloatBorder', { fg = '#81a1c1', bold = true })
@@ -57,6 +59,21 @@ vim.api.nvim_create_autocmd('ColorScheme', {
       vim.api.nvim_set_hl(0, 'NvimTreeSymlink', { fg = '#63f2f1' })
       vim.api.nvim_set_hl(0, 'NvimTreeFolderName', { fg = '#00aeff' })
       vim.api.nvim_set_hl(0, 'NvimTreeFolderIcon', { fg = '#00aeff' })
+
+      -- Org Mode
+      vim.api.nvim_set_hl(0, 'OrgHeadlineLevel1', { fg = '#5E81AC', bold = true }) -- nord10
+      vim.api.nvim_set_hl(0, 'OrgHeadlineLevel2', { fg = '#81A1C1', bold = true }) -- nord9
+      vim.api.nvim_set_hl(0, 'OrgHeadlineLevel3', { fg = '#88C0D0', bold = true }) -- nord8
+      vim.api.nvim_set_hl(0, 'OrgHeadlineLevel4', { fg = '#5E81AC', bold = true }) -- nord10
+      vim.api.nvim_set_hl(0, 'OrgHeadlineLevel5', { fg = '#81A1C1', bold = true }) -- nord9
+      vim.api.nvim_set_hl(0, 'OrgHeadlineLevel6', { fg = '#88C0D0', bold = true }) -- nord8
+      vim.api.nvim_set_hl(0, 'OrgTSPlan', { fg = '#B48EAD' }) -- nord15
+      vim.api.nvim_set_hl(0, 'OrgTSBullet', { fg = '#81A1C1', bold = true }) -- nord9
+      vim.api.nvim_set_hl(0, 'OrgTODO', { fg = '#D08770', bold = true }) -- nord12
+      vim.api.nvim_set_hl(0, 'OrgTSCheckboxHalfChecked', { fg = '#EBCB8B', bold = true }) -- nord13
+      vim.api.nvim_set_hl(0, 'org_code', { bg = '#3B4252', fg = '#88C0D0' }) -- nord8
+      vim.api.nvim_set_hl(0, 'org_verbatim', { fg = '#88C0D0' }) -- nord8
+      vim.api.nvim_set_hl(0, 'org_hyperlink', { fg = '#8FBCBB', underline = true }) -- nord7
     end,
 })
 

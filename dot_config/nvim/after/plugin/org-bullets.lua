@@ -4,8 +4,8 @@ protected_require('org-bullets', {
   symbols = {
     checkboxes = {
       half = { '◯', 'OrgTSCheckboxHalfChecked' },
-      done = { '✓', 'OrgDone' },
-      todo = { '✕', 'OrgTODO' },
+      done = { '✓', 'OrgDONE' },
+      todo = { '✗', 'OrgTODO' },
     },
     headlines = { '◆', '◇', '●', '◯', '▶', '▷' },
   }
