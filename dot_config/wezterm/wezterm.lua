@@ -126,7 +126,57 @@ return {
   window_decorations = "RESIZE",
 
   -- Font Settings; use `wezterm ls-fonts --list-system` to find exact font names
-  font = wezterm.font 'Fira Mono',
+  -- Wezterm now has some terrific fonts built-in, especially JetBrains Mono
+
+  -- some other good alternatives (comment out `font_rules` below if using one):
+  -- font = wezterm.font 'Source Code Pro',
+
+  -- Cascadia Code is great, but needs some extra tweaking...
+  font = wezterm.font {
+    family = 'Cascadia Mono',
+    -- https://github.com/tonsky/FiraCode/wiki/How-to-enable-stylistic-sets#wezs-terminal
+    -- `zero`: slashed instead of dotted zero
+    -- `ss01`: some cursive italic characters
+    harfbuzz_features = { 'zero', 'ss01', 'cv05' },
+  },
+
+  -- and it's regular weight is too heavy (not much different than bold)
+  font_rules = {
+    {
+      intensity = 'Normal',
+      italic = false,
+      font = wezterm.font({
+        family = 'Cascadia Mono',
+        italic = false,
+        weight = 'DemiLight',
+        harfbuzz_features = { 'zero', 'ss01', 'cv05' },
+      }),
+    },
+    {
+      intensity = 'Normal',
+      italic = true,
+      font = wezterm.font({
+        family = 'Cascadia Mono',
+        italic = true,
+        weight = 'DemiLight',
+        harfbuzz_features = { 'zero', 'ss01', 'cv05' },
+      }),
+    },
+  },
+
+  -- however, getting JetBrains bold to work with built-in fonts requires this for some reason:
+  -- font_rules = {
+  --   {
+  --     intensity = 'Bold',
+  --     italic = false,
+  --     font = wezterm.font('JetBrains Mono', { bold = true }),
+  --   },
+  --   {
+  --     intensity = 'Bold',
+  --     italic = true,
+  --     font = wezterm.font('JetBrains Mono', { bold = true, italic = true }),
+  --   },
+  -- },
 
   leader = { key="Escape", mods="CTRL", timeout_milliseconds=1000 },
   keys = my_keys,

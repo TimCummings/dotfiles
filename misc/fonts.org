@@ -1,0 +1,61 @@
+
+* Download
+
+** Cascadia Code
+    [[https://github.com/microsoft/cascadia-code]]
+
+    Similar to =JetBrains Mono= - looks great all around. Not as tall, but better proportioned width vs. height than some others like =Anonymous Pro= & =Source Code Pro=. Use =Cascadia Mono= versions for no ligatures.
+
+** JetBrains Mono
+    [[https://www.jetbrains.com/lp/mono/]]
+    [[https://fonts.google.com/specimen/JetBrains+Mono]]
+
+    Fairly thin and tall, but looks great all around. Special characters (icons) can be a little small, but look better than other fonts where they're too big. Use =NL= versions for "no ligatures".
+
+** Source Code Pro
+   [[https://fonts.google.com/specimen/Source+Code+Pro]]
+
+   Shorter and wider than the above options. It can be a little jarring when first changing to it, but after stepping away for a bit, it looks pretty good. Very distinguishable bold weight.
+
+* Installation
+  1. extract zipped files to...
+     - =~/.local/share/fonts/= for the current user, or...
+     - =~/usr/share/fonts/= to make them available system wide (requires appropriate permissions)
+  2. rebuild font info: ~fc-cache -f -v~
+  3. Test fonts in terminal with:
+    - best method (from this directory): ~cat styles.txt~
+    - or individually:
+      - bold:          ~echo -e "\e[1mbold\e[0m"~
+      - italic:        ~echo -e "\e[3mitalic\e[0m"~
+      - bold italic:   ~echo -e "\e[3m\e[1mbold italic\e[0m"~
+      - underline:     ~echo -e "\e[4munderline\e[0m"~
+      - strikethrough: ~echo -e "\e[9mstrikethrough\e[0m"~
+      - ???:           ~echo # -e "\e[31mHello World\e[0m"~
+      - ???:           ~echo -e "\x1B[31mHello World\e[0m"~
+
+* Troubleshooting Tips
+  - various Vim GUIs: ~:set guifont=*~ or ~:GuiFont *~
+  - Wezterm: use ~wezterm ls-fonts --list-system~ to find exact font names
+
+-----
+
+* Runners Up (with some issues)
+
+** Anonymous Pro
+   Lowercase =e= looks bad: almost like a circle with a line through it. Not enough spacing between digits, especially =0=; hard to determine sigfigs.
+
+** Fira Mono
+   Extremely similar to =Source Code Pro=, but with no italic support. Just use =Source Code Pro= instead.
+
+** Hack
+   Not bad overall, but dot inside =0= is HUGE and distracting.
+
+** Inconsolata
+   Similar to =Anonymous Pro=. Too thin and =~= is indistinguishable from =-=.
+
+-----
+
+* Old Notes (for future reference)
+
+** Patched Nerd Fonts
+   Various patched nerd fonts are available [[https://www.nerdfonts.com/][here]]. These aren't a first choice, but they can be useful for getting special characters & symbols available in a single font. But Wezterm's terrific built-in fonts & robust fallbacks have largely overcome the use case for these.
