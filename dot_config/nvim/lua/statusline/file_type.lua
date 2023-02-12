@@ -21,7 +21,7 @@ return {
   {
     hl = function()
       if conditions.is_active() then
-        return { bg = 'background', fg = 'dark_blue' }
+        return { bg = 'fill', fg = 'dark_blue' }
       else
         return { bg = 'fill', fg = 'black' }
       end

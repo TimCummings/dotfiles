@@ -12,7 +12,7 @@ return {
 
   hl = function()
     if conditions.is_active() then
-      return { bg = 'background', fg = 'dark_white' }
+      return { bg = 'fill', fg = 'dark_white' }
     else
       return { fg = 'black' }
     end
@@ -23,12 +23,12 @@ return {
   end,
 
   -- child: separator
-  {
-    condition = function()
-      return conditions.is_active()
-    end,
-
-    hl = { bg = 'fill', fg = 'background' },
-    provider = '',
-  },
+  -- {
+  --   condition = function()
+  --     return conditions.is_active()
+  --   end,
+  --
+  --   hl = { bg = 'fill', fg = 'background' },
+  --   provider = '',
+  -- },
 }
