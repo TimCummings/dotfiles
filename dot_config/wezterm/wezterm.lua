@@ -140,6 +140,8 @@ return {
     harfbuzz_features = { 'zero', 'ss01', 'cv05' },
   },
 
+  font_size = 14,
+
   -- and it's regular weight is too heavy (not much different than bold)
   font_rules = {
     {
