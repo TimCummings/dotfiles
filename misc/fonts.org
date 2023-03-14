@@ -45,13 +45,13 @@
    Lowercase =e= looks bad: almost like a circle with a line through it. Not enough spacing between digits, especially =0=; hard to determine sigfigs.
 
 ** Fira Mono
-   Extremely similar to =Source Code Pro=, but with no italic support. Just use =Source Code Pro= instead.
+   Extremely similar to =Source Code Pro=, but with no italic support. Just use =Source Code Pro= instead. Lowercase =f= looks strange.
 
 ** Hack
    Not bad overall, but dot inside =0= is HUGE and distracting.
 
 ** Inconsolata
-   Similar to =Anonymous Pro=. Too thin and =~= is indistinguishable from =-=.
+   Similar to =Anonymous Pro=. Too thin and =~= is indistinguishable from =-=. It's stated purpose is viewing code /in print/ rather than on-screen.
 
 -----
 
