@@ -2,7 +2,7 @@
 
 RED='\033[0;31m'
 GREEN='\033[0;32m'
-YELLOW='\033[0;33m'
+# YELLOW='\033[0;33m'
 NONE='\033[0m'
 
 echo
@@ -36,6 +36,7 @@ fi
 # setup environment
 echo
 echo -n "Checking environment..."
+# shellcheck source=/dev/null
 source ~/.zshenv
 
 echo
@@ -69,6 +70,7 @@ echo -e "${GREEN}Bootstrapping successful!${NONE}"
 
 echo
 echo "Handing off to non-package installation script..."
+# shellcheck source=/dev/null
 source ./scripts/non_package_install.sh
 
 exit 0

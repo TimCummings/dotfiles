@@ -1,11 +1,11 @@
-#!/bin/zsh
+#!/bin/bash
 
 # this should be run from bootstrap.sh;
 # be careful about running this directly without first verifying dependencies
 
 RED='\033[0;31m'
 GREEN='\033[0;32m'
-YELLOW='\033[0;33m'
+# YELLOW='\033[0;33m'
 NONE='\033[0m'
 
 echo
@@ -19,9 +19,10 @@ else
   echo -e "\t\t${RED}missing!${NONE}"
   echo "Installing asdf..."
   git clone https://github.com/asdf-vm/asdf.git "$XDG_DATA_HOME/asdf"
-  cd "$XDG_DATA_HOME/.asdf"
+  cd "$XDG_DATA_HOME/.asdf" || exit
   git checkout "$(git describe --abbrev=0 --tags)"
-  source $ASDF_DIR/asdf.sh
+  # shellcheck source=/dev/null
+  source "$ASDF_DIR/asdf.sh"
 fi
 
 echo -e "\tplugins..."
