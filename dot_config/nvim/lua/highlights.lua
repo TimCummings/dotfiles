@@ -1,12 +1,5 @@
 -- colorscheme settings (supported by nord colorscheme plugin)
 vim.o.termguicolors = true
-vim.g.nord_contrast = true
-vim.g.nord_borders = true
-vim.g.nord_italic = false
--- vim.g.onedark_style = 'dark'
--- vim.g.onedark_style = 'darker'
--- vim.g.onedark_style = 'cool'
---vim.g.onedark_style = 'deep'
 
 -- autogroup with autocommands for tweaking highlights
 local colorscheme_group = vim.api.nvim_create_augroup('Colorscheme', { clear = true })
@@ -37,6 +30,8 @@ vim.api.nvim_create_autocmd('ColorScheme', {
       vim.api.nvim_set_hl(0, 'TelescopePreviewBorder', { fg = '#81a1c1' })
       vim.api.nvim_set_hl(0, 'TelescopeResultsBorder', { fg = '#81a1c1' })
       vim.api.nvim_set_hl(0, 'TelescopeSelectionCaret', { fg = '#d7005f', bold = true })
+      -- override match highlighting (links to `Search` by default, which is hard to read)
+      vim.api.nvim_set_hl(0, 'TelescopeMatching', { fg = '#88c0d0' })
 
       -- Restore Notify defaults (Nord colorscheme got too aggressive in its broad support)
       vim.api.nvim_set_hl(0, 'NotifyERRORBorder', { fg = '#8A1F1F' })
@@ -76,6 +71,3 @@ vim.api.nvim_create_autocmd('ColorScheme', {
       vim.api.nvim_set_hl(0, 'org_hyperlink', { fg = '#8FBCBB', underline = true }) -- nord7
     end,
 })
-
--- LUA alternative wasn't triggering `ColorScheme` event
-vim.cmd('colorscheme nord')
