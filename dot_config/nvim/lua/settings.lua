@@ -36,6 +36,9 @@ o.scrolloff = 3
 o.number = true
 o.relativenumber = true
 
+-- disable mouse
+o.mouse = nil
+
 -- status line
 o.laststatus = 2
 o.showmode = false
