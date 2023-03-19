@@ -12,6 +12,13 @@ return {
   { 'dhruvasagar/vim-table-mode', lazy = true, keys = '<Leader>tm' },
 
   {
+    'echasnovski/mini.bracketed',
+    config = function() require('mini.bracketed').setup() end,
+    event = 'VeryLazy',
+    version = false
+  },
+
+  {
     'iamcco/markdown-preview.nvim',
     config = function()
       vim.fn['mkdp#util#install']()
