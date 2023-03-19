@@ -72,7 +72,4 @@ return {
   { 'hrsh7th/cmp-cmdline' }, -- TODO: does this work???
   { 'hrsh7th/cmp-nvim-lua' },
   { 'L3MON4D3/LuaSnip' },
-  --
-  -- -- linting tie-ins with LSP
-  -- { 'jose-elias-alvarez/null-ls.nvim', dependencies = { 'nvim-lua/plenary.nvim' }},
 }

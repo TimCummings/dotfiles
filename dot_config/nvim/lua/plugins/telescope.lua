@@ -1,11 +1,6 @@
 return {
   'nvim-telescope/telescope.nvim',
 
-  dependencies = {
-    { 'nvim-lua/plenary.nvim' },
-    { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
-  },
-
   config = function()
     local telescope = require('telescope')
     local builtin = require('telescope.builtin')
@@ -36,4 +31,9 @@ return {
     vim.keymap.set('n', '<Leader>tgb', builtin.git_branches)
     vim.keymap.set('n', '<Leader>tgs', builtin.git_status)
   end,
+
+  dependencies = {
+    { 'nvim-lua/plenary.nvim' },
+    { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+  },
 }

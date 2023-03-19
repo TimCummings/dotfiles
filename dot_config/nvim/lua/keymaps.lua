@@ -37,8 +37,9 @@ vim.keymap.set('n', '<Leader>ts', 'a<C-R>=strftime("<%Y-%m-%d %a %X %Z>")<CR>', 
 
 -- Diagnostics
 vim.keymap.set('n', '<Leader>cd', '<cmd>Trouble document_diagnostics<CR>')
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
+-- these are now provided by mini.bracketed
+-- vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
+-- vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
 
 vim.keymap.set('n', '<Esc>', function()
   vim.cmd.nohlsearch()
@@ -46,18 +47,18 @@ vim.keymap.set('n', '<Esc>', function()
   pcall(function() require('notify').dismiss() end)
 end, { desc = 'clear search highlights, short-message, and notifications', silent = true })
 
--- plugin specifc mappings: moved to their own files in `after` directory,
+-- plugin specific mappings: moved to their own files in `after` directory,
 -- but copied here for comprehensive list of mappings
 
 -- Telescope Mappings
--- vim.keymap.set('n', '<Leader>f', require('telescope.builtin').find_files)
--- vim.keymap.set('n', '<Leader>rg', require('telescope.builtin').live_grep)
--- vim.keymap.set('n', '<Leader>tb', require('telescope.builtin').buffers)
--- vim.keymap.set('n', '<Leader>tc', require('telescope.builtin').commands)
--- vim.keymap.set('n', '<Leader>tq', require('telescope.builtin').quickfix)
--- vim.keymap.set('n', '<Leader>tl', require('telescope.builtin').loclist)
+-- vim.keymap.set('n', '<Leader>f', builtin.find_files)
+-- vim.keymap.set('n', '<Leader>rg', builtin.live_grep)
+-- vim.keymap.set('n', '<Leader>tb', builtin.buffers)
+-- vim.keymap.set('n', '<Leader>tc', builtin.commands)
+-- vim.keymap.set('n', '<Leader>tq', builtin.quickfix)
+-- vim.keymap.set('n', '<Leader>tl', builtin.loclist)
 -- vim.keymap.set('n', '<Leader>tn', require('telescope').extensions.notify.notify)
--- vim.keymap.set('n', '<Leader>tr', require('telescope.builtin').registers)
--- vim.keymap.set('n', '<Leader>tgc', require('telescope.builtin').git_commits)
--- vim.keymap.set('n', '<Leader>tgb', require('telescope.builtin').git_branches)
--- vim.keymap.set('n', '<Leader>tgs', require('telescope.builtin').git_status)
+-- vim.keymap.set('n', '<Leader>tr', builtin.registers)
+-- vim.keymap.set('n', '<Leader>tgc', builtin.git_commits)
+-- vim.keymap.set('n', '<Leader>tgb', builtin.git_branches)
+-- vim.keymap.set('n', '<Leader>tgs', builtin.git_status)
