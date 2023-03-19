@@ -1,6 +1,8 @@
 return {
   'luukvbaal/nnn.nvim',
 
+  cmd = { 'NnnExplorer', 'NnnPicker', },
+
   config = function()
     local nnn = require('nnn')
     local builtin = nnn.builtin
