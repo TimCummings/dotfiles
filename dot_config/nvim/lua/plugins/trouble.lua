@@ -3,7 +3,7 @@ return {
 
   dependencies = { 'kyazdani42/nvim-web-devicons' },
 
-  config = { auto_close = true },
+  opts = { auto_close = true },
 
   -- TODO: improve keybindings?
   -- TODO: improve *quickfix* keybindings?

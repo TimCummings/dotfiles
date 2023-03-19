@@ -1,10 +1,10 @@
 -- nvim-tree recommends disabling netrw ASAP to avoid race conditions
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
+vim.g.loaded_netrwSettings = 1
+vim.g.loaded_netrwFileHandlers = 1
 
 require('highlights')
-
--- require('tabline')
 
 -- bootstrap plugin manager
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
@@ -20,7 +20,6 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- require('lazy').setup(plugins, opts)
 require('lazy').setup('plugins', {
   ui = { border = 'rounded' },
 })

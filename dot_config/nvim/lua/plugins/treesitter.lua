@@ -19,6 +19,7 @@ return {
           'dockerfile',
           'go',
           'graphql',
+          'help',
           'html',
           'javascript',
           'json',
@@ -30,6 +31,7 @@ return {
           'rust',
           'scss',
           'typescript',
+          'vim',
           'yaml',
         },
 
