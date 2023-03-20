@@ -8,6 +8,15 @@ return {
   { 'dhruvasagar/vim-table-mode', cmd = { 'TableModeEnable', 'TableModeToggle' }, keys = '<Leader>tm' },
 
   {
+    'folke/which-key.nvim',
+    config = function()
+      vim.o.timeout = true
+      vim.o.timeoutlen = 300
+      require('which-key').setup()
+    end,
+  },
+
+  {
     'numToStr/Comment.nvim',
     config = function() require('Comment').setup() end,
     event = 'VeryLazy',

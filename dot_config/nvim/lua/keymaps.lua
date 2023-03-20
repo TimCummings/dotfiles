@@ -1,12 +1,19 @@
--- center screen after searching
-vim.keymap.set('n', 'n', 'nzz')
-vim.keymap.set('n', 'N', 'Nzz')
+local wk = require('which-key')
+
+vim.keymap.set('n', '<Esc>', function()
+  vim.cmd.nohlsearch()
+  vim.cmd.echo()
+  pcall(function() require('notify').dismiss() end)
+end, { desc = 'clear highlights, short-message, and notifications', silent = true })
+
+vim.keymap.set('n', 'n', 'nzz', { desc = 'center screen after search' })
+vim.keymap.set('n', 'N', 'Nzz', { desc = 'center screen after search' })
 
 -- move lines easily
-vim.keymap.set('n', '<C-j>', '<esc>:m .+1<CR>==', { silent = true })
-vim.keymap.set('n', '<C-k>', '<esc>:m .-2<CR>==', { silent = true })
-vim.keymap.set('v', '<C-j>', ":m '>+1<CR>gv=gv", { silent = true })
-vim.keymap.set('v', '<C-k>', ":m '<-2<CR>gv=gv", { silent = true })
+vim.keymap.set('n', '<C-j>', '<esc>:m .+1<CR>==', { desc = 'move line down', silent = true })
+vim.keymap.set('n', '<C-k>', '<esc>:m .-2<CR>==', { desc = 'move line up', silent = true })
+vim.keymap.set('v', '<C-j>', ":m '>+1<CR>gv=gv", { desc = 'move lines down', silent = true })
+vim.keymap.set('v', '<C-k>', ":m '<-2<CR>gv=gv", { desc = 'move lines up', silent = true })
 
 -- Leader Key Mappings
 vim.keymap.set('n', '<Leader>.', function()
@@ -18,47 +25,58 @@ vim.keymap.set('n', '<Leader>.', function()
     ]],
     false
   )
-end, { desc = 'yank full path of current file to system clipboard' })
-vim.keymap.set('', '<Leader>y', '"+y', { desc = 'yank to system clipboard' })
-vim.keymap.set('n', '<Leader>d', '"_d', { desc = 'delete without overwriting register' })
-vim.keymap.set('v', '<Leader>d', '"_d', { desc = 'delete without overwriting register' })
-vim.keymap.set('x', '<Leader>p', '"_dp', { desc = 'paste after without overwriting register' })
-vim.keymap.set('x', '<Leader>P', '"_dP', { desc = 'paste before without overwriting register' })
-vim.keymap.set('', '<Leader>rl', ':set rnu!<CR>', { desc = 'toggle relative line numbers', silent = true })
-vim.keymap.set('n', '<Leader>e', '<cmd>NnnExplorer<CR>')
-vim.keymap.set('n', '<Leader>n', '<cmd>NnnPicker<CR>')
-vim.keymap.set('n', '<Leader>w', '<cmd>w<CR>', { desc = 'save file' })
-vim.keymap.set('n', '<Leader>wq', '<cmd>wq<CR>', { desc = 'save file and quit' })
-vim.keymap.set('n', '<Leader>q', '<cmd>q<CR>', { desc = 'quit' })
-vim.keymap.set('n', '<Leader>Q', '<cmd>q!<CR>', { desc = 'quit without saving' })
+end, { desc = 'yank full file path' })
+vim.keymap.set('', '<Leader>y', '"+y', { desc = 'Yank to system clipboard' })
+vim.keymap.set('n', '<Leader>d', '"_d', { desc = 'Delete without overwriting register' })
+vim.keymap.set('v', '<Leader>d', '"_d', { desc = 'Delete without overwriting register' })
+vim.keymap.set('x', '<Leader>p', '"_dp', { desc = 'Paste after without overwriting register' })
+vim.keymap.set('x', '<Leader>P', '"_dP', { desc = 'Paste before without overwriting register' })
+vim.keymap.set('n', '<Leader>rl', ':set rnu!<CR>', { desc = 'toggle relative line numbers', silent = true })
+
+wk.register({
+  ['<Leader>i'] = {
+    name = 'Insert...',
+    d = { 'a<C-R>=strftime("<%Y-%m-%d %a>")<CR><Esc>', 'Date' },
+    t = { 'a<C-R>=strftime("<%Y-%m-%d %a %X %Z>")<CR><Esc>', 'Timestamp' },
+  },
+})
+
+-- Plugin Keymaps
 vim.keymap.set('n', '<Leader>ct', '<cmd>ColorizerToggle<CR>', { desc = 'toggle Colorizer plugin' })
-vim.keymap.set('n', '<Leader>td', 'a<C-R>=strftime("<%Y-%m-%d %a>")<CR>', { desc = 'insert date', silent = true })
-vim.keymap.set('n', '<Leader>ts', 'a<C-R>=strftime("<%Y-%m-%d %a %X %Z>")<CR>', { desc = 'insert timestamp', silent = true })
 
--- Diagnostics
-vim.keymap.set('n', '<Leader>cd', '<cmd>Trouble document_diagnostics<CR>')
--- these are now provided by mini.bracketed
--- vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
--- vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
+wk.register({
+  ['<Leader>n'] = {
+    name = 'Nnn...',
+    e = { '<cmd>NnnExplorer<CR>', 'Explorer' },
+    p = { '<cmd>NnnPicker<CR>', 'Picker' },
+  },
+})
 
-vim.keymap.set('n', '<Esc>', function()
-  vim.cmd.nohlsearch()
-  vim.cmd.echo()
-  pcall(function() require('notify').dismiss() end)
-end, { desc = 'clear search highlights, short-message, and notifications', silent = true })
+wk.register({ ['<Leader>o'] = { name = 'Orgmode...' }})
 
--- plugin specific mappings: moved to their own files in `after` directory,
--- but copied here for comprehensive list of mappings
+-- Telescope
+wk.register({
+  ['<Leader>f'] = {
+    name = 'Find...',
+    f = { '<cmd>Telescope find_files<CR>', 'Files' },
+    r = { '<cmd>Telescope live_grep<CR>', 'Grep' },
+    b = { '<cmd>Telescope buffers<CR>', 'Buffers' },
+    c = { '<cmd>Telescope commands<CR>', 'Commands' },
+    h = { '<cmd>Telescope highlights<CR>', 'Highlights' },
+    k = { '<cmd>Telescope keymaps<CR>', 'Keymaps' },
+    l = { '<cmd>Telescope loclist<CR>', 'Loclist' },
+    n = { '<cmd>Telescope notify<CR>', 'Notifications' },
+    q = { '<cmd>Telescope quickfix<CR>', 'Quickfix' },
+    g = {
+      name = 'Git...',
+      c = { '<cmd>Telescope git_commits<CR>', 'Commits' },
+      b = { '<cmd>Telescope git_branches<CR>', 'Branches' },
+      s = { '<cmd>Telescope git_status<CR>', 'Status' },
+    },
+  },
 
--- Telescope Mappings
--- vim.keymap.set('n', '<Leader>f', builtin.find_files)
--- vim.keymap.set('n', '<Leader>rg', builtin.live_grep)
--- vim.keymap.set('n', '<Leader>tb', builtin.buffers)
--- vim.keymap.set('n', '<Leader>tc', builtin.commands)
--- vim.keymap.set('n', '<Leader>tq', builtin.quickfix)
--- vim.keymap.set('n', '<Leader>tl', builtin.loclist)
--- vim.keymap.set('n', '<Leader>tn', require('telescope').extensions.notify.notify)
--- vim.keymap.set('n', '<Leader>tr', builtin.registers)
--- vim.keymap.set('n', '<Leader>tgc', builtin.git_commits)
--- vim.keymap.set('n', '<Leader>tgb', builtin.git_branches)
--- vim.keymap.set('n', '<Leader>tgs', builtin.git_status)
+  -- have to use different syntax to map to `"`
+  ['<Leader>f"'] = { '<cmd>Telescope registers<CR>', 'Registers' },
+})
+
+vim.keymap.set('n', '<Leader>q', '<cmd>TroubleToggle document_diagnostics<CR>', { desc = 'Trouble' })
