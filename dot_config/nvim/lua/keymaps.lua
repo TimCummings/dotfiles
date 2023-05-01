@@ -79,4 +79,4 @@ wk.register({
   ['<Leader>f"'] = { '<cmd>Telescope registers<CR>', 'Registers' },
 })
 
-vim.keymap.set('n', '<Leader>q', '<cmd>TroubleToggle document_diagnostics<CR>', { desc = 'Trouble' })
+vim.keymap.set('n', '<Leader>q', '<cmd>Trouble document_diagnostics<CR>', { desc = 'Trouble' })
