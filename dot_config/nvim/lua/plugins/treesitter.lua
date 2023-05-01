@@ -41,7 +41,7 @@ return {
         },
 
         indent = {
-          enable = false,
+          enable = true,
         }
       })
     end,
