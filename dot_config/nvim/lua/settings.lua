@@ -63,6 +63,8 @@ if vim.g.neovide == true then
 end
 
 vim.g.table_mode_corner = '|'
+-- keymap change alone is not sufficient; plugin sets mappings again upon activation :(
+vim.g.table_mode_map_prefix = '<Leader>vt'
 
 -- autocommands & augroups
 -- Goyo & Limelight

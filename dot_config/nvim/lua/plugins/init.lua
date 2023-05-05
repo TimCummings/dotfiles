@@ -5,7 +5,7 @@ return {
   { 'tpope/vim-fugitive', cmd = 'G', },
   { 'junegunn/goyo.vim', cmd = 'Goyo', },
   { 'junegunn/limelight.vim', cmd = 'Goyo', },
-  { 'dhruvasagar/vim-table-mode', cmd = { 'TableModeEnable', 'TableModeToggle' }, keys = '<Leader>tm' },
+  { 'dhruvasagar/vim-table-mode', cmd = { 'TableModeEnable', 'TableModeToggle' }, keys = '<Leader>vtm' },
 
   {
     'folke/which-key.nvim',
