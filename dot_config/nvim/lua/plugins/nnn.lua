@@ -1,7 +1,8 @@
 return {
   'luukvbaal/nnn.nvim',
 
-  cmd = { 'NnnExplorer', 'NnnPicker', },
+  -- must disable lazy loading for auto_open to work
+  -- cmd = { 'NnnExplorer', 'NnnPicker', },
 
   config = function()
     local nnn = require('nnn')
@@ -30,6 +31,12 @@ return {
       },
 
       auto_close = false,
+
+      auto_open = {
+        empty = true,
+        setup = 'picker',
+        tabpage = 'picker',
+      },
 
       quitcd = 'cd',
     }
