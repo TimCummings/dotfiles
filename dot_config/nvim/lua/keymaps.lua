@@ -44,22 +44,27 @@ wk.register({
 -- Plugin Keymaps
 vim.keymap.set('n', '<Leader>ct', '<cmd>ColorizerToggle<CR>', { desc = 'toggle Colorizer plugin' })
 
-wk.register({
-  ['<Leader>n'] = {
-    name = 'Nnn...',
-    e = { '<cmd>NnnExplorer<CR>', 'Explorer' },
-    p = { '<cmd>NnnPicker<CR>', 'Picker' },
-  },
-})
 -- Buffer Manager
 wk.register({ ['<Leader>b'] = { require('buffer_manager.ui').toggle_quick_menu, 'Buffer Manager' }})
 
+-- Nnn file explorer
+-- wk.register({
+--   ['<Leader>n'] = {
+--     name = 'Nnn...',
+--     e = { '<cmd>NnnExplorer<CR>', 'Explorer' },
+--     p = { '<cmd>NnnPicker<CR>', 'Picker' },
+--   },
+-- })
+wk.register({['<Leader>E'] = { '<cmd>NnnExplorer<CR>', 'Nnn Explorer' }})
+wk.register({['<Leader>e'] = { '<cmd>NnnPicker<CR>', 'Nnn Picker' }})
 
-wk.register({ ['<Leader>o'] = { name = 'Orgmode...' }})
+-- Orgmode
+wk.register({['<Leader>o'] = { name = 'Orgmode...' }})
 
 -- Telescope
+wk.register({['<Leader>f'] = { '<cmd>Telescope find_files<CR>', 'find Files' }})
 wk.register({
-  ['<Leader>f'] = {
+  ['<Leader>t'] = {
     name = 'Find...',
     f = { '<cmd>Telescope find_files<CR>', 'Files' },
     r = { '<cmd>Telescope live_grep<CR>', 'Grep' },
@@ -79,7 +84,7 @@ wk.register({
   },
 
   -- have to use different syntax to map to `"`
-  ['<Leader>f"'] = { '<cmd>Telescope registers<CR>', 'Registers' },
+  ['<Leader>t"'] = { '<cmd>Telescope registers<CR>', 'Registers' },
 })
 
 vim.keymap.set('n', '<Leader>q', '<cmd>Trouble document_diagnostics<CR>', { desc = 'Trouble' })
