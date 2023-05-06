@@ -51,6 +51,9 @@ wk.register({
     p = { '<cmd>NnnPicker<CR>', 'Picker' },
   },
 })
+-- Buffer Manager
+wk.register({ ['<Leader>b'] = { require('buffer_manager.ui').toggle_quick_menu, 'Buffer Manager' }})
+
 
 wk.register({ ['<Leader>o'] = { name = 'Orgmode...' }})
 
