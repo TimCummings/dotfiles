@@ -20,7 +20,7 @@ return {
           -- ['gr'] = { vim.lsp.buf.references, 'references' },
           ['gr'] = { '<cmd>TroubleToggle lsp_references<CR>', 'references' },
           ['K'] = { vim.lsp.buf.hover, 'hover' },
-          ['<C-k>'] = { vim.lsp.buf.signature_help, 'signature help' },
+          ['<C-k>'] = { vim.lsp.buf.signature_help, 'signature help', mode = 'i' },
           ['<Leader>ca'] = { vim.lsp.buf.code_action, 'LSP code actions' },
           ['<Leader>rn'] = { vim.lsp.buf.rename, 'LSP rename' },
         }, opts)
