@@ -57,6 +57,7 @@ wk.register({ ['<Leader>b'] = { require('buffer_manager.ui').toggle_quick_menu, 
 -- })
 wk.register({['<Leader>E'] = { '<cmd>NnnExplorer<CR>', 'Nnn Explorer' }})
 wk.register({['<Leader>e'] = { '<cmd>NnnPicker<CR>', 'Nnn Picker' }})
+wk.register({['<Leader>F'] = { '<cmd>NnnPicker %:p:h<CR>', 'Sibling Files' }})
 
 -- Orgmode
 wk.register({['<Leader>o'] = { name = 'Orgmode...' }})
