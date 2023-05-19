@@ -1,6 +1,11 @@
 
 * Download
 
+** IntelOne Mono
+   [[https://github.com/intel/intel-one-mono]]
+
+   Seeks to optimize clarity and legibility, especially for low-vision developers. /Looks/ like wide spacing between characters, but isn't really /that/ much longer.
+
 ** Cascadia Code
     [[https://github.com/microsoft/cascadia-code]]
 
