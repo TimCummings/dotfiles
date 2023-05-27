@@ -22,11 +22,13 @@ return {
     self.mode = vim.fn.mode()
   end,
 
-  hl = { bg = 'background', fg = 'dark_white' },
+  -- hl = { bg = 'background', fg = 'dark_white' },
+  hl = 'StatusLineRuler',
 
   -- child: left separator
   {
-    hl = { bg = 'fill', fg = 'background' },
+    -- hl = { bg = 'fill', fg = 'background' },
+    hl = 'StatusLineSeparator',
     provider = '',
   },
 
@@ -42,7 +44,8 @@ return {
   -- child: progress percentage
   -- %P = percentage through file of displayed window
   {
-    hl = { bg = 'background', fg = 'dark_white' },
+    -- hl = { bg = 'background', fg = 'dark_white' },
+    hl = 'StatusLineRuler',
     provider = ' %P '
   },
 

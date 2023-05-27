@@ -13,6 +13,16 @@ vim.api.nvim_create_autocmd('ColorScheme', {
       vim.api.nvim_set_hl(0, 'NonText', { fg = '#565575' })
       vim.api.nvim_set_hl(0, 'NormalFloat', { fg = '#a3be8c', bold = true })
       vim.api.nvim_set_hl(0, 'FloatBorder', { fg = '#81a1c1', bold = true })
+
+      -- statusline: mostly Challenger Deep with some Nord-esque
+      vim.api.nvim_set_hl(0, 'StatusLine', { bg = '#100E23', fg = '#A6B3CC' })
+      vim.api.nvim_set_hl(0, 'StatusLineFill', { bg = '#100E23', fg = '#CBE3E7' })
+      vim.api.nvim_set_hl(0, 'StatusLineNC', { bg = '#100E23', fg = '#565575' })
+      vim.api.nvim_set_hl(0, 'StatusLineSpecial', { bg = '#100E23', fg = '#81A1C1' })
+      vim.api.nvim_set_hl(0, 'StatusLineRuler', { bg = '#272638', fg = '#A6B3CC' })
+      vim.api.nvim_set_hl(0, 'StatusLineSeparator', { bg = '#100E23', fg = '#272638' })
+
+      -- tabline
       vim.api.nvim_set_hl(0, 'TabLine', { bg = '#100e23', fg = '#565575' })
       vim.api.nvim_set_hl(0, 'TabLineSel', { bg = '#272638', fg = '#63f2f1' })
       vim.api.nvim_set_hl(0, 'TabLineFill', { bg = '#100e23', fg = '#272638' })
