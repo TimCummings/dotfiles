@@ -3,11 +3,10 @@
 # this should be run from bootstrap.sh;
 # be careful about running this directly without first verifying dependencies
 
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-# YELLOW='\033[0;33m'
-NONE='\033[0m'
-
+RED=$(tput setaf 1)
+GREEN=$(tput setaf 2)
+# YELLOW=$(tput setaf 3)
+NONE=$(tput sgr0)
 
 apt_packages="tldr tmux"
 asdf_plugins="direnv fd fzf golang lazygit neovim nodejs ripgrep shellcheck yarn"
@@ -17,11 +16,11 @@ echo "Starting non-packages installation..."
 
 ########## ASDF ##########
 # Periodically check the version number below and update it!
-echo -en "\tasdf..."
+printf '    %-20s' asdf...
 if type asdf &> /dev/null; then
-  echo -e "\t\t${GREEN}found!${NONE}"
+  printf '\t%-10s\n' "${GREEN}found!${NONE}"
 else
-  echo -e "\t\t${RED}missing!${NONE}"
+  printf '\t%-10s\n' "${RED}missing!${NONE}"
   echo "Installing asdf..."
   git clone https://github.com/asdf-vm/asdf.git "$XDG_DATA_HOME/asdf"
   cd "$XDG_DATA_HOME/.asdf" || exit
@@ -30,14 +29,14 @@ else
   source "$ASDF_DIR/asdf.sh"
 fi
 
-echo -e "\tplugins..."
+echo -e "    plugins..."
 
 for plugin in $asdf_plugins; do
-  echo -en "\t\t${plugin}..."
+  printf '\t%-20s' "${plugin}..."
   if asdf current "$plugin" &> /dev/null; then
-    echo -e "\t${GREEN}found!${NONE}"
+    printf '    %-10s\n' "${GREEN}found!${NONE}"
   else
-    echo -e "\t${RED}missing!${NONE}"
+    printf '    %-10s\n' "${RED}missing!${NONE}"
     echo "Installing ${plugin} plugin..."
     asdf plugin add "$plugin"
     asdf install "$plugin" latest
@@ -51,12 +50,14 @@ done
 
 
 ########## apt installs ##########
+echo
+echo -e "    apt packages..."
 for package in $apt_packages; do
-  echo -en "\t${package}..."
+  printf '\t%-20s' "${package}..."
   if type "$package" &> /dev/null; then
-    echo -e "\t${GREEN}found!${NONE}"
+    printf '    %-10s\n' "${GREEN}found!${NONE}"
   else
-    echo -e "\t${RED}missing!${NONE}"
+    printf '    %-10s\n' "${RED}missing!${NONE}"
     echo "Installing ${package}..."
     sudo apt install "$package"
   fi
@@ -64,12 +65,14 @@ done
 
 
 
+echo
+echo -e "    other..."
 ########## scripted installs ##########
-echo -en "\tstarship prompt..."
+printf '\t%-20s' "Starship prompt..."
 if type starship &> /dev/null; then
-  echo -e "\t${GREEN}found!${NONE}"
+  printf '    %-10s\n' "${GREEN}found!${NONE}"
 else
-  echo -e "\t${RED}missing!${NONE}"
+  printf '    %-10s\n' "${RED}missing!${NONE}"
   echo "Installing starship prompt..."
   sh -c "$(curl -fsSL https://starship.rs/install.sh)"
 fi
@@ -78,11 +81,11 @@ fi
 
 ########## manual downloads ##########
 # Periodically check the version number below and update it!
-echo -en "\tNnn file explorer..."
+printf '\t%-20s' "Nnn file explorer..."
 if type nnn-nerd-static &> /dev/null; then
-  echo -e "\t${GREEN}found!${NONE}"
+  printf '    %-10s\n' "${GREEN}found!${NONE}"
 else
-  echo -e "\t${RED}missing!${NONE}"
+  printf '    %-10s\n' "${RED}missing!${NONE}"
   echo "Installing Nnn file explorer..."
   curl -LO https://github.com/jarun/nnn/releases/download/v4.8/nnn-nerd-static-4.8.x86_64.tar.gz \
     && tar xf ./nnn-nerd-static-4.8.x86_64.tar.gz -C ~/.local/bin \
