@@ -19,7 +19,6 @@ return {
           'dockerfile',
           'go',
           'graphql',
-          'help',
           'html',
           'javascript',
           'json',
@@ -32,6 +31,7 @@ return {
           'scss',
           'typescript',
           'vim',
+          'vimdoc',
           'yaml',
         },
 
