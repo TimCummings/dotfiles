@@ -69,8 +69,8 @@ echo
 echo -e "${GREEN}Bootstrapping successful!${NONE}"
 
 echo
-echo "Handing off to non-package installation script..."
+echo "Handing off to software installation script..."
 # shellcheck source=/dev/null
-source ./scripts/non_package_install.sh
+source ./scripts/install_software.sh
 
 exit 0

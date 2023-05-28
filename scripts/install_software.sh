@@ -17,7 +17,7 @@ GREEN=$(tput setaf 2)
 NONE=$(tput sgr0)
 
 echo
-echo "Starting non-packages installation..."
+echo "Starting software installation..."
 
 ########## apt installs ##########
 echo
