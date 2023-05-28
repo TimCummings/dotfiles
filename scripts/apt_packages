@@ -1,0 +1,12 @@
+jq
+libbz2-dev
+liblzma-dev
+libncurses-dev
+libreadline-dev
+libsqlite3-dev
+libssl-dev
+libyaml-dev
+python3-tk
+tldr
+tree
+tmux

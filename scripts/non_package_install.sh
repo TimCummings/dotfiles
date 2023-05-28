@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# this should be run from bootstrap.sh;
+# this script should be run from bootstrap.sh;
 # be careful about running this directly without first verifying dependencies
 
 # DEPENDENCY NOTICES:
@@ -16,25 +16,19 @@ GREEN=$(tput setaf 2)
 # YELLOW=$(tput setaf 3)
 NONE=$(tput sgr0)
 
-apt_packages="jq libbz2-dev liblzma-dev libncurses-dev libreadline-dev libsqlite3-dev libssl-dev libyaml-dev python3-tk tldr tmux"
-asdf_plugins="actionlint direnv fd fzf golang lazygit neovim nodejs ripgrep shellcheck yarn"
-
 echo
 echo "Starting non-packages installation..."
 
 ########## apt installs ##########
 echo
 echo -e "    apt packages..."
-for package in $apt_packages; do
-  printf '\t%-20s' "${package}..."
-  if type "$package" &> /dev/null; then
-    printf '    %-10s\n' "${GREEN}found!${NONE}"
-  else
-    printf '    %-10s\n' "${RED}missing!${NONE}"
-    echo "Installing ${package}..."
-    sudo apt install "$package"
-  fi
-done
+# sudo apt install -y "$(cat "$XDG_DATA_HOME"/chezmoi/scripts/apt_packages)"
+xargs -a "$XDG_DATA_HOME/chezmoi/scripts/apt_packages" sudo apt install -y
+
+# tldr isn't useful until you update its offline cache of pages
+if type tldr &> /dev/null; then
+  tldr --update
+fi
 
 
 
@@ -55,6 +49,7 @@ fi
 
 echo -e "    plugins..."
 
+asdf_plugins="actionlint direnv fd fzf golang lazygit neovim nodejs ripgrep shellcheck yarn"
 for plugin in $asdf_plugins; do
   printf '\t%-20s' "${plugin}..."
   if asdf current "$plugin" &> /dev/null; then
