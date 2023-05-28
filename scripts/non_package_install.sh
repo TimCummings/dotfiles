@@ -8,9 +8,14 @@ GREEN='\033[0;32m'
 # YELLOW='\033[0;33m'
 NONE='\033[0m'
 
+
+apt_packages="tldr tmux"
+asdf_plugins="direnv fd fzf golang lazygit neovim nodejs ripgrep shellcheck yarn"
+
 echo
 echo "Starting non-packages installation..."
 
+########## ASDF ##########
 # Periodically check the version number below and update it!
 echo -en "\tasdf..."
 if type asdf &> /dev/null; then
@@ -26,63 +31,40 @@ else
 fi
 
 echo -e "\tplugins..."
-echo -en "\t\tdirenv..."
-if asdf which direnv &> /dev/null; then
-  echo -e "\t${GREEN}found!${NONE}"
-else
-  echo -e "\t${RED}missing!${NONE}"
-  echo "Installing direnv plugin..."
-  asdf plugin add direnv
-  asdf install direnv latest
-  asdf global direnv latest
-fi
 
-# takes a long time to install; do it manually
-# echo -en "\t\t\truby..."
-# if asdf which ruby &> /dev/null; then
-#   echo -e "\t\t${GREEN}found!${NONE}"
-# else
-#   echo -e "\t\t${RED}missing!${NONE}"
-#   echo "Installing ruby plugin..."
-#   asdf plugin add ruby
-#   asdf install ruby latest
-#   asdf global ruby latest
-# fi
+for plugin in $asdf_plugins; do
+  echo -en "\t\t${plugin}..."
+  if asdf current "$plugin" &> /dev/null; then
+    echo -e "\t${GREEN}found!${NONE}"
+  else
+    echo -e "\t${RED}missing!${NONE}"
+    echo "Installing ${plugin} plugin..."
+    asdf plugin add "$plugin"
+    asdf install "$plugin" latest
+    asdf global "$plugin" latest
+  fi
+done
 
-echo -en "\t\tnodejs..."
-if asdf which node &> /dev/null; then
-  echo -e "\t${GREEN}found!${NONE}"
-else
-  echo -e "\t${RED}missing!${NONE}"
-  echo "Installing nodejs plugin..."
-  asdf plugin add nodejs
-  asdf install nodejs latest
-  asdf global nodejs latest
-fi
+# these take a long time to install; do them manually:
+# slow_asdf_plugins = "python ruby"
 
-echo -en "\t\tyarn..."
-if asdf which yarn &> /dev/null; then
-  echo -e "\t\t${GREEN}found!${NONE}"
-else
-  echo -e "\t\t${RED}missing!${NONE}"
-  echo "Installing yarn plugin..."
-  asdf plugin add yarn
-  asdf install yarn latest
-  asdf global yarn latest
-fi
 
-# takes a long time to install; do it manually
-# echo -en "\t\t\tpython..."
-# if asdf which python &> /dev/null; then
-#   echo -e "\t${GREEN}found!${NONE}"
-# else
-#   echo -e "\t${RED}missing!${NONE}"
-#   echo "Installing python plugin..."
-#   asdf plugin add python
-#   asdf install python latest
-#   asdf global python latest
-# fi
 
+########## apt installs ##########
+for package in $apt_packages; do
+  echo -en "\t${package}..."
+  if type "$package" &> /dev/null; then
+    echo -e "\t${GREEN}found!${NONE}"
+  else
+    echo -e "\t${RED}missing!${NONE}"
+    echo "Installing ${package}..."
+    sudo apt install "$package"
+  fi
+done
+
+
+
+########## scripted installs ##########
 echo -en "\tstarship prompt..."
 if type starship &> /dev/null; then
   echo -e "\t${GREEN}found!${NONE}"
@@ -92,6 +74,21 @@ else
   sh -c "$(curl -fsSL https://starship.rs/install.sh)"
 fi
 
-# maybe add fonts and nnn here?
+
+
+########## manual downloads ##########
+# Periodically check the version number below and update it!
+echo -en "\tNnn file explorer..."
+if type nnn-nerd-static &> /dev/null; then
+  echo -e "\t${GREEN}found!${NONE}"
+else
+  echo -e "\t${RED}missing!${NONE}"
+  echo "Installing Nnn file explorer..."
+  curl -LO https://github.com/jarun/nnn/releases/download/v4.8/nnn-nerd-static-4.8.x86_64.tar.gz \
+    && tar xf ./nnn-nerd-static-4.8.x86_64.tar.gz -C ~/.local/bin \
+    && rm -f nnn-nerd-static-4.8.x86_64.tar.gz
+fi
+
+# maybe add fonts here?
 
 exit 0
