@@ -29,8 +29,7 @@
 
 *** Server Configuration
 
-    Also consider enabling =ufw= if it isn't already!
-
+    ~/etc/ssh/sshd_config~:
     #+NAME: /etc/ssh/sshd_config
     #+BEGIN_SRC
     MaxStartups 3
@@ -39,6 +38,8 @@
     PermitRootLogin No
     ListenAddress <ZEROTIER_IP_ADDRESS>
     #+END_SRC
+
+    Also consider enabling =ufw= if it isn't already!
 
     - copy or generate ssh key pair
     - add public ssh key to =authorized_keys= file
