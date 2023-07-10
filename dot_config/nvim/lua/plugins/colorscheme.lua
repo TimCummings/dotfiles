@@ -5,10 +5,23 @@ return {
       vim.g.nord_contrast = true
       vim.g.nord_borders = true
       vim.g.nord_italic = false
-      vim.cmd([[colorscheme nord]])
+      -- vim.cmd([[colorscheme nord]])
     end,
+    enabled = true,
     -- lazy = false,
     -- priority = 1000,
+  },
+
+  {
+    'folke/tokyonight.nvim',
+    config = function()
+    --   require('tokyonight').setup({
+    --     style = 'night',
+    --   })
+      vim.cmd([[colorscheme tokyonight]])
+    end,
+    lazy = false,
+    priority = 1000,
   },
 
   {
