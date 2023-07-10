@@ -4,10 +4,10 @@ return {
     return vim.fn.reg_recording() ~= ''
   end,
 
-  hl = { fg = 'red' },
+  hl = { fg = 'red1' },
 
   provider = function()
-    return ' ' .. vim.fn.reg_recording()
+    return ' ' .. vim.fn.reg_recording() .. ' '
   end,
 
   update = {
