@@ -21,6 +21,7 @@ return {
     local FileNameBlock = require('plugins.statusline.file_name_block')
     local FileType = require('plugins.statusline.file_type')
     local HelpFileName = require('plugins.statusline.help_file_name')
+    local MacroRecord = require('plugins.statusline.macro_record')
     local Ruler = require('plugins.statusline.ruler')
     local SearchCount = require('plugins.statusline.search_count')
     local TerminalName = require('plugins.statusline.terminal_name')
@@ -56,7 +57,7 @@ return {
 
     local DefaultStatusline = {
       ViMode, FileNameBlock, Align,
-      SearchCount, Space, FileInfoBlock, Space, Ruler
+      MacroRecord, Space, SearchCount, Space, FileInfoBlock, Space, Ruler
     }
 
     local InactiveStatusline = {
