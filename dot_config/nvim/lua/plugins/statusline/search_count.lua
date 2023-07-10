@@ -1,7 +1,7 @@
 -- SearchCount
 return {
   condition = function()
-    return vim.v.hlsearch == 1
+    return vim.v.hlsearch ~= 0
   end,
 
   hl = { bg = 'dark_black', fg = 'dark_yellow' },
@@ -12,11 +12,15 @@ return {
   -- child: search_count
   {
     init = function(self)
-      self.search_count = vim.fn.searchcount()
+      local ok, search_count = pcall(vim.fn.searchcount)
+      if ok and search_count.total then
+        self.search_count = search_count
+      end
     end,
 
     provider = function(self)
-      return ' ' .. (self.search_count['current'] or '0') .. '/' .. (self.search_count['total'] or '0')
+      local search_count = self.search_count
+      return string.format(' %d/%d', search_count.current, math.min(search_count.total, search_count.maxcount))
     end,
   },
 }
