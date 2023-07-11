@@ -15,7 +15,10 @@ vim.keymap.set('n', '<C-k>', '<esc>:m .-2<CR>==', { desc = 'move line up', silen
 vim.keymap.set('v', '<C-j>', ":m '>+1<CR>gv=gv", { desc = 'move lines down', silent = true })
 vim.keymap.set('v', '<C-k>', ":m '<-2<CR>gv=gv", { desc = 'move lines up', silent = true })
 
+
 -- Leader Key Mappings
+----------------------
+
 vim.keymap.set('n', '<Leader>.', function()
   vim.api.nvim_exec(
     [[
@@ -41,20 +44,23 @@ wk.register({
   },
 })
 
+
 -- Plugin Keymaps
-vim.keymap.set('n', '<Leader>ct', '<cmd>ColorizerToggle<CR>', { desc = 'toggle Colorizer plugin' })
+-----------------
 
 -- Buffer Manager
 wk.register({ ['<Leader>b'] = { require('buffer_manager.ui').toggle_quick_menu, 'Buffer Manager' }})
 
+-- Colorizer
+vim.keymap.set('n', '<Leader>ct', '<cmd>ColorizerToggle<CR>', { desc = 'toggle Colorizer plugin' })
+
+-- Navigator
+vim.keymap.set({'n', 't'}, '<M-h>', '<CMD>NavigatorLeft<CR>', { desc = 'Navigator Left' })
+vim.keymap.set({'n', 't'}, '<M-l>', '<CMD>NavigatorRight<CR>', { desc = 'Navigator Right' })
+vim.keymap.set({'n', 't'}, '<M-k>', '<CMD>NavigatorUp<CR>', { desc = 'Navigator Up' })
+vim.keymap.set({'n', 't'}, '<M-j>', '<CMD>NavigatorDown<CR>', { desc = 'Navigator Down' })
+
 -- Nnn file explorer
--- wk.register({
---   ['<Leader>n'] = {
---     name = 'Nnn...',
---     e = { '<cmd>NnnExplorer<CR>', 'Explorer' },
---     p = { '<cmd>NnnPicker<CR>', 'Picker' },
---   },
--- })
 wk.register({['<Leader>E'] = { '<cmd>NnnExplorer<CR>', 'Nnn Explorer' }})
 wk.register({['<Leader>e'] = { '<cmd>NnnPicker<CR>', 'Nnn Picker' }})
 wk.register({['<Leader>F'] = { '<cmd>NnnPicker %:p:h<CR>', 'Sibling Files' }})
@@ -88,4 +94,5 @@ wk.register({
   ['<Leader>t"'] = { '<cmd>Telescope registers<CR>', 'Registers' },
 })
 
+-- Trouble
 vim.keymap.set('n', '<Leader>q', '<cmd>Trouble document_diagnostics<CR>', { desc = 'Trouble' })

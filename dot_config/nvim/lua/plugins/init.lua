@@ -23,6 +23,12 @@ return {
   },
 
   {
+    'numToStr/Navigator.nvim',
+    config = function() require('Navigator').setup() end,
+    event = 'VeryLazy',
+  },
+
+  {
     'echasnovski/mini.bracketed',
     config = function() require('mini.bracketed').setup() end,
     event = 'VeryLazy',
