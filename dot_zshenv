@@ -14,10 +14,12 @@ export FZF_DEFAULT_COMMAND='fd --color=always'
 FZF_DEFAULT_OPTS="
   --ansi
   --border
+  --color=bg+:#1e1c31
   --header 'CTRL-D: Directories | CTRL-F: Files | CTRL-H: Hidden'
   --height 40%
   --info=inline
   --layout=reverse
+  --no-separator
   --prompt='All > '
   --bind 'ctrl-d:change-prompt(Directories > )+reload(fd --color=always --type d)'
   --bind 'ctrl-f:change-prompt(Files > )+reload(fd --color=always --type f)'
