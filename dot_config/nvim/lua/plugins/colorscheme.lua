@@ -15,9 +15,10 @@ return {
   {
     'folke/tokyonight.nvim',
     config = function()
-    --   require('tokyonight').setup({
-    --     style = 'night',
-    --   })
+      require('tokyonight').setup({
+        -- style = 'night',
+        styles = { floats = 'normal' },
+      })
       vim.cmd([[colorscheme tokyonight]])
     end,
     lazy = false,
