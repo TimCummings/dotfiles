@@ -123,7 +123,24 @@ return {
   tab_and_split_indices_are_zero_based = true,
   -- tab_bar_at_bottom = true,
   use_ime = false, -- try to fix terminal disallowing keyboard input after window resizing
+
   window_decorations = "RESIZE",
+  -- window_frame = {
+  --   border_left_width = '2px',
+  --   border_right_width = '2px',
+  --   border_bottom_height = '2px',
+  --   border_top_height = '2px',
+  --   border_left_color = '#565575',
+  --   border_right_color = '#565575',
+  --   border_bottom_color = '#565575',
+  --   border_top_color = '#565575',
+  -- },
+  window_padding = {
+    left = 0,
+    right = 0,
+    top = 0,
+    bottom = 0,
+  },
 
   -- Font Settings; use `wezterm ls-fonts --list-system` to find exact font names
   -- Wezterm now has some terrific fonts built-in, especially JetBrains Mono
