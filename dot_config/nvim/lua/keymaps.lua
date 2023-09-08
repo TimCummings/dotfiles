@@ -55,10 +55,11 @@ wk.register({ ['<Leader>b'] = { require('buffer_manager.ui').toggle_quick_menu, 
 vim.keymap.set('n', '<Leader>ct', '<cmd>ColorizerToggle<CR>', { desc = 'toggle Colorizer plugin' })
 
 -- Navigator
-vim.keymap.set({'n', 't'}, '<M-h>', require('Navigator').left, { desc = 'Navigator Left' })
-vim.keymap.set({'n', 't'}, '<M-l>', require('Navigator').right, { desc = 'Navigator Right' })
-vim.keymap.set({'n', 't'}, '<M-k>', require('Navigator').up, { desc = 'Navigator Up' })
-vim.keymap.set({'n', 't'}, '<M-j>', require('Navigator').down, { desc = 'Navigator Down' })
+local modes = { 'i', 'n', 't', 'v' }
+vim.keymap.set(modes, '<M-h>', require('Navigator').left, { desc = 'Navigator Left' })
+vim.keymap.set(modes, '<M-l>', require('Navigator').right, { desc = 'Navigator Right' })
+vim.keymap.set(modes, '<M-k>', require('Navigator').up, { desc = 'Navigator Up' })
+vim.keymap.set(modes, '<M-j>', require('Navigator').down, { desc = 'Navigator Down' })
 
 -- Nnn file explorer
 wk.register({['<Leader>E'] = { '<cmd>NnnExplorer<CR>', 'Nnn Explorer' }})
