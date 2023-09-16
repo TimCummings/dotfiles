@@ -93,9 +93,9 @@ if type nnn-nerd-static &> /dev/null; then
 else
   printf '    %-10s\n' "${RED}missing!${NONE}"
   echo "Installing Nnn file explorer..."
-  curl -LO https://github.com/jarun/nnn/releases/download/v4.8/nnn-nerd-static-4.8.x86_64.tar.gz \
-    && tar xf ./nnn-nerd-static-4.8.x86_64.tar.gz -C ~/.local/bin \
-    && rm -f nnn-nerd-static-4.8.x86_64.tar.gz
+  curl -LO https://github.com/jarun/nnn/releases/download/v4.9/nnn-nerd-static-4.9.x86_64.tar.gz \
+    && tar xf ./nnn-nerd-static-4.9.x86_64.tar.gz -C ~/.local/bin \
+    && rm -f nnn-nerd-static-4.9.x86_64.tar.gz
 fi
 
 # maybe add fonts here?
