@@ -18,9 +18,6 @@ end
 -- prevents annoying "stutter" as signs come and go
 wo.signcolumn = 'yes:1'
 
---- experiment again with hiding command line (lots of bugfixes since last time)
-o.cmdheight = 0
-
 -- various tab related settings
 o.expandtab = true
 o.tabstop = 2
