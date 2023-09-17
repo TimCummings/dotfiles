@@ -25,7 +25,6 @@ return {
           'lua',
           'markdown',
           'org',
-          'query', -- for Treesitter Playground
           'ruby',
           'rust',
           'scss',
@@ -46,7 +45,4 @@ return {
       })
     end,
   },
-
-
-  { 'nvim-treesitter/playground', cmd = 'TSPlaygroundToggle', },
 }
