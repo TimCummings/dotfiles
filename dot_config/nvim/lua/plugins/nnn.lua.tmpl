@@ -10,12 +10,20 @@ return {
 
     local opts = {
       explorer = {
+        {{- if eq .chezmoi.os "darwin" }}
+        cmd = 'nnn -oR',
+        {{- else }}
         cmd = 'nnn-nerd-static -oR',
+        {{- end }}
         fullscreen = false,
       },
 
       picker = {
+        {{- if eq .chezmoi.os "darwin" }}
+        cmd = 'nnn -oR',
+        {{- else }}
         cmd = 'nnn-nerd-static -oR',
+        {{- end }}
         style = { border = 'rounded' },
         fullscreen = false,
       },
