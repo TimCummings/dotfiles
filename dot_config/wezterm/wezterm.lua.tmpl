@@ -124,7 +124,8 @@ return {
   -- tab_bar_at_bottom = true,
   use_ime = false, -- try to fix terminal disallowing keyboard input after window resizing
 
-  window_decorations = "RESIZE",
+  {{and (ne .chezmoi.os "darwin") "window_decorations = 'RESIZE',"}}
+
   window_padding = {
     left = '3px',
     right = '3px',
@@ -136,7 +137,7 @@ return {
   -- Wezterm now has some terrific fonts built-in, especially JetBrains Mono
   font = wezterm.font 'IntelOne Mono',
 
-  font_size = 14,
+  font_size = {{or (and (eq .chezmoi.os "darwin") "18,") "14,"}}
 
   leader = { key="Escape", mods="CTRL", timeout_milliseconds=1000 },
   keys = my_keys,

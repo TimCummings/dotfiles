@@ -25,7 +25,7 @@ autoload -U select-word-style
 select-word-style bash
 
 # aliases
-alias psf='ps -aux | fzf'
+alias psf='ps aux | fzf'
 
 alias l='ls -al --color'
 if [[ $OSTYPE == "darwin"* ]]; then
@@ -56,8 +56,7 @@ alias gst='git status'
 
 alias lg='lazygit'
 
-# nnn file manager
-alias nnn='nnn-nerd-static -eoR'
+alias nnn={{or (and (eq .chezmoi.os "darwin") "'nnn -eoR'") "'nnn-nerd-static -eoR'"}}
 
 # highlight completion selection
 zstyle ':completion:*' menu select
@@ -82,7 +81,11 @@ function n {
 
   # The backslash allows one to alias n to nnn if desired without making an
   # infinitely recursive alias
+  {{- if eq .chezmoi.os "darwin" }}
+  \nnn -eoR "$@"
+  {{- else }}
   \nnn-nerd-static -eoR "$@"
+  {{- end }}
 
   if [ -f "$NNN_TMPFILE" ]; then
     . "$NNN_TMPFILE"
