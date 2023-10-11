@@ -124,8 +124,7 @@ return {
   -- tab_bar_at_bottom = true,
   use_ime = false, -- try to fix terminal disallowing keyboard input after window resizing
 
-  {{and (ne .chezmoi.os "darwin") "window_decorations = 'RESIZE',"}}
-
+  {{if (ne .chezmoi.os "darwin")}}window_decorations = 'RESIZE',{{end}}
   window_padding = {
     left = '3px',
     right = '3px',
