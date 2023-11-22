@@ -35,7 +35,8 @@ return {
         },
 
         highlight = {
-          enable = true,              -- false will disable the whole extension
+          enable = false,              -- false will disable the whole extension
+          -- enable = true,              -- false will disable the whole extension
           additional_vim_regex_highlighting = { 'org' }, -- TS doesn't support all features, eg. conceal
         },
 

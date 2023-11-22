@@ -1,0 +1,121 @@
+* Colors I Like
+
+** Backgrounds
+   - '#24283b' (Tokyo Night)
+   - '#1e1c31' (Challenger Deep)
+   - '#272638' (statusline)
+
+** Foregrounds
+   - '#cbe1e7' (Challenger Deep foreground)
+   - '#a6b3cc' (Challenger Deep gray)
+   - '#c6c8d1' (Iceberg)
+
+   - '#D3D0CB' Coolors Timberwolf
+   - '#e7e5df' Coolors Platinum
+   - '#f7f5fb' Coolers Ghost White
+
+** Reds
+   - '#ac3931' Coolers Auburn
+   - '#cc6666'
+   - '#ce7e7e'
+   - '#d16161'
+   - '#e64c4c'
+
+** Oranges
+   - +'#a15e49' Coolers Redwood+
+   - '#cc9966'
+   - '#dca561' MasonHeader
+   - '#e48d2f'
+   - '#e6994c'
+   - '#e6af2e' Coolers Xanthous
+   - '#f58a07' Coolers Tangerine
+   - '#f9ab55' Coolers Sandy brown
+   - '#ffb378' Challenger Deep
+
+** Greens
+   - '#73daca' (Tokyo Night)
+   - '#8bce7e'
+   - +'#95d7ae' Coolers Celadon+
+   - '#99e64c'
+   - '#a3be8c' (Nord strings)
+
+** Yellows
+   - '#e5d352' Coolers Arylide yellow
+
+** Blues
+   - '#00aeff' NerdTree
+   - '#3c8cdd'
+   - '#3d59a1'
+   - '#4E6DA7'
+   - '#537d8d' Coolers Air Force blue
+   - '#5E81AC'
+   - '#65b2ff' Challenger Deep
+   - '#679be4'
+   - '#7aa2f7' Tokyo Night
+
+** Teals
+   - '#4ce6e6'
+   - '#56b6c2' MasonHighlight
+   - '#63f2f1'
+   - '#7ec7ce'
+   - '#7eedd8' (tmux / Atlantis)
+   - '#88C0D0'
+
+** Purple
+   - '#6856c2'
+   - '#7c67e4'
+
+** Greys
+   - '#565f89' (comments)
+
+* Name
+  - Atlantis
+  - Challenger Deep
+  - Nord
+  - One Dark
+
+* Script
+
+  #+BEGIN_SRC vimscript
+  hi! Normal guibg=#24283b guifg=#cbe1e7
+  hi! EndOfBuffer guibg=#24283b guifg=#cbe1e7
+  #+END_SRC
+
+M.default = {
+  none = "NONE",
+  bg_dark = "#1f2335",
+  bg = "#24283b",
+  bg_highlight = "#292e42",
+  terminal_black = "#414868",
+  fg = "#c0caf5",
+  fg_dark = "#a9b1d6",
+  fg_gutter = "#3b4261",
+  dark3 = "#545c7e",
+  comment = "#565f89",
+  dark5 = "#737aa2",
+  blue0 = "#3d59a1",
+  blue = "#7aa2f7",
+  cyan = "#7dcfff",
+  blue1 = "#2ac3de",
+  blue2 = "#0db9d7",
+  blue5 = "#89ddff",
+  blue6 = "#b4f9f8",
+  blue7 = "#394b70",
+  magenta = "#bb9af7",
+  magenta2 = "#ff007c",
+  purple = "#9d7cd8",
+  orange = "#ff9e64",
+  yellow = "#e0af68",
+  green = "#9ece6a",
+  green1 = "#73daca",
+  green2 = "#41a6b5",
+  teal = "#1abc9c",
+  red = "#f7768e",
+  red1 = "#db4b4b",
+  git = { change = "#6183bb", add = "#449dab", delete = "#914c54" },
+  gitSigns = {
+    add = "#266d6a",
+    change = "#536c9e",
+    delete = "#b2555b",
+  },
+}

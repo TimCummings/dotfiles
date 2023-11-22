@@ -19,10 +19,11 @@ return {
         -- style = 'night',
         styles = { floats = 'normal' },
       })
-      vim.cmd([[colorscheme tokyonight]])
+      -- vim.cmd([[colorscheme tokyonight]])
     end,
-    lazy = false,
-    priority = 1000,
+    enabled = true,
+    -- lazy = false,
+    -- priority = 1000,
   },
 
   {
