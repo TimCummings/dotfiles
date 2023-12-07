@@ -71,5 +71,9 @@ return {
   { 'hrsh7th/cmp-path' },
   { 'hrsh7th/cmp-cmdline' }, -- TODO: does this work???
   { 'hrsh7th/cmp-nvim-lua' },
-  { 'L3MON4D3/LuaSnip' },
+  {
+    'L3MON4D3/LuaSnip',
+    build = 'make install_jsregexp',
+    version = 'v2.*',
+  },
 }
