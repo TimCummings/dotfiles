@@ -7,6 +7,7 @@ return {
       org_agenda_start_on_weekday = 7,
       org_default_notes_file = '~/Documents/org/refile.org',
       org_hide_emphasis_markers = true,
+      org_startup_folded = 'showeverything',
       win_split_mode = 'float',
       mappings = {
         agenda = {
