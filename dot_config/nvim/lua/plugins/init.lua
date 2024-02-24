@@ -3,8 +3,8 @@ return {
   'tpope/vim-surround',
   'tpope/vim-repeat',
   { 'tpope/vim-fugitive', cmd = 'G', },
-  { 'junegunn/goyo.vim', cmd = 'Goyo', },
-  { 'junegunn/limelight.vim', cmd = 'Goyo', },
+  { 'junegunn/goyo.vim' },
+  { 'junegunn/limelight.vim' },
   { 'dhruvasagar/vim-table-mode', cmd = { 'TableModeEnable', 'TableModeToggle' }, keys = '<Leader>vtm' },
 
   {
