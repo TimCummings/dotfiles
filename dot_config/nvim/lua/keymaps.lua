@@ -35,6 +35,8 @@ vim.keymap.set('v', '<Leader>d', '"_d', { desc = 'Delete without overwriting reg
 vim.keymap.set('x', '<Leader>p', '"_dp', { desc = 'Paste after without overwriting register' })
 vim.keymap.set('x', '<Leader>P', '"_dP', { desc = 'Paste before without overwriting register' })
 vim.keymap.set('n', '<Leader>rl', ':set rnu!<CR>', { desc = 'toggle relative line numbers', silent = true })
+vim.keymap.set('n', '<Leader>ni', ':Inspect<CR>', { desc = ':Inspect' })
+vim.keymap.set('n', '<Leader>nt', ':InspectTree<CR>', { desc = ':InspectTree' })
 
 wk.register({
   ['<Leader>i'] = {
