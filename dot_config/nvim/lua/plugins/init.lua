@@ -17,12 +17,6 @@ return {
   },
 
   {
-    'numToStr/Comment.nvim',
-    config = function() require('Comment').setup() end,
-    event = 'VeryLazy',
-  },
-
-  {
     'numToStr/Navigator.nvim',
     config = function() require('Navigator').setup() end,
     event = 'VeryLazy',
