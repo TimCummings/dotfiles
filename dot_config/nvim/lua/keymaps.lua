@@ -98,4 +98,4 @@ wk.register({
 })
 
 -- Trouble
-vim.keymap.set('n', '<Leader>q', '<cmd>Trouble document_diagnostics<CR>', { desc = 'Trouble' })
+vim.keymap.set('n', '<Leader>q', '<cmd>Trouble diagnostics toggle filter.buf=0<CR>', { desc = 'Trouble' })

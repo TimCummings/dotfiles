@@ -1,7 +1,7 @@
 return {
   'folke/trouble.nvim',
 
-  cmd = { 'Trouble', 'TroubleToggle', },
+  cmd = 'Trouble',
 
   dependencies = { 'kyazdani42/nvim-web-devicons' },
 
