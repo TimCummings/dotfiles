@@ -1,5 +1,5 @@
--- colorscheme settings (supported by nord colorscheme plugin)
-vim.o.termguicolors = true
+-- prevent LSP semantic token highlights from overriding treesitter highlights (priority of 100)
+vim.highlight.priorities.semantic_tokens = 95
 
 -- autogroup with autocommands for tweaking highlights
 local colorscheme_group = vim.api.nvim_create_augroup('Colorscheme', { clear = true })
