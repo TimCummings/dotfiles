@@ -40,7 +40,7 @@ o.relativenumber = true
 o.mouse = nil
 
 -- status line
-o.laststatus = 2
+o.laststatus = 3
 o.showmode = false
 
 -- copy to system clipboard?
