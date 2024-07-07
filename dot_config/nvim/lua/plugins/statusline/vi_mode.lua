@@ -10,7 +10,8 @@ return {
   -- them at initialisation time.
   static = {
     mode_names = {
-      n = ' ' ,
+      n = ' ',
+      -- n = ' ',
       i = '󰙏 ',
       v = ' ',
       V = ' ',
