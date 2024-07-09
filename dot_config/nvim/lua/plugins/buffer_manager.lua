@@ -14,12 +14,12 @@ return {
       },
 
       v = {
-        key = '<C-v>',
+        key = '<C-x>',
         command = 'split'
       },
 
       h = {
-        key = '<C-x>',
+        key = '<C-v>',
         command = 'vsplit'
       }
     }
