@@ -39,7 +39,7 @@ o.number = true
 o.relativenumber = true
 
 -- disable mouse
-o.mouse = nil
+o.mouse = ''
 
 -- status line
 o.laststatus = 3
