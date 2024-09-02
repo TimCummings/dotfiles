@@ -10,6 +10,7 @@ return {
           'bash',
           'css',
           'dockerfile',
+          'elixir',
           'go',
           'graphql',
           'html',

@@ -49,7 +49,7 @@ fi
 
 echo -e "    plugins..."
 
-asdf_plugins="actionlint direnv fd fzf golang lazygit neovim nodejs ripgrep shellcheck yarn"
+asdf_plugins="actionlint direnv elixir erlang fd fzf golang lazygit neovim nodejs ripgrep rust shellcheck tmux yarn"
 for plugin in $asdf_plugins; do
   printf '\t%-20s' "${plugin}..."
   if asdf current "$plugin" &> /dev/null; then
