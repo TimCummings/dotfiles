@@ -38,12 +38,10 @@ vim.keymap.set('n', '<Leader>rl', ':set rnu!<CR>', { desc = 'toggle relative lin
 vim.keymap.set('n', '<Leader>ni', ':Inspect<CR>', { desc = ':Inspect' })
 vim.keymap.set('n', '<Leader>nt', ':InspectTree<CR>', { desc = ':InspectTree' })
 
-wk.register({
-  ['<Leader>i'] = {
-    name = 'Insert...',
-    d = { 'a<C-R>=strftime("<%Y-%m-%d %a>")<CR><Esc>', 'Date' },
-    t = { 'a<C-R>=strftime("<%Y-%m-%d %a %X %Z>")<CR><Esc>', 'Timestamp' },
-  },
+wk.add({
+  { '<Leader>i', group = 'Insert...' },
+  { '<Leader>id', 'a<C-R>=strftime("<%Y-%m-%d %a>")<CR><Esc>', desc = 'Date' },
+  { '<Leader>it', 'a<C-R>=strftime("<%Y-%m-%d %a %X %Z>")<CR><Esc>', desc = 'Timestamp' },
 })
 
 
@@ -51,7 +49,7 @@ wk.register({
 -----------------
 
 -- Buffer Manager
-wk.register({ ['<Leader>b'] = { require('buffer_manager.ui').toggle_quick_menu, 'Buffer Manager' }})
+wk.add({ '<Leader>b', require('buffer_manager.ui').toggle_quick_menu, desc = 'Buffer Manager' })
 
 -- Colorizer
 vim.keymap.set('n', '<Leader>ct', '<cmd>ColorizerToggle<CR>', { desc = 'toggle Colorizer plugin' })
@@ -64,37 +62,35 @@ vim.keymap.set(modes, '<M-k>', require('Navigator').up, { desc = 'Navigator Up' 
 vim.keymap.set(modes, '<M-j>', require('Navigator').down, { desc = 'Navigator Down' })
 
 -- Nnn file explorer
-wk.register({['<Leader>E'] = { '<cmd>NnnExplorer<CR>', 'Nnn Explorer' }})
-wk.register({['<Leader>e'] = { '<cmd>NnnPicker<CR>', 'Nnn Picker' }})
-wk.register({['<Leader>F'] = { '<cmd>NnnPicker %:p:h<CR>', 'Sibling Files' }})
+wk.add({
+  { '<Leader>E', '<cmd>NnnExplorer<CR>', desc = 'Nnn Explorer' },
+  { '<Leader>e', '<cmd>NnnPicker<CR>', desc = 'Nnn Picker' },
+  { '<Leader>F', '<cmd>NnnPicker %:p:h<CR>', desc = 'Sibling Files' },
+})
 
 -- Orgmode
-wk.register({['<Leader>o'] = { name = 'Orgmode...' }})
+wk.add({ '<Leader>o', group = 'Orgmode...' })
 
 -- Telescope
-wk.register({['<Leader>f'] = { '<cmd>Telescope find_files<CR>', 'find Files' }})
-wk.register({
-  ['<Leader>t'] = {
-    name = 'Find...',
-    f = { '<cmd>Telescope find_files<CR>', 'Files' },
-    r = { '<cmd>Telescope live_grep<CR>', 'Grep' },
-    b = { '<cmd>Telescope buffers<CR>', 'Buffers' },
-    c = { '<cmd>Telescope commands<CR>', 'Commands' },
-    h = { '<cmd>Telescope highlights<CR>', 'Highlights' },
-    k = { '<cmd>Telescope keymaps<CR>', 'Keymaps' },
-    l = { '<cmd>Telescope loclist<CR>', 'Loclist' },
-    n = { '<cmd>Telescope notify<CR>', 'Notifications' },
-    q = { '<cmd>Telescope quickfix<CR>', 'Quickfix' },
-    g = {
-      name = 'Git...',
-      c = { '<cmd>Telescope git_commits<CR>', 'Commits' },
-      b = { '<cmd>Telescope git_branches<CR>', 'Branches' },
-      s = { '<cmd>Telescope git_status<CR>', 'Status' },
-    },
-  },
+wk.add({
+  { '<Leader>f', '<cmd>Telescope find_files<CR>', desc = 'find Files' },
 
-  -- have to use different syntax to map to `"`
-  ['<Leader>t"'] = { '<cmd>Telescope registers<CR>', 'Registers' },
+  { '<Leader>t', group = 'Find...' },
+  { '<Leader>t"', '<cmd>Telescope registers<CR>', desc = 'Registers' },
+  { '<Leader>tb', '<cmd>Telescope buffers<CR>', desc = 'Buffers' },
+  { '<Leader>tc', '<cmd>Telescope commands<CR>', desc = 'Commands' },
+  { '<Leader>tf', '<cmd>Telescope find_files<CR>', desc = 'Files' },
+  { '<Leader>th', '<cmd>Telescope highlights<CR>', desc = 'Highlights' },
+  { '<Leader>tk', '<cmd>Telescope keymaps<CR>', desc = 'Keymaps' },
+  { '<Leader>tl', '<cmd>Telescope loclist<CR>', desc = 'Loclist' },
+  { '<Leader>tn', '<cmd>Telescope notify<CR>', desc = 'Notifications' },
+  { '<Leader>tq', '<cmd>Telescope quickfix<CR>', desc = 'Quickfix' },
+  { '<Leader>tr', '<cmd>Telescope live_grep<CR>', desc = 'Grep' },
+
+  { '<Leader>tg', group = 'Git...' },
+  { '<Leader>tgb', '<cmd>Telescope git_branches<CR>', desc = 'Branches' },
+  { '<Leader>tgc', '<cmd>Telescope git_commits<CR>', desc = 'Commits' },
+  { '<Leader>tgs', '<cmd>Telescope git_status<CR>', desc = 'Status' },
 })
 
 -- Trouble

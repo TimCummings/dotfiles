@@ -10,20 +10,18 @@ return {
       -- use an on_attach function to only map the following keys after the language
       -- server attaches to the current buffer
       local on_attach = function(_, bufnr)
-        local opts = { buffer = bufnr }
-
         -- See `:help vim.lsp.*` for documentation on any of the below functions
-        wk.register({
-          ['gD'] = { vim.lsp.buf.declaration, 'go to declaration' }, -- rarely implemented?
-          ['gd'] = { vim.lsp.buf.definition, 'go to definition' },
-          ['gi'] = { vim.lsp.buf.implementation, 'implementations' }, -- rarely implemented?
-          -- ['gr'] = { vim.lsp.buf.references, 'references' },
-          ['gr'] = { '<cmd>TroubleToggle lsp_references<CR>', 'references' },
-          ['K'] = { vim.lsp.buf.hover, 'hover' },
-          ['<C-k>'] = { vim.lsp.buf.signature_help, 'signature help', mode = 'i' },
-          ['<Leader>ca'] = { vim.lsp.buf.code_action, 'LSP code actions' },
-          ['<Leader>rn'] = { vim.lsp.buf.rename, 'LSP rename' },
-        }, opts)
+        wk.add({
+          { '<C-k>', vim.lsp.buf.signature_help, buffer = bufnr, mode = 'i', desc = 'signature help' },
+          { '<Leader>ca', vim.lsp.buf.code_action, buffer = bufnr, desc =  'LSP code actions' },
+          { '<Leader>rn', vim.lsp.buf.rename, buffer = bufnr, desc = 'LSP rename' },
+          { 'gd', vim.lsp.buf.definition, buffer = bufnr, desc = 'go to definition' },
+          { 'gD', vim.lsp.buf.declaration, buffer = bufnr, desc = 'go to declaration' }, -- rarely implemented?
+          { 'gi', vim.lsp.buf.implementation, buffer = bufnr, desc = 'implementations' }, -- rarely implemented?
+          -- { 'gr', vim.lsp.buf.references, buffer = bufnr, desc = 'references' },
+          { 'gr', '<cmd>TroubleToggle lsp_references<CR>', buffer = bufnr, desc = 'references' },
+          { 'K', vim.lsp.buf.hover, buffer = bufnr, desc = 'hover' },
+        })
 
         -- vim.keymap.set('n', '<Leader>wa', vim.lsp.buf.add_workspace_folder, opts)
         -- vim.keymap.set('n', '<Leader>wr', vim.lsp.buf.remove_workspace_folder, opts)
