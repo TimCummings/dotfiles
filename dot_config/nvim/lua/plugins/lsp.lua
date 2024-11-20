@@ -96,7 +96,7 @@ return {
   {
     'williamboman/mason-lspconfig.nvim',
     opts = {
-      ensure_installed = { 'gopls', 'lua_ls', 'tsserver', 'yamlls' },
+      ensure_installed = { 'gopls', 'lua_ls', 'ts_ls', 'yamlls' },
     },
   },
 }
