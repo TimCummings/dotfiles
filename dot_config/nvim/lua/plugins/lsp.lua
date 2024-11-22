@@ -19,7 +19,7 @@ return {
           { 'gD', vim.lsp.buf.declaration, buffer = bufnr, desc = 'go to declaration' }, -- rarely implemented?
           { 'gi', vim.lsp.buf.implementation, buffer = bufnr, desc = 'implementations' }, -- rarely implemented?
           -- { 'gr', vim.lsp.buf.references, buffer = bufnr, desc = 'references' },
-          { 'gr', '<cmd>TroubleToggle lsp_references<CR>', buffer = bufnr, desc = 'references' },
+          { 'gr', '<cmd>Trouble lsp toggle<cr>', buffer = bufnr, desc = 'references' },
           { 'K', vim.lsp.buf.hover, buffer = bufnr, desc = 'hover' },
         })
 
@@ -41,30 +41,15 @@ return {
         return orig_util_open_floating_preview(contents, syntax, opts, ...)
       end
 
-      require('mason-lspconfig').setup_handlers({
-        -- The first entry (without a key) will be the default handler
-        -- and will be called for each installed server that doesn't have
-        -- a dedicated handler.
-        function (server_name) -- default handler (optional)
-          require('lspconfig')[server_name].setup {
-            on_attach = on_attach,
-            capabilities = capabilities,
-          }
-        end,
-        -- Next, you can provide targeted overrides for specific servers.
-        ['lua_ls'] = function ()
-          require('lspconfig').lua_ls.setup {
-            on_attach = on_attach,
-            capabilities = capabilities,
-            settings = {
-              Lua = {
-                diagnostics = {
-                  globals = { 'vim' }
-                }
-              }
-            }
-          }
-        end,
+      require('lspconfig').lua_ls.setup({
+        on_attach = on_attach,
+        capabilities = capabilities,
+        settings = { Lua = { diagnostics = { globals = { 'vim' } } } },
+      })
+
+      require('lspconfig').ruby_lsp.setup({
+        on_attach = on_attach,
+        capabilities = capabilities,
       })
 
       -- TODO: move to settings and review options
@@ -77,26 +62,5 @@ return {
       -- nvim-cmp setup
       require('cmp')
     end,
-  },
-
-  {
-    'williamboman/mason.nvim',
-    opts = {
-      ui = {
-        border = 'rounded',
-        icons = {
-          package_installed = '✓ ',
-          package_pending = '┄ ',
-          package_uninstalled = '✗ '
-        },
-      },
-    },
-  },
-
-  {
-    'williamboman/mason-lspconfig.nvim',
-    opts = {
-      ensure_installed = { 'gopls', 'lua_ls', 'ts_ls', 'yamlls' },
-    },
   },
 }
