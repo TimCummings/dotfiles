@@ -4,6 +4,10 @@ return {
   cmd = 'ColorizerToggle',
 
   opts = {
-    user_default_options = { names = false },
+    user_default_options = {
+      mode = "virtualtext",
+      names = false,
+      virtualtext_inline = true,
+    },
   },
 }
