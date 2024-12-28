@@ -7,7 +7,6 @@
 # - Python depends on libbz2-dev, libncurses-dev, libreadline-dev, libsqlite3-dev, python3-tk,
 #   liblzma-dev
 # - Ruby dependso on libyaml (libyaml-dev), libssl-dev
-# - Tmux depends on a bunch of stuff! Install it with OS's package manager (apt),
 #   or instally it manually, fixing dependency errors one at a time.
 # - yamllint depends on jq and Python3
 
@@ -41,7 +40,7 @@ else
   printf '\t%-10s\n' "${RED}missing!${NONE}"
   echo "Installing asdf..."
   git clone https://github.com/asdf-vm/asdf.git "$XDG_DATA_HOME/asdf"
-  cd "$XDG_DATA_HOME/.asdf" || exit
+  cd "$XDG_DATA_HOME/asdf" || exit
   git checkout "$(git describe --abbrev=0 --tags)"
   # shellcheck source=/dev/null
   source "$ASDF_DIR/asdf.sh"
@@ -49,7 +48,7 @@ fi
 
 echo -e "    plugins..."
 
-asdf_plugins="actionlint direnv elixir erlang fd fzf golang lazygit neovim nodejs ripgrep rust shellcheck tmux yarn"
+asdf_plugins="actionlint direnv elixir erlang fd fzf golang lazygit neovim nodejs ripgrep rust shellcheck yarn"
 for plugin in $asdf_plugins; do
   printf '\t%-20s' "${plugin}..."
   if asdf current "$plugin" &> /dev/null; then
