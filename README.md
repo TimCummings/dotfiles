@@ -9,6 +9,20 @@ Dotfiles are now managed by [chezmoi](https://www.chezmoi.io/). Internally, `che
 
 ## Bootstrapping
 
+
+### SSH Keys
+
+1. Copy keys into `~/.ssh` directory.
+2. [Verify correct permissions](https://superuser.com/questions/215504/permissions-on-private-key-in-ssh-folder)
+
+| Item        | Sample              | Numeric       | Bitwise              |
+|-------------|---------------------|---------------|----------------------|
+| SSH folder  | `~/.ssh`            | `700`         | `drwx------`         |
+| Public key  | `~/.ssh/id_rsa.pub` | `644`         | `-rw-r--r--`         |
+| Private key | `~/.ssh/id_rsa`     | `600`         | `-rw-------`         |
+| Home folder | `~`                 | `755` at most | `drwxr-xr-x` at most |
+
+3. Add key to agent: `ssh-add ~/.ssh/id_rsa`.
 ### Install [chezmoi](https://www.chezmoi.io/)
 
 Create `~/.local` if it doesn't yet exist.
@@ -25,7 +39,7 @@ sh -c "$(curl -fsLS chezmoi.io/get)"
 ### Initialize Existing Repo
 
 ```
-chezmoi init https://github.com/TimCummings/chezmoi_dotfiles.git
+chezmoi init --ssh git@github.com:TimCummings/dotfiles.git
 chezmoi apply
 ```
 
