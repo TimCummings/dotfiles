@@ -1,0 +1,33 @@
+font-feature = -calt
+font-feature = -dlig
+font-feature = -liga
+gtk-tabs-location = bottom
+theme = ChallengerDeep
+window-decoration = false
+
+# SPLITS
+#   unbind default `new_split:right`
+keybind = ctrl+shift+o=unbind
+keybind = ctrl+escape>v=new_split:right
+keybind = ctrl+escape>x=new_split:down
+keybind = ctrl+escape>h=goto_split:left
+keybind = alt+h=goto_split:left
+keybind = ctrl+escape>j=goto_split:bottom
+keybind = alt+j=goto_split:bottom
+keybind = ctrl+escape>k=goto_split:top
+keybind = alt+k=goto_split:top
+keybind = ctrl+escape>l=goto_split:right
+keybind = alt+l=goto_split:right
+keybind = ctrl+escape>c=close_surface
+keybind = ctrl+escape>z=toggle_split_zoom
+keybind = ctrl+escape>space=equalize_splits
+keybind = ctrl+escape>shift+,=resize_split:left,10
+keybind = ctrl+escape>shift+.=resize_split:right,10
+keybind = ctrl+escape>plus=resize_split:up,10
+keybind = ctrl+escape>-=resize_split:down,10
+
+# TABS
+keybind = ctrl+escape>p=previous_tab
+keybind = ctrl+escape>n=next_tab
+keybind = ctrl+escape>t=new_tab
+keybind = ctrl+escape>w=toggle_tab_overview
