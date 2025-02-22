@@ -99,4 +99,5 @@ fi
 
 # maybe add fonts here?
 
+echo '\nREMINDER: Consult `misc/manual_adjustments.md`.'
 exit 0
