@@ -3,11 +3,18 @@
 
 See:
 - https://github.com/system76/ec/blob/master/README.md
-- https://github.com/system76/ec/blob/master/doc/keyboard-layout-customization.md
+- https://github.com/system76/ec/blob/master/docs/keyboard-layout-customization.md
 
 ## Flash Attempts
 
-### #1 - 11/17/2021
+### 3/8/2025 #1
+- model: Lemur Pro, lemp9
+- BIOS *version*: `2023-08-18_a8dd6c2`
+- BIOS *revision*: `a8dd6c2`
+- EC revision: `1097fd999abf39291c322fafae8020df95d69e2e`
+- keyboard: `KEYBOARD=14in_83`
+
+### 11/17/2021 #1
 
 - model: Lemur Pro, lemp9
 - BIOS *version*: `2021-07-20_93c2809`
