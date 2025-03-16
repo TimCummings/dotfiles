@@ -3,7 +3,6 @@ font-feature = -dlig
 font-feature = -liga
 gtk-tabs-location = bottom
 theme = ChallengerDeep
-window-decoration = false
 
 # SPLITS
 #   unbind default `new_split:right`
