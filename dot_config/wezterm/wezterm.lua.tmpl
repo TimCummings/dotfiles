@@ -1,5 +1,72 @@
 local wezterm = require 'wezterm'
 local act = wezterm.action
+local config = wezterm.config_builder()
+
+config.exit_behavior = 'Close'
+-- try to fix terminal disallowing keyboard input after window resizing
+config.use_ime = false
+
+--------------------------------------------------------------------------------
+-- FONT
+--------------------------------------------------------------------------------
+-- Font Settings; use `wezterm ls-fonts --list-system` to find exact font names
+-- Wezterm now has some terrific fonts built-in, especially JetBrains Mono
+config.adjust_window_size_when_changing_font_size = false
+config.bold_brightens_ansi_colors = false
+config.font = wezterm.font 'IntelOne Mono'
+config.font_size = {{or (and (eq .chezmoi.os "darwin") "18") "14"}}
+config.harfbuzz_features = {'calt=0', 'clig=0', 'liga=0'}
+
+--------------------------------------------------------------------------------
+-- APPEARANCE
+--------------------------------------------------------------------------------
+config.enable_scroll_bar = true
+
+-- warning: `color_scheme` overrides all `colors` options!
+config.colors = { -- Challenger Deep (modified)
+  foreground = '#cbe1e7',
+  background = '#1e1c31',
+  cursor_bg = '#cbe1e7',
+  cursor_border = '#cbe1e7',
+  cursor_fg = '#1e1c31',
+  scrollbar_thumb = '#aaffe4',
+  selection_bg = '#cbe1e7',
+  selection_fg = '#1e1c31',
+
+  ansi = { '#141228','#ff5458','#62d196','#ffb378','#65b2ff','#906cff','#63f2f1','#a6b3cc' },
+  brights = { '#565575','#ff8080','#95ffa4','#ffe9aa','#91ddff','#c991e1','#aaffe4','#cbe3e7' },
+
+  tab_bar = {
+    background = '#141228', -- The color of the inactive tab bar edge/divider
+    new_tab = { -- The new tab button that let you create new tabs
+      bg_color = '#141228',
+      fg_color = '#565575',
+      intensity = 'Bold',
+    },
+    new_tab_hover = {
+      bg_color = '#141228',
+      fg_color = '#95ffa4',
+      intensity = 'Bold',
+    },
+  },
+}
+
+config.window_padding = {
+  left = '3px',
+  right = '3px',
+  top = '2px',
+  bottom = '2px',
+}
+
+--------------------------------------------------------------------------------
+---- TABS
+--------------------------------------------------------------------------------
+config.hide_tab_bar_if_only_one_tab = true
+config.tab_and_split_indices_are_zero_based = true
+config.tab_bar_at_bottom = true
+config.tab_max_width = tab_max_width_value
+config.use_fancy_tab_bar = false
+
 
 -- Possible bug: `tab_max_width` doesn't seem to correctly apply when the `tab_title` function
 -- returns the active pane title: it's truncated to only two characters.
@@ -11,12 +78,10 @@ local tab_max_width_value = 32
 -- pane in that tab.
 function tab_title(tab_info)
   local title = tab_info.tab_title
-
   -- if the tab title is explicitly set, take that
   if title and #title > 0 then
     return title
   end
-
   -- Otherwise, use the title from the active pane in that tab
   return tab_info.active_pane.title
 end
@@ -65,11 +130,15 @@ wezterm.on(
   end
 )
 
+--------------------------------------------------------------------------------
+---- KEYBINDINGS
+--------------------------------------------------------------------------------
+config.leader = { key='Space', mods='CTRL', timeout_milliseconds=1500 }
+
 local my_keys = {
   { key='u', mods='LEADER', action=act.ActivateCopyMode },
   { key='PageUp', mods='SHIFT', action=act.ScrollByPage(-0.5) },
   { key='PageDown', mods='SHIFT', action=act.ScrollByPage(0.5) },
-
   -- panes
   { key='v', mods='LEADER', action=act{SplitHorizontal={domain='CurrentPaneDomain'}} },
   { key='x', mods='LEADER', action=act{SplitVertical={domain='CurrentPaneDomain'}} },
@@ -83,7 +152,6 @@ local my_keys = {
   { key='+', mods='LEADER', action=act{AdjustPaneSize={'Up', 5}} },
   { key='-', mods='LEADER', action=act{AdjustPaneSize={'Down', 5}} },
   { key='z', mods='LEADER', action='TogglePaneZoomState' },
-
   -- tabs (like tmux "windows")
   { key='t', mods='LEADER', action=act{SpawnTab='CurrentPaneDomain'} },
   { key='n', mods='LEADER', action=act{ActivateTabRelative=1} },
@@ -106,15 +174,11 @@ local my_keys = {
   },
 };
 
-for i = 0, 7 do
-  table.insert(my_keys, {
-    key=tostring(i),
-    mods='LEADER',
-    action=act{ActivateTab=i},
-  })
+for i = 0, 9 do
+  table.insert(my_keys, { key=tostring(i), mods='LEADER', action=act{ActivateTab=i} })
 end
 
-copy_mode_keys = wezterm.gui.default_key_tables().copy_mode
+local copy_mode_keys = wezterm.gui.default_key_tables().copy_mode
 -- ScrollByLine kinda works, but the cursor stays in its original location and does not move even
 -- if the viewport scrolls past it; then, moving the cursor resets the viewport to include the
 -- cursor, effectively nullifying the scroll actions
@@ -123,67 +187,6 @@ copy_mode_keys = wezterm.gui.default_key_tables().copy_mode
 table.insert(copy_mode_keys, { key = 'e', mods = 'CTRL', action = act.CopyMode { MoveByPage = 0.05 } })
 table.insert(copy_mode_keys, { key = 'y', mods = 'CTRL', action = act.CopyMode { MoveByPage = -0.05 } })
 
-return {
-  -- warning: `color_scheme` overrides all `colors` options!
-  -- Challenger Deep (modified)
-  colors = {
-    foreground = '#cbe1e7',
-    background = '#1e1c31',
-    cursor_bg = '#cbe1e7',
-    cursor_border = '#cbe1e7',
-    cursor_fg = '#1e1c31',
-    scrollbar_thumb = '#aaffe4',
-    selection_bg = '#cbe1e7',
-    selection_fg = '#1e1c31',
-
-    ansi = { '#141228','#ff5458','#62d196','#ffb378','#65b2ff','#906cff','#63f2f1','#a6b3cc' },
-    brights = { '#565575','#ff8080','#95ffa4','#ffe9aa','#91ddff','#c991e1','#aaffe4','#cbe3e7' },
-
-    tab_bar = {
-      -- The color of the inactive tab bar edge/divider
-      background = '#141228',
-
-      -- The new tab button that let you create new tabs
-      new_tab = {
-        bg_color = '#141228',
-        fg_color = '#565575',
-        intensity = 'Bold',
-      },
-
-      new_tab_hover = {
-        bg_color = '#141228',
-        fg_color = '#95ffa4',
-        intensity = 'Bold',
-      },
-    },
-  },
-
-  adjust_window_size_when_changing_font_size = false,
-  bold_brightens_ansi_colors = false,
-  enable_scroll_bar = true,
-  exit_behavior = 'Close',
-  harfbuzz_features = {'calt=0', 'clig=0', 'liga=0'},
-  hide_tab_bar_if_only_one_tab = true,
-  tab_and_split_indices_are_zero_based = true,
-  tab_bar_at_bottom = true,
-  tab_max_width = tab_max_width_value,
-  use_fancy_tab_bar = false,
-  use_ime = false, -- try to fix terminal disallowing keyboard input after window resizing
-
-  window_padding = {
-    left = '3px',
-    right = '3px',
-    top = '2px',
-    bottom = '2px',
-  },
-
-  -- Font Settings; use `wezterm ls-fonts --list-system` to find exact font names
-  -- Wezterm now has some terrific fonts built-in, especially JetBrains Mono
-  font = wezterm.font 'IntelOne Mono',
-
-  font_size = {{or (and (eq .chezmoi.os "darwin") "18,") "14,"}}
-
-  leader = { key='Space', mods='CTRL', timeout_milliseconds=1500 },
-  keys = my_keys,
-  key_tables = { copy_mode = copy_mode_keys },
-}
+config.keys = my_keys
+config.key_tables = { copy_mode = copy_mode_keys }
+return config
