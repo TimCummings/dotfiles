@@ -93,11 +93,6 @@ function n {
   fi
 }
 
-# First and only argument is the desired term title
-function rename_wezterm_title {
-  echo "\x1b]1337;SetUserVar=panetitle=$(echo -n $1 | base64)\x07"
-}
-
 # fzf autocomplete & keybindings
 [ -f "${XDG_CONFIG_HOME}"/fzf/fzf.zsh ] && source "${XDG_CONFIG_HOME}"/fzf/fzf.zsh
 

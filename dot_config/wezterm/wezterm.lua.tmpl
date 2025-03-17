@@ -1,5 +1,25 @@
 local wezterm = require 'wezterm';
 
+-- Possible bug: `tab_max_width` doesn't seem to correctly apply when the `tab_title` function
+-- returns the active pane title: it's truncated to only two characters.
+-- Manually set tab titles are not overly truncated.
+local tab_max_width_value = 32;
+
+-- This function returns the suggested title for a tab. It prefers the title that was set via
+-- `tab:set_title()` or `wezterm cli set-tab-title`, but falls back to the title of the active
+-- pane in that tab.
+function tab_title(tab_info)
+  local title = tab_info.tab_title
+
+  -- if the tab title is explicitly set, take that
+  if title and #title > 0 then
+    return title
+  end
+
+  -- Otherwise, use the title from the active pane in that tab
+  return tab_info.active_pane.title
+end
+
 local my_keys = {
   { key="u", mods="LEADER", action=wezterm.action.ActivateCopyMode },
   { key="PageUp", mods="SHIFT", action=wezterm.action.ScrollByPage(-0.5) },
@@ -24,6 +44,21 @@ local my_keys = {
   { key="n", mods="LEADER", action=wezterm.action{ActivateTabRelative=1} },
   { key="p", mods="LEADER", action=wezterm.action{ActivateTabRelative=-1} },
   { key="w", mods="LEADER", action="ShowTabNavigator" },
+  {
+    key = ",",
+    mods = "LEADER",
+    action = wezterm.action.PromptInputLine {
+      description = 'Enter new name for tab',
+      action = wezterm.action_callback(function(window, pane, line)
+        -- line will be `nil` if they hit escape without entering anything
+        -- An empty string if they just hit enter
+        -- Or the actual line of text they wrote
+        if line then
+          window:active_tab():set_title(line)
+        end
+      end),
+    },
+  },
 };
 
 for i = 0, 7 do
@@ -34,18 +69,6 @@ for i = 0, 7 do
   })
 end
 
-wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
-  local pane_title = tab.active_pane.title
-  local user_title = tab.active_pane.user_vars.panetitle
-
-  if user_title ~= nil and #user_title > 0 then
-    pane_title = user_title
-  end
-
-  return {
-    {Text=" " .. pane_title .. " "},
-  }
-end)
 copy_mode_keys = wezterm.gui.default_key_tables().copy_mode
 -- ScrollByLine kinda works, but the cursor stays in its original location and does not move even
 -- if the viewport scrolls past it; then, moving the cursor resets the viewport to include the
@@ -71,7 +94,68 @@ return {
     ansi = { "#141228","#ff5458","#62d196","#ffb378","#65b2ff","#906cff","#63f2f1","#a6b3cc" },
     brights = { "#565575","#ff8080","#95ffa4","#ffe9aa","#91ddff","#c991e1","#aaffe4","#cbe3e7" },
 
+    tab_bar = {
+      -- The color of the inactive tab bar edge/divider
+      background = '#141228',
 
+      -- The new tab button that let you create new tabs
+      new_tab = {
+        bg_color = '#141228',
+        fg_color = '#565575',
+        intensity = 'Bold',
+      },
+
+      new_tab_hover = {
+        bg_color = '#141228',
+        fg_color = '#95ffa4',
+        intensity = 'Bold',
+      },
+    },
+  },
+
+  wezterm.on(
+    'format-tab-title',
+    function(tab, tabs, panes, config, hover, max_width)
+      local edge_background = '#141228'
+      local background = '#1e1c31'
+      local foreground = '#737795'
+      local index_foreground = '#ffb378'
+      local intensity = 'Half'
+
+      if tab.is_active then
+        background = '#31304b'
+        foreground = '#cbe1e7'
+        index_foreground = '#95ffa4'
+        intensity = 'Bold'
+      elseif hover then
+        background = '#26243f'
+        foreground = '#909090'
+      end
+
+      local edge_foreground = background
+      local title = tab_title(tab)
+
+      -- ensure that the titles fit in the available space, and that we have room for the edges.
+      -- static chars = 2 edges, 2 spaces, 2 index digits (lazy assumption), space after index
+      local static_chars_width = 7
+      title = wezterm.truncate_right(title, tab_max_width_value - static_chars_width)
+
+      return {
+        { Attribute = { Intensity = intensity } },
+        { Background = { Color = edge_background } },
+        { Foreground = { Color = edge_foreground } },
+        { Text = '' },
+        { Background = { Color = background } },
+        { Foreground = { Color = index_foreground } },
+        { Text = ' ' .. tab.tab_index .. ' ' },
+        { Foreground = { Color = foreground } },
+        { Text = title .. ' ' },
+        { Background = { Color = edge_background } },
+        { Foreground = { Color = edge_foreground } },
+        { Text = '' },
+      }
+    end
+  ),
 
   adjust_window_size_when_changing_font_size = false,
   bold_brightens_ansi_colors = false,
@@ -80,7 +164,9 @@ return {
   harfbuzz_features = {"calt=0", "clig=0", "liga=0"},
   hide_tab_bar_if_only_one_tab = true,
   tab_and_split_indices_are_zero_based = true,
-  -- tab_bar_at_bottom = true,
+  tab_bar_at_bottom = true,
+  tab_max_width = tab_max_width_value,
+  use_fancy_tab_bar = false,
   use_ime = false, -- try to fix terminal disallowing keyboard input after window resizing
 
   window_padding = {
