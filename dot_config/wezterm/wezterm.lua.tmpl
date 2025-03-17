@@ -21,32 +21,32 @@ function tab_title(tab_info)
 end
 
 local my_keys = {
-  { key="u", mods="LEADER", action=wezterm.action.ActivateCopyMode },
-  { key="PageUp", mods="SHIFT", action=wezterm.action.ScrollByPage(-0.5) },
-  { key="PageDown", mods="SHIFT", action=wezterm.action.ScrollByPage(0.5) },
+  { key='u', mods='LEADER', action=wezterm.action.ActivateCopyMode },
+  { key='PageUp', mods='SHIFT', action=wezterm.action.ScrollByPage(-0.5) },
+  { key='PageDown', mods='SHIFT', action=wezterm.action.ScrollByPage(0.5) },
 
   -- panes
-  { key="v", mods="LEADER", action=wezterm.action{SplitHorizontal={domain="CurrentPaneDomain"}} },
-  { key="x", mods="LEADER", action=wezterm.action{SplitVertical={domain="CurrentPaneDomain"}} },
-  { key="c", mods="LEADER", action=wezterm.action{CloseCurrentPane={confirm=true}} },
-  { key="h", mods="LEADER", action=wezterm.action{ActivatePaneDirection="Left"} },
-  { key="l", mods="LEADER", action=wezterm.action{ActivatePaneDirection="Right"} },
-  { key="k", mods="LEADER", action=wezterm.action{ActivatePaneDirection="Up"} },
-  { key="j", mods="LEADER", action=wezterm.action{ActivatePaneDirection="Down"} },
-  { key="<", mods="LEADER", action=wezterm.action{AdjustPaneSize={"Left", 5}} },
-  { key=">", mods="LEADER", action=wezterm.action{AdjustPaneSize={"Right", 5}} },
-  { key="+", mods="LEADER", action=wezterm.action{AdjustPaneSize={"Up", 5}} },
-  { key="-", mods="LEADER", action=wezterm.action{AdjustPaneSize={"Down", 5}} },
-  { key="z", mods="LEADER", action="TogglePaneZoomState" },
+  { key='v', mods='LEADER', action=wezterm.action{SplitHorizontal={domain='CurrentPaneDomain'}} },
+  { key='x', mods='LEADER', action=wezterm.action{SplitVertical={domain='CurrentPaneDomain'}} },
+  { key='c', mods='LEADER', action=wezterm.action{CloseCurrentPane={confirm=true}} },
+  { key='h', mods='LEADER', action=wezterm.action{ActivatePaneDirection='Left'} },
+  { key='l', mods='LEADER', action=wezterm.action{ActivatePaneDirection='Right'} },
+  { key='k', mods='LEADER', action=wezterm.action{ActivatePaneDirection='Up'} },
+  { key='j', mods='LEADER', action=wezterm.action{ActivatePaneDirection='Down'} },
+  { key='<', mods='LEADER', action=wezterm.action{AdjustPaneSize={'Left', 5}} },
+  { key='>', mods='LEADER', action=wezterm.action{AdjustPaneSize={'Right', 5}} },
+  { key='+', mods='LEADER', action=wezterm.action{AdjustPaneSize={'Up', 5}} },
+  { key='-', mods='LEADER', action=wezterm.action{AdjustPaneSize={'Down', 5}} },
+  { key='z', mods='LEADER', action='TogglePaneZoomState' },
 
   -- tabs (like tmux "windows")
-  { key="t", mods="LEADER", action=wezterm.action{SpawnTab="CurrentPaneDomain"} },
-  { key="n", mods="LEADER", action=wezterm.action{ActivateTabRelative=1} },
-  { key="p", mods="LEADER", action=wezterm.action{ActivateTabRelative=-1} },
-  { key="w", mods="LEADER", action="ShowTabNavigator" },
+  { key='t', mods='LEADER', action=wezterm.action{SpawnTab='CurrentPaneDomain'} },
+  { key='n', mods='LEADER', action=wezterm.action{ActivateTabRelative=1} },
+  { key='p', mods='LEADER', action=wezterm.action{ActivateTabRelative=-1} },
+  { key='w', mods='LEADER', action='ShowTabNavigator' },
   {
-    key = ",",
-    mods = "LEADER",
+    key = ',',
+    mods = 'LEADER',
     action = wezterm.action.PromptInputLine {
       description = 'Enter new name for tab',
       action = wezterm.action_callback(function(window, pane, line)
@@ -64,7 +64,7 @@ local my_keys = {
 for i = 0, 7 do
   table.insert(my_keys, {
     key=tostring(i),
-    mods="LEADER",
+    mods='LEADER',
     action=wezterm.action{ActivateTab=i},
   })
 end
@@ -82,17 +82,17 @@ return {
   -- warning: `color_scheme` overrides all `colors` options!
   -- Challenger Deep (modified)
   colors = {
-    foreground = "#cbe1e7",
-    background = "#1e1c31",
-    cursor_bg = "#cbe1e7",
-    cursor_border = "#cbe1e7",
-    cursor_fg = "#1e1c31",
+    foreground = '#cbe1e7',
+    background = '#1e1c31',
+    cursor_bg = '#cbe1e7',
+    cursor_border = '#cbe1e7',
+    cursor_fg = '#1e1c31',
     scrollbar_thumb = '#aaffe4',
-    selection_bg = "#cbe1e7",
-    selection_fg = "#1e1c31",
+    selection_bg = '#cbe1e7',
+    selection_fg = '#1e1c31',
 
-    ansi = { "#141228","#ff5458","#62d196","#ffb378","#65b2ff","#906cff","#63f2f1","#a6b3cc" },
-    brights = { "#565575","#ff8080","#95ffa4","#ffe9aa","#91ddff","#c991e1","#aaffe4","#cbe3e7" },
+    ansi = { '#141228','#ff5458','#62d196','#ffb378','#65b2ff','#906cff','#63f2f1','#a6b3cc' },
+    brights = { '#565575','#ff8080','#95ffa4','#ffe9aa','#91ddff','#c991e1','#aaffe4','#cbe3e7' },
 
     tab_bar = {
       -- The color of the inactive tab bar edge/divider
@@ -160,8 +160,8 @@ return {
   adjust_window_size_when_changing_font_size = false,
   bold_brightens_ansi_colors = false,
   enable_scroll_bar = true,
-  exit_behavior = "Close",
-  harfbuzz_features = {"calt=0", "clig=0", "liga=0"},
+  exit_behavior = 'Close',
+  harfbuzz_features = {'calt=0', 'clig=0', 'liga=0'},
   hide_tab_bar_if_only_one_tab = true,
   tab_and_split_indices_are_zero_based = true,
   tab_bar_at_bottom = true,
@@ -182,7 +182,7 @@ return {
 
   font_size = {{or (and (eq .chezmoi.os "darwin") "18,") "14,"}}
 
-  leader = { key="Space", mods="CTRL", timeout_milliseconds=1500 },
+  leader = { key='Space', mods='CTRL', timeout_milliseconds=1500 },
   keys = my_keys,
   key_tables = { copy_mode = copy_mode_keys },
 }
