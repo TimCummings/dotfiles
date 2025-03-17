@@ -1,12 +1,13 @@
 local wezterm = require 'wezterm';
 
 local my_keys = {
-  {key="PageUp", mods="SHIFT", action=wezterm.action{ScrollByLine=-20}},
-  {key="PageDown", mods="SHIFT", action=wezterm.action{ScrollByLine=20}},
+  { key="u", mods="LEADER", action=wezterm.action.ActivateCopyMode },
+  { key="PageUp", mods="SHIFT", action=wezterm.action.ScrollByPage(-0.5) },
+  { key="PageDown", mods="SHIFT", action=wezterm.action.ScrollByPage(0.5) },
 
   -- panes
-  { key="x", mods="LEADER", action=wezterm.action{SplitHorizontal={domain="CurrentPaneDomain"}} },
-  { key="v", mods="LEADER", action=wezterm.action{SplitVertical={domain="CurrentPaneDomain"}} },
+  { key="v", mods="LEADER", action=wezterm.action{SplitHorizontal={domain="CurrentPaneDomain"}} },
+  { key="x", mods="LEADER", action=wezterm.action{SplitVertical={domain="CurrentPaneDomain"}} },
   { key="c", mods="LEADER", action=wezterm.action{CloseCurrentPane={confirm=true}} },
   { key="h", mods="LEADER", action=wezterm.action{ActivatePaneDirection="Left"} },
   { key="l", mods="LEADER", action=wezterm.action{ActivatePaneDirection="Right"} },
@@ -45,6 +46,14 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
     {Text=" " .. pane_title .. " "},
   }
 end)
+copy_mode_keys = wezterm.gui.default_key_tables().copy_mode
+-- ScrollByLine kinda works, but the cursor stays in its original location and does not move even
+-- if the viewport scrolls past it; then, moving the cursor resets the viewport to include the
+-- cursor, effectively nullifying the scroll actions
+-- table.insert(copy_mode_keys, { key = 'e', mods = 'CTRL', action = wezterm.action.ScrollByLine(1) })
+-- table.insert(copy_mode_keys, { key = 'y', mods = 'CTRL', action = wezterm.action.ScrollByLine(-1) })
+table.insert(copy_mode_keys, { key = 'e', mods = 'CTRL', action = wezterm.action.CopyMode { MoveByPage = 0.05 } })
+table.insert(copy_mode_keys, { key = 'y', mods = 'CTRL', action = wezterm.action.CopyMode { MoveByPage = -0.05 } })
 
 return {
   -- warning: `color_scheme` overrides all `colors` options!
@@ -87,6 +96,7 @@ return {
 
   font_size = {{or (and (eq .chezmoi.os "darwin") "18,") "14,"}}
 
-  leader = { key="Escape", mods="CTRL", timeout_milliseconds=1000 },
+  leader = { key="Space", mods="CTRL", timeout_milliseconds=1500 },
   keys = my_keys,
+  key_tables = { copy_mode = copy_mode_keys },
 }
