@@ -2,6 +2,10 @@ local o = vim.o
 local bo = vim.bo
 local wo = vim.wo
 
+-- temporary workaround for display artifact bug; remove after next Wezterm release
+-- https://github.com/wezterm/wezterm/issues/4607
+vim.opt.termsync=false
+
 -- diagnostics settings
 vim.diagnostic.config({
   underline = false,
