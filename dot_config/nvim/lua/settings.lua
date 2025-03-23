@@ -49,8 +49,8 @@ o.mouse = ''
 o.laststatus = 3
 o.showmode = false
 
--- copy to system clipboard?
-o.clipboard = 'unnamed'
+-- copy to system clipboard
+o.clipboard = 'unnamedplus'
 
 -- open new split panes to right and bottom
 o.splitbelow = true
