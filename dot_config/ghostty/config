@@ -1,7 +1,10 @@
+font-family = "Intel One Mono"
 font-feature = -calt
 font-feature = -dlig
 font-feature = -liga
 theme = ChallengerDeep
+cursor-color = #cbe1e7
+cursor-text = #1e1c31
 
 keybind = ctrl+escape>r=reload_config
 keybind = ctrl+shift+z=jump_to_prompt:-1
