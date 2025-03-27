@@ -32,18 +32,13 @@ fi
 
 
 ########## ASDF ##########
-# Periodically check the version number below and update it!
 printf '    %-20s' asdf...
 if type asdf &> /dev/null; then
   printf '\t%-10s\n' "${GREEN}found!${NONE}"
 else
   printf '\t%-10s\n' "${RED}missing!${NONE}"
-  echo "Installing asdf..."
-  git clone https://github.com/asdf-vm/asdf.git "$XDG_DATA_HOME/asdf"
-  cd "$XDG_DATA_HOME/asdf" || exit
-  git checkout "$(git describe --abbrev=0 --tags)"
-  # shellcheck source=/dev/null
-  source "$ASDF_DIR/asdf.sh"
+  echo "Follow README instructions for installing asdf."
+  exit 1
 fi
 
 echo -e "    plugins..."
