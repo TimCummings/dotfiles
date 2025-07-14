@@ -2,6 +2,8 @@ return {
   'j-morano/buffer_manager.nvim',
 
   opts = {
+    height = 0.5,
+
     select_menu_item_commands = {
       c = {
         key = '<C-c>',
@@ -22,6 +24,8 @@ return {
         key = '<C-v>',
         command = 'vsplit'
       }
-    }
+    },
+
+    width = 0.8,
   },
 }
