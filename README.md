@@ -28,11 +28,10 @@ Dotfiles are now managed by [chezmoi](https://www.chezmoi.io/). Internally, `che
 Create `~/.local` if it doesn't yet exist.
 
 ```
-mkdir ~/.local
+mkdir -p ~/.local && cd ~/.local
 ```
 
 ```
-cd ~/.local
 sh -c "$(curl -fsLS chezmoi.io/get)"
 ```
 
