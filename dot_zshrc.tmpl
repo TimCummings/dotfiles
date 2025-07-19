@@ -140,7 +140,12 @@ fi
 #   export PATH="$PATH:${YARN_BIN}"
 # fi
 
-eval "$(/home/tjc/.local/bin/mise activate zsh)"
+# mise version manager
+if type mise &> /dev/null; then
+  eval "$(mise activate zsh)"
+else
+  echo "Mise is not installed; skipping!"
+fi
 
 # starship prompt
 if type starship &> /dev/null; then
