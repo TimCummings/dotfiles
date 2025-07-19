@@ -21,7 +21,6 @@ echo "Starting software installation..."
 ########## apt installs ##########
 echo
 echo -e "    apt packages..."
-# sudo apt install -y "$(cat "$XDG_DATA_HOME"/chezmoi/scripts/apt_packages)"
 xargs -a "$XDG_DATA_HOME/chezmoi/scripts/apt_packages" sudo apt install -y
 
 # tldr isn't useful until you update its offline cache of pages
@@ -30,49 +29,32 @@ if type tldr &> /dev/null; then
 fi
 
 
-
-########## ASDF ##########
-printf '    %-20s' asdf...
-if type asdf &> /dev/null; then
+########## Mise ##########
+printf '    %-20s' mise...
+if type mise &> /dev/null; then
   printf '\t%-10s\n' "${GREEN}found!${NONE}"
 else
   printf '\t%-10s\n' "${RED}missing!${NONE}"
-  echo "Follow README instructions for installing asdf."
-  exit 1
+  echo "Installing mise..."
+  curl https://mise.run | sh
 fi
 
-echo -e "    plugins..."
-
-asdf_plugins="actionlint direnv elixir erlang fd fzf golang lazygit neovim nodejs ripgrep rust shellcheck yarn"
-for plugin in $asdf_plugins; do
-  printf '\t%-20s' "${plugin}..."
-  if asdf current "$plugin" &> /dev/null; then
-    printf '    %-10s\n' "${GREEN}found!${NONE}"
-  else
-    printf '    %-10s\n' "${RED}missing!${NONE}"
-    echo "Installing ${plugin} plugin..."
-    asdf plugin add "$plugin"
-    asdf install "$plugin" latest
-    asdf global "$plugin" latest
-  fi
-done
-
-# these take a long time to install; do them manually:
-# slow_asdf_plugins = "python ruby rubocop yamllint"
+echo -e "    tools..."
+mise install
 
 
 
 echo
 echo -e "    other..."
 ########## scripted installs ##########
-printf '\t%-20s' "Starship prompt..."
-if type starship &> /dev/null; then
-  printf '    %-10s\n' "${GREEN}found!${NONE}"
-else
-  printf '    %-10s\n' "${RED}missing!${NONE}"
-  echo "Installing starship prompt..."
-  sh -c "$(curl -fsSL https://starship.rs/install.sh)"
-fi
+# printf '\t%-20s' "Starship prompt..."
+# if type starship &> /dev/null; then
+#   printf '    %-10s\n' "${GREEN}found!${NONE}"
+# else
+#   printf '    %-10s\n' "${RED}missing!${NONE}"
+#   echo "Installing starship prompt..."
+#   sh -c "$(curl -fsSL https://starship.rs/install.sh)"
+# fi
 
 printf '\t%-20s' "Installing ESlint..."
 yarn global add eslint

@@ -96,48 +96,16 @@ function n {
 # fzf autocomplete & keybindings
 [ -f "${XDG_CONFIG_HOME}"/fzf/fzf.zsh ] && source "${XDG_CONFIG_HOME}"/fzf/fzf.zsh
 
-# Homebrew package manager - must go before asdf
+# Homebrew package manager
 if [[ $OSTYPE == "darwin"* ]]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-# asdf version manager
-if [ -d "$ASDF_DIR" ]; then
-  # append completions to fpath
-  fpath=(${ASDF_DIR}/completions $fpath)
-  # initialise completions with ZSH's compinit
-  autoload -Uz compinit && compinit
-  export PATH="${ASDF_DIR}/shims:$PATH"
+# mise version manager
+if type mise &> /dev/null; then
+  eval "$(mise activate zsh)"
 else
-  echo "Asdf appears to not be installed, skipping."
-fi
-
-# asdf managed executables - must go after asdf
-
-# Golang
-# replace all occurrences - ${parameter//pattern/string}
-if type go &> /dev/null; then
-  GO_BIN="$(go env GOPATH)/bin"
-  [[ ":$PATH:" == *":${GO_BIN}:"* ]] && PATH="${PATH//$GO_BIN:/}"
-  export PATH="$PATH:${GO_BIN}"
-else
-  echo "Golang is not installed; skipping!"
-fi
-
-# Rust
-if type cargo &> /dev/null; then
-  # replace all occurrences - ${parameter//pattern/string}
-  CARGO_BIN="$(asdf where rust)/bin"
-  [[ ":$PATH:" == *":${CARGO_BIN}:"* ]] && PATH="${PATH//$CARGO_BIN:/}"
-  export PATH="$PATH:${CARGO_BIN}"
-fi
-
-# TypeScript language server
-if [[ $OSTYPE == "darwin"* ]]; then
-  # replace all occurrences - ${parameter//pattern/string}
-  YARN_BIN="$(yarn global bin)"
-  [[ ":$PATH:" == *":${YARN_BIN}:"* ]] && PATH="${PATH//$YARN_BIN:/}"
-  export PATH="$PATH:${YARN_BIN}"
+  echo "Mise is not installed; skipping!"
 fi
 
 # starship prompt

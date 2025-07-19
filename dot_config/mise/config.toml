@@ -1,0 +1,22 @@
+[settings]
+idiomatic_version_file_enable_tools = ['node', 'ruby']
+
+[tools]
+actionlint = '1.7.4'
+direnv = '2.35.0'
+elixir = '1.17.3-otp-27'
+erlang = '27.2'
+fd = '10.2.0'
+fzf = '0.56.3'
+golang = '1.23.4'
+jq = '1.6'
+lazygit = '0.44.1'
+neovim = '0.10.4'
+nodejs = '23.4.0'
+ripgrep = '14.1.1'
+ruby = '3.4.2'
+rust = '1.83.0'
+shellcheck = '0.10.0'
+starship = '1.23.0'
+yarn = '1.22.22'
+zig = '0.13.0'
