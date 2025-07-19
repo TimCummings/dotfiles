@@ -51,18 +51,6 @@ chsh -s /usr/bin/zsh
 
 Then logout and back in.
 
-### Install [asdf](https://asdf-vm.com/) version manager
-
-1. Download an appropriate pre-compiled binary: https://github.com/asdf-vm/asdf/releases/latest
-2. Extract the archive with `tar xzf`.
-3. Move the extracted binary to `~/.local/bin`.
-4. Setup Zsh shell completions:
-
-```
-mkdir -p "${ASDF_DIR}/completions"
-asdf completion zsh > "${ASDF_DIR}/completions/_asdf"
-```
-
 
 ### Run bootstrap script
 
