@@ -37,7 +37,6 @@ else
   printf '\t%-10s\n' "${RED}missing!${NONE}"
   echo "Installing mise..."
   curl https://mise.run | sh
-  exit 1
 fi
 
 echo -e "    tools..."
