@@ -1,6 +1,6 @@
 format = """
 $username$hostname$directory$git_branch$git_commit$git_state$git_status$package$jobs
-$character"""
+$shell$character"""
 
 # Inserts a blank line between shell prompts
 add_newline = true
@@ -46,6 +46,17 @@ format = '[$hostname| ]($style)'
 [jobs]
 symbol = "✶"
 style = "cyan"
+
+[shell]
+disabled = false
+format = '[$indicator]($style)'
+style = 'cyan bold'
+bash_indicator = 'B'
+fish_indicator = '󰈺 '
+nu_indicator = 'N'
+powershell_indicator = 'P'
+unknown_indicator = '?'
+zsh_indicator = 'Z'
 
 [username]
 style_root = "bold red"
