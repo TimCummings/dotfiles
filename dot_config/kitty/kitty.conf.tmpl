@@ -26,6 +26,7 @@ cursor_trail_start_threshold 2
 enable_audio_bell no
 enabled_layouts splits, grid, horizontal, vertical, fat, tall, stack
 macos_option_as_alt yes
+scrollback_lines 5000
 tab_bar_style slant
 ## disable automatic update check (phone home)
 update_check_interval 0
@@ -42,6 +43,11 @@ map ctrl+space>u kitten kitty_grab/grab.py
 map ctrl+shift+space kitten hints --customize-processing quick_select_hints.py
 \ --alphabet asdfqwerzxcvjklmiuopghtybn
 \ --hints-offset 0
+
+# ctrl+{
+map kitty_mod+[ scroll_to_prompt -1
+# ctrl+}
+map kitty_mod+] scroll_to_prompt 1
 
 ## WINDOWS (PANES)
 ### window navigation
