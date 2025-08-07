@@ -1,5 +1,5 @@
 [settings]
-idiomatic_version_file_enable_tools = ['node', 'ruby']
+idiomatic_version_file_enable_tools = ['node', 'ruby', 'yarn']
 
 [tools]
 actionlint = '1.7.7'
