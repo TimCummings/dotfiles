@@ -12,7 +12,7 @@
     Similar to =JetBrains Mono= - looks great all around. Not as tall, but better proportioned width vs. height than some others like =Anonymous Pro= & =Source Code Pro=. Use =Cascadia Mono= versions for no ligatures.
 
 ** JetBrains Mono
-    [[https://www.jetbrains.com/lp/mono/]]
+    [[https://www.jetbrains.com/lp/mono/]]\\
     [[https://fonts.google.com/specimen/JetBrains+Mono]]
 
     Fairly thin and tall, but looks great all around. Special characters (icons) can be a little small, but look better than other fonts where they're too big. Use =NL= versions for "no ligatures".
@@ -25,7 +25,7 @@
 * Installation
   1. extract zipped files to...
      - =~/.local/share/fonts/= for the current user, or...
-     - =~/usr/share/fonts/= to make them available system wide (requires appropriate permissions)
+     - =/usr/share/fonts/= to make them available system wide (requires appropriate permissions)
   2. rebuild font info: ~fc-cache -f -v~
   3. Test fonts in terminal with:
     - best method (from this directory): ~cat styles.txt~
