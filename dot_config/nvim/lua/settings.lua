@@ -81,15 +81,3 @@ vim.api.nvim_exec([[
     autocmd! User GoyoLeave Limelight!
   augroup end
 ]], false)
-
-vim.api.nvim_create_augroup('Org', { clear = true })
-vim.api.nvim_create_autocmd('BufEnter',
-{
-  desc = 'aggressive conceal for org files',
-  group = 'Org',
-  pattern = '*.org',
-  callback = function()
-    vim.opt_local.conceallevel = 2
-    -- vim.opt_local.concealcursor = 'nc'
-  end,
-})

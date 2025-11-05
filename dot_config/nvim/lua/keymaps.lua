@@ -68,9 +68,6 @@ wk.add({
   { '<Leader>F', '<cmd>NnnPicker %:p:h<CR>', desc = 'Sibling Files' },
 })
 
--- Orgmode
-wk.add({ '<Leader>o', group = 'Orgmode...' })
-
 -- Telescope
 wk.add({
   { '<Leader>f', '<cmd>Telescope find_files<CR>', desc = 'find Files' },
