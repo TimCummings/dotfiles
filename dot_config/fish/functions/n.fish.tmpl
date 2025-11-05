@@ -10,7 +10,7 @@ function n
     (test -n "$XDG_CONFIG_HOME"; and echo "$XDG_CONFIG_HOME"; or echo "$HOME/.config") \
     "/nnn/.lastd")
 
-  nnn-nerd-static -eoR $argv
+  {{if eq .chezmoi.os "darwin"}}nnn -eoR $argv{{else}}nnn-nerd-static -eoR $argv{{end}}
 
   if test -f "$NNN_TMPFILE"
     source "$NNN_TMPFILE"

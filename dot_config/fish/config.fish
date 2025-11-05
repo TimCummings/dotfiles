@@ -26,6 +26,4 @@ if status is-interactive
   abbr -a gst 'git status'
 
   abbr -a lg lazygit
-
-  abbr -a nnn 'nnn-nerd-static -eoR'
 end
