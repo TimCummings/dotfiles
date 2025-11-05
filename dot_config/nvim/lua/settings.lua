@@ -10,15 +10,15 @@ vim.opt.termsync=false
 vim.diagnostic.config({
   underline = false,
   virtual_text = false,
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = '· ',
+      [vim.diagnostic.severity.WARN] = '· ',
+      [vim.diagnostic.severity.INFO] = '· ',
+      [vim.diagnostic.severity.HINT] = '· ',
+    },
+  },
 })
-
--- local signs = { Error = '󰅚 ', Hint = '󰌶 ', Info = ' ', Warn = ' ' }
-local signs = { Error = '· ', Hint = '· ', Info = '· ', Warn = '· ' }
-for type, icon in pairs(signs) do
-  local hl = 'DiagnosticSign' .. type
-  -- vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-  vim.fn.sign_define(hl, { text = icon, texthl = hl })
-end
 
 -- always show sign column, even if empty
 -- prevents annoying "stutter" as signs come and go

@@ -40,16 +40,26 @@ return {
       return orig_util_open_floating_preview(contents, syntax, opts, ...)
     end
 
-    require('lspconfig').lua_ls.setup({
-      on_attach = on_attach,
+    -- Global defaults for all LSP servers
+    vim.lsp.config('*', {
       capabilities = capabilities,
-      settings = { Lua = { diagnostics = { globals = { 'vim' } } } },
+      on_attach = on_attach,
     })
 
-    require('lspconfig').ruby_lsp.setup({
-      on_attach = on_attach,
-      capabilities = capabilities,
+    -- Configure lua_ls
+    vim.lsp.config('lua_ls', {
+      settings = {
+        Lua = {
+          diagnostics = { globals = { 'vim' } }
+        }
+      },
     })
+
+    -- Configure ruby_lsp (uses defaults from global config)
+    vim.lsp.config('ruby_lsp', {})
+
+    -- Enable the LSP servers
+    vim.lsp.enable({ 'lua_ls', 'ruby_lsp' })
 
     -- TODO: move to settings and review options
     -- Set completeopt to have a better completion experience
