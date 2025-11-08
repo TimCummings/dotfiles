@@ -54,19 +54,19 @@ wk.add({ '<Leader>b', require('buffer_manager.ui').toggle_quick_menu, desc = 'Bu
 -- Colorizer
 vim.keymap.set('n', '<Leader>ct', '<cmd>ColorizerToggle<CR>', { desc = 'toggle Colorizer plugin' })
 
--- Navigator
-local modes = { 'i', 'n', 't', 'v' }
-vim.keymap.set(modes, '<M-h>', require('Navigator').left, { desc = 'Navigator Left' })
-vim.keymap.set(modes, '<M-l>', require('Navigator').right, { desc = 'Navigator Right' })
-vim.keymap.set(modes, '<M-k>', require('Navigator').up, { desc = 'Navigator Up' })
-vim.keymap.set(modes, '<M-j>', require('Navigator').down, { desc = 'Navigator Down' })
-
 -- Nnn file explorer
 wk.add({
   { '<Leader>E', '<cmd>NnnExplorer<CR>', desc = 'Nnn Explorer' },
   { '<Leader>e', '<cmd>NnnPicker<CR>', desc = 'Nnn Picker' },
   { '<Leader>F', '<cmd>NnnPicker %:p:h<CR>', desc = 'Sibling Files' },
 })
+
+-- Smart Splits
+local modes = { 'i', 'n', 't', 'v' }
+vim.keymap.set(modes, '<M-k>', require('smart-splits').move_cursor_up, { desc = 'Smart Splits Up' })
+vim.keymap.set(modes, '<M-l>', require('smart-splits').move_cursor_right, { desc = 'Smart Splits Right' })
+vim.keymap.set(modes, '<M-j>', require('smart-splits').move_cursor_down, { desc = 'Smart Splits Down' })
+vim.keymap.set(modes, '<M-h>', require('smart-splits').move_cursor_left, { desc = 'Smart Splits Left' })
 
 -- Telescope
 wk.add({

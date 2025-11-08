@@ -20,12 +20,14 @@ active_tab_title_template "{fmt.fg.color10}{index} {fmt.fg.tab}{title}"
 active_tab_font_style bold
 
 # OPTIONS
+allow_remote_control socket-only
 confirm_os_window_close 1
 cursor_trail 1
 cursor_trail_decay 0.1 0.3
 cursor_trail_start_threshold 2
 enable_audio_bell no
 enabled_layouts splits, grid, horizontal, vertical, fat, tall, stack
+listen_on unix:/tmp/kitty-{kitty_pid}
 macos_colorspace default
 macos_option_as_alt yes
 scrollback_lines 5000
@@ -53,14 +55,20 @@ map kitty_mod+] scroll_to_prompt 1
 
 ## WINDOWS (PANES)
 ### window navigation
-# map alt+h neighboring_window left
+map alt+h neighboring_window left
 map ctrl+space>h neighboring_window left
-# map alt+l neighboring_window right
+map alt+l neighboring_window right
 map ctrl+space>l neighboring_window right
-# map alt+k neighboring_window up
+map alt+k neighboring_window up
 map ctrl+space>k neighboring_window up
-# map alt+j neighboring_window down
+map alt+j neighboring_window down
 map ctrl+space>j neighboring_window down
+
+# Unset the mapping to pass the keys to neovim
+map --when-focus-on var:IS_NVIM alt+h
+map --when-focus-on var:IS_NVIM alt+l
+map --when-focus-on var:IS_NVIM alt+k
+map --when-focus-on var:IS_NVIM alt+j
 
 ### window splits
 map ctrl+space>x launch --location=hsplit --cwd=current
