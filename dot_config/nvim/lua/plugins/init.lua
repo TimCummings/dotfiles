@@ -30,12 +30,4 @@ return {
       vim.g['chezmoi#use_tmp_buffer'] = true
     end,
   },
-
-  {
-    'iamcco/markdown-preview.nvim',
-    config = function()
-      vim.fn['mkdp#util#install']()
-    end,
-    ft = 'markdown',
-  },
 }
