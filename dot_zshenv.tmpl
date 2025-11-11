@@ -1,0 +1,22 @@
+# hydrate ENV variables from chezmoi data file
+{{- range $key, $value := .env.shared }}
+export {{ $key }}={{ $value }}
+{{- end }}
+
+{{- if eq .chezmoi.os "darwin" }}
+{{- range $key, $value := .env.macos }}
+export {{ $key }}={{ $value }}
+{{- end }}
+{{- else if eq .chezmoi.os "linux" }}
+{{- range $key, $value := .env.linux }}
+export {{ $key }}={{ $value }}
+{{- end }}
+{{- end }}
+
+# Make sure ~/.local/bin is in PATH
+# if in $PATH, remove, regardless of if it is in the right place (at the front) or not.
+# replace all occurrences - ${parameter//pattern/string}
+LOCAL_BIN="${HOME}/.local/bin"
+[[ ":$PATH:" == *":${LOCAL_BIN}:"* ]] && PATH="${PATH//$LOCAL_BIN:/}"
+# add to front of $PATH
+PATH="${LOCAL_BIN}:$PATH"

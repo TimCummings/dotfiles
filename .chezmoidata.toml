@@ -1,0 +1,47 @@
+[env.linux]
+FZF_DEFAULT_OPTS = """"
+  --ansi
+  --border
+  --color=bg+:#1e1c31
+  --header 'CTRL-D: Directories | CTRL-F: Files | CTRL-H: Hidden'
+  --height 40%
+  --info=inline
+  --layout=reverse
+  --no-separator
+  --prompt='All > '
+  --bind 'ctrl-d:change-prompt(Directories > )+reload(fd --color=always --type d)'
+  --bind 'ctrl-f:change-prompt(Files > )+reload(fd --color=always --type f)'
+  --bind 'ctrl-h:change-prompt(Hidden > )+reload(fd --color=always --hidden)'
+  --bind 'ctrl-y:execute-silent(echo {+} | xclip -selection clipboard)+abort'"\
+  """
+
+[env.macos]
+ANDROID_HOME = "$HOME/Library/Android/sdk"
+FZF_DEFAULT_OPTS = """"
+  --ansi
+  --border
+  --color=bg+:#1e1c31
+  --header 'CTRL-D: Directories | CTRL-F: Files | CTRL-H: Hidden'
+  --height 40%
+  --info=inline
+  --layout=reverse
+  --no-separator
+  --prompt='All > '
+  --bind 'ctrl-d:change-prompt(Directories > )+reload(fd --color=always --type d)'
+  --bind 'ctrl-f:change-prompt(Files > )+reload(fd --color=always --type f)'
+  --bind 'ctrl-h:change-prompt(Hidden > )+reload(fd --color=always --hidden)'
+  --bind 'ctrl-y:execute-silent(echo {+} | pbcopy)+abort'"\
+  """
+
+[env.shared]
+BUNDLE_USER_CACHE = "$XDG_CACHE_HOME/bundle"
+BUNDLE_USER_CONFIG = "$XDG_CONFIG_HOME/bundle"
+BUNDLE_USER_PLUGIN = "$XDG_DATA_HOME/bundle"
+EDITOR = "nvim"
+FZF_DEFAULT_COMMAND = '"fd --color=always"'
+LANG = "en_US.UTF-8"
+LESSHISTFILE = '"-"'
+NNN_TRASH = 2
+XDG_CACHE_HOME = "$HOME/.cache"
+XDG_CONFIG_HOME = "$HOME/.config"
+XDG_DATA_HOME = "$HOME/.local/share"
