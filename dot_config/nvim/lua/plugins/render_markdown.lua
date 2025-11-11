@@ -11,7 +11,6 @@ return {
     code = {
       conceal_delimiters = false,
       highlight_language = 'Comment',
-      language_icon = false,
     },
 
     dash = {
@@ -19,11 +18,10 @@ return {
     },
 
     heading = {
-      -- above = '▁',
-      -- below = '▔',
       border = false,
-      -- border_virtual = true,
       icons = { '◆ ', '◇ ', '● ', '◯ ', '▶ ', '▷ ' },
+      right_pad = 2,
+      width = { 'full', 'full', 'block' },
     },
 
     pipe_table = {
