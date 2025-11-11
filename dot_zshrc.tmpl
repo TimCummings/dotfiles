@@ -25,6 +25,10 @@ autoload -U select-word-style
 select-word-style bash
 
 # aliases
+{{- range $key, $value := .abbreviations }}
+alias {{ $key }}={{ $value | squote }}
+{{- end }}
+
 alias psf='ps aux | fzf'
 
 alias l='ls -al --color'
@@ -32,29 +36,6 @@ if [[ $OSTYPE == "darwin"* ]]; then
   # MacOS
   alias ls='ls -G'
 fi
-
-# git
-alias g='git'
-# following aliases also in gitconfig (able to use e.g. in vim, but requires a space after `g`)
-alias ga='git add'
-alias gb='git branch'
-alias gbc='git branch | cat'
-alias gbf='git checkout $(git branch | fzf)'
-alias gc='git commit -v'
-alias gco='git checkout'
-alias gcp='git cherry-pick'
-alias gd='git diff'
-alias gdc='git diff --cached'
-alias gf='git fetch'
-alias gfa='git fetch -a'
-alias gl='git log'
-alias gp='git pull'
-alias gr='git rebase'
-alias gri='git rebase --interactive'
-alias gsh='git show'
-alias gst='git status'
-
-alias lg='lazygit'
 
 alias nnn={{or (and (eq .chezmoi.os "darwin") "'nnn -eoR'") "'nnn-nerd-static -eoR'"}}
 

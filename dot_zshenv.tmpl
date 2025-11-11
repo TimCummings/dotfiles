@@ -5,11 +5,11 @@ export {{ $key }}={{ $value }}
 
 {{- if eq .chezmoi.os "darwin" }}
 {{- range $key, $value := .env.macos }}
-export {{ $key }}={{ $value }}
+export {{ $key }}={{ $value | quote }}
 {{- end }}
 {{- else if eq .chezmoi.os "linux" }}
 {{- range $key, $value := .env.linux }}
-export {{ $key }}={{ $value }}
+export {{ $key }}={{ $value | quote }}
 {{- end }}
 {{- end }}
 
