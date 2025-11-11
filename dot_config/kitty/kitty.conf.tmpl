@@ -43,11 +43,19 @@ map ctrl+space>r load_config_file
 ## Wezterm Copy Mode / Alacritty Vi Mode
 map ctrl+space>u launch --stdin-source=@screen_scrollback --type=overlay
 \ ~/.local/share/mise/shims/nvim -u NONE
-\ -c 'setlocal buftype=nofile clipboard=unnamedplus cmdheight=0 laststatus=0 noswapfile nowrap'
+\ -c 'setlocal buftype=nofile clipboard=unnamedplus cmdheight=0 laststatus=0 nolist noswapfile nowrap'
 \ -c 'autocmd TextYankPost * call timer_start(0, {-> execute("qa!")})'
 \ -c 'nnoremap q :qa!<CR>'
-\ -c 'nnoremap <Esc> :qa!<CR>'
-\ -c 'normal! G' -
+\ -c 'let kitty_data = split($KITTY_PIPE_DATA, ":")'
+\ -c 'let [cursor_x, cursor_y] = split(kitty_data[1], ",")'
+\ -c 'let [term_lines, term_cols] = split(kitty_data[2], ",")'
+\ -c 'let target_line = line("$") - (term_lines - cursor_y - 1)'
+\ -c 'let top_line = line("$") - (term_lines - 2)'
+\ -c 'call setcursorcharpos(target_line, cursor_x)'
+\ -c 'call winrestview({"topline": top_line})' -
+# This causes nvim to immediately exit; I don't know why.
+# It works well enough without this line and I'm out of patience; revisit later.
+# \ -c 'nnoremap <Esc> :qa!<CR>' -
 
 ## hints (like Wezterm's Quick Select Mode)
 map ctrl+shift+space kitten hints --customize-processing quick_select_hints.py
