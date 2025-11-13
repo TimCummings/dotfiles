@@ -43,7 +43,7 @@ map ctrl+space>r load_config_file
 ## Wezterm Copy Mode / Alacritty Vi Mode
 map ctrl+space>u launch --stdin-source=@screen_scrollback --type=overlay
 \ ~/.local/share/mise/shims/nvim -u NONE
-\ -c 'setlocal buftype=nofile clipboard=unnamedplus cmdheight=0 laststatus=0 nolist noswapfile nowrap'
+\ -c 'setlocal buftype=nofile clipboard=unnamedplus cmdheight=0 laststatus=0 nolist noswapfile'
 \ -c 'autocmd TextYankPost * call timer_start(0, {-> execute("qa!")})'
 \ -c 'nnoremap q :qa!<CR>'
 \ -c 'let kitty_data = split($KITTY_PIPE_DATA, ":")'
