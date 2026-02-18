@@ -55,8 +55,16 @@ return {
       },
     })
 
-    -- Configure ruby_lsp (uses defaults from global config)
-    vim.lsp.config('ruby_lsp', {})
+    -- Configure ruby_lsp
+    vim.lsp.config('ruby_lsp', {
+      init_options = {
+        addonSettings = {
+          ["Ruby LSP Rails"] = {
+            enablePendingMigrationsPrompt = false,
+          },
+        },
+      },
+    })
 
     -- Enable the LSP servers
     vim.lsp.enable({ 'lua_ls', 'ruby_lsp' })
