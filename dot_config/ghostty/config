@@ -4,6 +4,8 @@ font-feature = -dlig
 font-feature = -liga
 theme = ChallengerDeep
 
+custom-shader = ./shaders/cursor_smear.glsl
+
 keybind = ctrl+escape>r=reload_config
 keybind = ctrl+shift+z=jump_to_prompt:-1
 keybind = ctrl+shift+x=jump_to_prompt:1
