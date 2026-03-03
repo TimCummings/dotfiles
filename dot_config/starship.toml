@@ -48,7 +48,7 @@ symbol = "✶"
 style = "cyan"
 
 [shell]
-disabled = false
+disabled = true
 format = '[$indicator]($style)'
 style = 'cyan bold'
 bash_indicator = 'B'
