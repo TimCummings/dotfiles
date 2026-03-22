@@ -38,6 +38,16 @@ return {
           enable = true,              -- false will disable the whole extension
         },
 
+        incremental_selection = {
+          enable = true,
+          keymaps = {
+            init_selection = '<A-o>',
+            node_decremental = '<A-i>',
+            node_incremental = '<A-o>',
+            scope_incremental = '<A-O>',
+          },
+        },
+
         indent = {
           enable = true,
         }
