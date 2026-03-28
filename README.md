@@ -3,17 +3,33 @@
 
 ## Overview
 
-Dotfiles are now managed by [chezmoi](https://www.chezmoi.io/). Internally, `chezmoi` uses git for version control. Tracked files should be in `~/.local/share/chezmoi`, or ,more conveniently, `$DOTFILES` if my `zshenv` has been sourced.
+Dotfiles are managed by [chezmoi](https://www.chezmoi.io/).
 
-`chezmoi` can be directed to ignore files by adding them to `.chezmoiignore`. "Ignore" in this context means `git` will still track the ignored files, but `chezmoi` won't try to copy them on `init` or `apply`, which is what I want for something like README, etc.
+## Dependencies
+
+curl
+
+```bash
+sudo apt-get update
+sudo apt-get install -y curl
+```
 
 ## Bootstrapping
 
+### 1) Setup chezmoi
 
-### SSH Keys
+```bash
+mkdir -p ~/.local/bin
+sh -c "$(curl -fsLS get.chezmoi.io/lb)" -- init --apply https://github.com/TimCummings/dotfiles.git
+```
 
-1. Copy keys into `~/.ssh` directory.
-2. [Verify correct permissions](https://superuser.com/questions/215504/permissions-on-private-key-in-ssh-folder)
+### 2) (optional) SSH Setup
+
+Copy relevant SSH key to chezmoi directory (`~/.local/share/chezmoi`) as `id_rsa` for optional automated setup. This will enable writing/pushing to this repo.
+
+For reference:
+
+[Correct permissions](https://superuser.com/questions/215504/permissions-on-private-key-in-ssh-folder)
 
 | Item        | Sample              | Numeric       | Bitwise              |
 |-------------|---------------------|---------------|----------------------|
@@ -22,41 +38,10 @@ Dotfiles are now managed by [chezmoi](https://www.chezmoi.io/). Internally, `che
 | Private key | `~/.ssh/id_rsa`     | `600`         | `-rw-------`         |
 | Home folder | `~`                 | `755` at most | `drwxr-xr-x` at most |
 
-3. Add key to agent: `ssh-add ~/.ssh/id_rsa`.
-### Install [chezmoi](https://www.chezmoi.io/)
 
-Create `~/.local` if it doesn't yet exist.
+### 3) Bootstrap
 
-```
-mkdir -p ~/.local && cd ~/.local
-```
-
-```
-sh -c "$(curl -fsLS chezmoi.io/get)"
-```
-
-### Initialize Existing Repo
-
-```
-chezmoi init --ssh git@github.com:TimCummings/dotfiles.git
-chezmoi apply
-```
-
-### Install Zsh
-
-```
-sudo apt install zsh
-chsh -s /usr/bin/zsh
-```
-
-Then logout and back in.
-
-
-### Run bootstrap script
-
-**Note:** `chezmoi` may not be in `PATH` yet. Either prefix with it's location, eg. `./.local/bin/chezmoi` or `source .zshenv`.
-
-```
-chezmoi cd
+```bash
+~/.local/bin/chezmoi cd
 ./scripts/bootstrap.sh
 ```

@@ -5,11 +5,9 @@ libreadline-dev
 libsqlite3-dev
 libssl-dev
 libyaml-dev
-python3-tk
 slack-desktop
 steam
 tldr
 traceroute
 tree
-tmux
 xclip

@@ -1,15 +1,5 @@
 #!/bin/bash
 
-# this script should be run from bootstrap.sh;
-# be careful about running this directly without first verifying dependencies
-
-# DEPENDENCY NOTICES:
-# - Python depends on libbz2-dev, libncurses-dev, libreadline-dev, libsqlite3-dev, python3-tk,
-#   liblzma-dev
-# - Ruby dependso on libyaml (libyaml-dev), libssl-dev
-#   or instally it manually, fixing dependency errors one at a time.
-# - yamllint depends on jq and Python3
-
 RED=$(tput setaf 1)
 GREEN=$(tput setaf 2)
 # YELLOW=$(tput setaf 3)
@@ -20,14 +10,13 @@ echo "Starting software installation..."
 
 ########## apt installs ##########
 echo
-echo -e "    apt packages..."
+echo -e "\tapt packages..."
 xargs -a "$XDG_DATA_HOME/chezmoi/scripts/apt_packages" sudo apt install -y
 
 # tldr isn't useful until you update its offline cache of pages
 if type tldr &> /dev/null; then
   tldr --update
 fi
-
 
 ########## Mise ##########
 printf '    %-20s' mise...
@@ -40,26 +29,12 @@ else
 fi
 
 echo -e "    tools..."
+mise trust ~/.config/mise/config.toml
+mise trust ~/.local/share/chezmoi/mise.toml
 mise install
-
-
-
-echo
-echo -e "    other..."
-########## scripted installs ##########
-# printf '\t%-20s' "Starship prompt..."
-# if type starship &> /dev/null; then
-#   printf '    %-10s\n' "${GREEN}found!${NONE}"
-# else
-#   printf '    %-10s\n' "${RED}missing!${NONE}"
-#   echo "Installing starship prompt..."
-#   sh -c "$(curl -fsSL https://starship.rs/install.sh)"
-# fi
 
 printf '\t%-20s' "Installing ESlint..."
 yarn global add eslint
-
-
 
 ########## manual downloads ##########
 # Periodically check the version number below and update it!
@@ -69,9 +44,10 @@ if type nnn-nerd-static &> /dev/null; then
 else
   printf '    %-10s\n' "${RED}missing!${NONE}"
   echo "Installing Nnn file explorer..."
-  curl -LO https://github.com/jarun/nnn/releases/download/v4.9/nnn-nerd-static-4.9.x86_64.tar.gz \
-    && tar xf ./nnn-nerd-static-4.9.x86_64.tar.gz -C ~/.local/bin \
-    && rm -f nnn-nerd-static-4.9.x86_64.tar.gz
+  curl -L -o /tmp/nnn-nerd-static-5.2.x86_64.tar.gz \
+       https://github.com/jarun/nnn/releases/download/v5.2/nnn-nerd-static-5.2.x86_64.tar.gz \
+    && tar xf /tmp/nnn-nerd-static-5.2.x86_64.tar.gz -C ~/.local/bin \
+    && rm -f /tmp/nnn-nerd-static-5.2.x86_64.tar.gz
 fi
 
 # maybe add fonts here?
