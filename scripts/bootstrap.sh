@@ -7,19 +7,29 @@ NONE='\033[0m'
 
 SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
 
-while getopts "hk" opt; do
+usage() {
+  echo "Usage: $0 [-h] [-k <key-file>]"
+  echo -e "\t-h\tShow help"
+  echo -e "\t-k\tMount SSH key"
+}
+
+while getopts "hk:" opt; do
   case $opt in
-    h) echo "Usage: $0 [-r]"; exit 0 ;;
-    k) MOUNT_SSH_KEY=true ;;
-    *) echo "Usage: $0 [-r]"; exit 1 ;;
+    h) usage; exit 0 ;;
+    k) SSH_KEY_FILE="$OPTARG" ;;
+    *) usage; exit 1 ;;
   esac
 done
 
-if [[ -f id_rsa ]]; then
-  "${SCRIPT_DIR}/setup_ssh.sh" || exit
+if [[ -n "$SSH_KEY_FILE" ]]; then
+  if [[ -f "$SSH_KEY_FILE" ]]; then
+    "${SCRIPT_DIR}/setup_ssh.sh" "${SSH_KEY_FILE}" || exit
+  else
+    echo -e "\t\t${RED}SSH key not found!${NONE}"
+    exit 1
+  fi
 else
-  echo -e "\t\t${YELLOW}SSH key not found. Skipping SSH setup!${NONE}"
-  exit 1
+  echo -e "\t\t${YELLOW}No SSH key provided. Skipping SSH setup!${NONE}"
 fi
 
 "${SCRIPT_DIR}/setup_dependencies.sh" || exit
@@ -27,6 +37,7 @@ fi
 if command -v zsh &>/dev/null; then
   zsh -c "source '${SCRIPT_DIR}/setup_env.sh'" || exit
   zsh -c "${SCRIPT_DIR}/install_software.sh" || exit
+  echo -e "${YELLOW}REMINDER: logout for default shell change to be effective.${NONE}"
 else
   echo -e "${RED}Zsh not found, skipping env setup and software installation!"
 fi

@@ -30,7 +30,8 @@ chmod 600 "${HOME}/.ssh/${file_name}"
 # install SSH client if it's missing
 if ! command -v ssh-add &>/dev/null; then
   echo -e "${YELLOW}SSH client not found. Installing...${NONE}"
-  sudo apt install openssh-client
+  sudo apt-get update
+  sudo apt-get install -y openssh-client
 fi
 
 # start the ssh agent if it's not running
@@ -39,7 +40,7 @@ if [[ -z "$SSH_AUTH_SOCK" ]]; then
 fi
 
 # add the key to the agent unless it's already listed
-if ssh-add -l | grep -q "$(ssh-keygen -lf ~/.ssh/"${file_name}" 2>/dev/null | awk '{print $2}')"; then
+if ssh-add -l | grep -q "$(ssh-keygen -lf "${HOME}/.ssh/${file_name}" 2>/dev/null | awk '{print $2}')"; then
   echo -e "\t\t${YELLOW}Key already added, skipping.${NONE}"
 else
   ssh-add "${HOME}/.ssh/${file_name}"

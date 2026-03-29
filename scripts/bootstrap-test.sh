@@ -1,42 +1,51 @@
 #!/bin/bash
 
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[0;33m'
+NONE='\033[0m'
+
 IMAGE_NAME="test-ubuntu-ssh"
-MOUNT_SSH_KEY=false
 REMOTE=false
 
 usage() {
-  echo "Usage: $0 [-hkr]"
+  echo "Usage: $0 [-hr] [-k <key-file>]"
   echo -e "\t-h\tShow help"
   echo -e "\t-k\tMount SSH key"
   echo -e "\t-r\tRemote: pull remote dotfiles instead of copying local"
-  exit 0
 }
 
-while getopts "hkr" opt; do
+while getopts "hk:r" opt; do
   case $opt in
-    h) usage ;;
-    k) MOUNT_SSH_KEY=true ;;
+    h) usage; exit 0 ;;
+    k) SSH_KEY_FILE=$OPTARG ;;
     r) REMOTE=true ;;
-    *) usage ;;
+    *) usage; exit 1 ;;
   esac
 done
 
-MOUNT_SSH_KEY_FLAG=()
-if [[ "$MOUNT_SSH_KEY" = true ]]; then
-  MOUNT_SSH_KEY_FLAG=(-v "$PWD/id_rsa:/home/testuser/id_rsa:ro")
-fi
-
 BASE_CMD=(
   podman run --rm -it
-    "${MOUNT_SSH_KEY_FLAG[@]}"
     -w /home/testuser
     "$IMAGE_NAME"
     bash -c
 )
 
 BUILD_ARGS=()
+
+if [[ -n "$SSH_KEY_FILE" ]]; then
+  if [[ -f "$SSH_KEY_FILE" ]]; then
+    STAGED_KEY=".staged_ssh_key"
+    cp "$SSH_KEY_FILE" "$PWD/$STAGED_KEY"
+    BUILD_ARGS+=(--build-arg SSH_KEY_FILE="$STAGED_KEY")
+  else
+    echo -e "${RED}SSH key not found!${NONE}"
+    exit 1
+  fi
+fi
+
 if [[ "$REMOTE" = true ]]; then
-  BUILD_ARGS=(--build-arg REMOTE=true)
+  BUILD_ARGS+=(--build-arg REMOTE=true)
   # pull remote dotfiles for chezmoi init
   CONTAINER_CMD='sh -c "$(curl -fsLS get.chezmoi.io/lb)" \
     -- init --apply https://github.com/TimCummings/dotfiles.git; \
@@ -50,6 +59,8 @@ fi
 
 podman build "${BUILD_ARGS[@]}" \
        -t "$IMAGE_NAME" \
-       -f ./scripts/Dockerfile.test $PWD
+       -f ./scripts/Dockerfile.test "$PWD"
+
+[[ -n "$STAGED_KEY" ]] && rm -f "$PWD/$STAGED_KEY"
 
 "${BASE_CMD[@]}" "${CONTAINER_CMD}"
