@@ -21,8 +21,6 @@ while getopts "hkr" opt; do
   esac
 done
 
-podman build -t "$IMAGE_NAME" -f ./scripts/Dockerfile.test $PWD
-
 MOUNT_SSH_KEY_FLAG=()
 if [[ "$MOUNT_SSH_KEY" = true ]]; then
   MOUNT_SSH_KEY_FLAG=(-v "$PWD/id_rsa:/home/testuser/id_rsa:ro")
@@ -36,7 +34,9 @@ BASE_CMD=(
     bash -c
 )
 
+BUILD_ARGS=()
 if [[ "$REMOTE" = true ]]; then
+  BUILD_ARGS=(--build-arg REMOTE=true)
   # pull remote dotfiles for chezmoi init
   CONTAINER_CMD='sh -c "$(curl -fsLS get.chezmoi.io/lb)" \
     -- init --apply https://github.com/TimCummings/dotfiles.git; \
@@ -47,5 +47,9 @@ else
     ~/.local/bin/chezmoi apply; \
     exec bash'
 fi
+
+podman build "${BUILD_ARGS[@]}" \
+       -t "$IMAGE_NAME" \
+       -f ./scripts/Dockerfile.test $PWD
 
 "${BASE_CMD[@]}" "${CONTAINER_CMD}"

@@ -8,6 +8,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN adduser --disabled-password --gecos "" testuser && \
     adduser testuser sudo && \
     echo "testuser ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+ARG REMOTE=false
 COPY --chown=testuser:testuser .. /home/testuser/.local/share/chezmoi
+# yucky hack in place of a conditional COPY (which I've been unable to get working)
+# REMOTE run should pull remote (GitHub) dotfiles instead of using local files
+RUN if [ "$REMOTE" = "true" ]; then \
+    rm -rf /home/testuser/.local/share/chezmoi; \
+    fi
 WORKDIR /home/testuser
 USER testuser
