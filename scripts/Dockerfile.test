@@ -1,0 +1,13 @@
+FROM ubuntu:latest
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    adduser \
+    ca-certificates \
+    curl \
+    sudo \
+    && rm -rf /var/lib/apt/lists/*
+RUN adduser --disabled-password --gecos "" testuser && \
+    adduser testuser sudo && \
+    echo "testuser ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+COPY --chown=testuser:testuser .. /home/testuser/.local/share/chezmoi
+WORKDIR /home/testuser
+USER testuser
