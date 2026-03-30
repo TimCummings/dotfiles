@@ -54,6 +54,14 @@ wk.add({ '<Leader>b', require('buffer_manager.ui').toggle_quick_menu, desc = 'Bu
 -- Colorizer
 vim.keymap.set('n', '<Leader>ct', '<cmd>ColorizerToggle<CR>', { desc = 'toggle Colorizer plugin' })
 
+-- Gitsigns
+wk.add({
+  { '[h', '<cmd>Gitsigns nav_hunk prev<CR>', desc = 'Hunk backward' },
+  { '[H', '<cmd>Gitsigns nav_hunk first<CR>', desc = 'Hunk first' },
+  { ']h', '<cmd>Gitsigns nav_hunk next<CR>', desc = 'Hunk forward' },
+  { ']H', '<cmd>Gitsigns nav_hunk last<CR>', desc = 'Hunk last' },
+})
+
 -- Nnn file explorer
 wk.add({
   { '<Leader>E', '<cmd>NnnExplorer<CR>', desc = 'Nnn Explorer' },
