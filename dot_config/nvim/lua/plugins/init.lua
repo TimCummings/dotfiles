@@ -2,7 +2,7 @@
 return {
   'tpope/vim-surround',
   'tpope/vim-repeat',
-  { 'tpope/vim-fugitive', cmd = 'G', },
+  { 'lewis6991/gitsigns.nvim' },
   { 'junegunn/goyo.vim' },
   { 'junegunn/limelight.vim' },
   { 'dhruvasagar/vim-table-mode', cmd = { 'TableModeEnable', 'TableModeToggle' }, keys = '<Leader>vtm' },
