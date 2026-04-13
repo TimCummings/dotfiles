@@ -56,6 +56,7 @@ vim.keymap.set('n', '<Leader>ct', '<cmd>ColorizerToggle<CR>', { desc = 'toggle C
 
 -- Gitsigns
 wk.add({
+  { '<Leader>gb', '<cmd>Gitsigns blame<CR>', desc = 'Git blame' },
   { '[h', '<cmd>Gitsigns nav_hunk prev<CR>', desc = 'Hunk backward' },
   { '[H', '<cmd>Gitsigns nav_hunk first<CR>', desc = 'Hunk first' },
   { ']h', '<cmd>Gitsigns nav_hunk next<CR>', desc = 'Hunk forward' },
