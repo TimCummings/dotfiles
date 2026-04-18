@@ -7,6 +7,9 @@ theme = ChallengerDeep
 custom-shader = ./shaders/cursor_smear.glsl
 
 keybind = ctrl+escape>r=reload_config
+# workaround for flaky modifier key support
+# translate `ctrl+shift+space` to `ctrl+Space+F` (prefix+F - fingers' default activation sequence)
+keybind = ctrl+shift+space=text:\x00F
 keybind = ctrl+shift+page_up=scroll_page_up
 keybind = ctrl+shift+page_down=scroll_page_down
 keybind = ctrl+shift+{=jump_to_prompt:-1
