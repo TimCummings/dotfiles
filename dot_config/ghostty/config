@@ -6,6 +6,8 @@ theme = ChallengerDeep
 
 custom-shader = ./shaders/cursor_smear.glsl
 
+mouse-hide-while-typing = true
+
 keybind = ctrl+escape>r=reload_config
 # workaround for flaky modifier key support
 # translate `ctrl+shift+space` to `ctrl+Space+F` (prefix+F - fingers' default activation sequence)
