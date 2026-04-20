@@ -1,7 +1,9 @@
-font-family = "Intel One Mono"
+font-family = "Intel One Mono Medium"
+font-family-bold = "Intel One Mono Bold"
 font-feature = -calt
 font-feature = -dlig
 font-feature = -liga
+font-size = 14
 theme = ChallengerDeep
 
 custom-shader = ./shaders/cursor_smear.glsl
