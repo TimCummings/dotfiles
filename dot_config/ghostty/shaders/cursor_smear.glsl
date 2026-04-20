@@ -97,7 +97,13 @@ float easeClamped(float x) {
 }
 
 // Trail animation duration in seconds
-const float DURATION = 0.3;
+const float DURATION = 0.27;
+
+// Cursor movement thresholds as a fraction of screen diagonal.
+// Short moves, such as normal typing, get little or no trail. Large jumps
+// across the screen still render at full strength.
+const float TRAIL_START_DISTANCE = 0.015;
+const float TRAIL_FULL_DISTANCE = 0.18;
 
 void mainImage(out vec4 fragColor, in vec2 fragCoord) {
     // Calculate animation progress with easing
@@ -105,9 +111,12 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
 
     vec2 uv = fragCoord / iResolution.xy;
     vec4 background = texture(iChannel0, uv);
+    vec2 cursorDeltaPx = iCurrentCursor.xy - iPreviousCursor.xy;
+    float moveRatio = length(cursorDeltaPx) / length(iResolution.xy);
+    float trailStrength = smoothstep(TRAIL_START_DISTANCE, TRAIL_FULL_DISTANCE, moveRatio);
 
-    // Skip further work when animation is complete
-    if (baseProgress >= 1.0) {
+    // Skip further work when animation is complete or the cursor barely moved.
+    if (baseProgress >= 1.0 || trailStrength <= 0.0) {
         fragColor = background;
         return;
     }
@@ -150,7 +159,7 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
     // Compute hexagon SDF and convert to alpha with antialiasing
     vec2 normCoord = fragCoord * scale - normOffset;
     float sdfHex = sdHexagon(normCoord, trailP1, trailP2, currP2, currP4, currP3, trailP3);
-    float alpha = 1.0 - smoothstep(-aaWidth, aaWidth, sdfHex);
+    float alpha = (1.0 - smoothstep(-aaWidth, aaWidth, sdfHex)) * trailStrength;
 
     // Compute current cursor SDF
     vec2 halfCurrentSize = currentSize * 0.5;
