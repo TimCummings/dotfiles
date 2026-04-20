@@ -9,6 +9,9 @@ custom-shader = ./shaders/cursor_smear.glsl
 mouse-hide-while-typing = true
 
 keybind = ctrl+escape>r=reload_config
+keybind = ctrl+shift++=increase_font_size:1
+keybind = ctrl+shift+-=decrease_font_size:1
+keybind = ctrl+shift+0=reset_font_size
 # workaround for flaky modifier key support
 # translate `ctrl+shift+space` to `ctrl+Space+F` (prefix+F - fingers' default activation sequence)
 keybind = ctrl+shift+space=text:\x00F
