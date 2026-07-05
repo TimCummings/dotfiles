@@ -2,75 +2,42 @@
 
 RED='\033[0;31m'
 GREEN='\033[0;32m'
-# YELLOW='\033[0;33m'
+YELLOW='\033[0;33m'
 NONE='\033[0m'
 
-echo
-echo "Checking dependencies..."
+SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
 
-echo -en "\tchezmoi?"
-if type chezmoi &> /dev/null; then
-  echo -e "\t\t${GREEN}found!${NONE}"
-else
-  echo -e "\t\t${RED}missing!${NONE}"
-  echo "Install chezmoi, then try again - see dotfiles README."
-fi
-echo -en "\tchezmoi config?"
-if [ -d ~/.local/share/chezmoi ]; then
-  echo -e "\t\t${GREEN}found!${NONE}"
-else
-  echo -e "\t\t${RED}missing!${NONE}"
-  echo "Init and apply chezmoi, then try again - see dotfiles README."
-  exit 1
-fi
+usage() {
+  echo "Usage: $0 [-h] [-k <key-file>]"
+  echo -e "\t-h\tShow help"
+  echo -e "\t-k\tMount SSH key"
+}
 
-echo -en "\tzsh?"
-if type zsh &> /dev/null; then
-  echo -e "\t\t\t${GREEN}found!${NONE}"
-else
-  echo -e "\t\t\t${RED}missing!${NONE}"
-  echo "Install zsh, then try again."
-  exit 1
-fi
+while getopts "hk:" opt; do
+  case $opt in
+    h) usage; exit 0 ;;
+    k) SSH_KEY_FILE="$OPTARG" ;;
+    *) usage; exit 1 ;;
+  esac
+done
 
-# setup environment
-echo
-echo -n "Checking environment..."
-# shellcheck source=/dev/null
-source ~/.zshenv
-
-echo
-echo "Checking XDG directories..."
-echo -n "XDG DATA HOME..."
-if [ -d "$XDG_DATA_HOME" ]; then
-  echo -e "\t\t${GREEN}found!${NONE}"
+if [[ -n "$SSH_KEY_FILE" ]]; then
+  if [[ -f "$SSH_KEY_FILE" ]]; then
+    "${SCRIPT_DIR}/setup_ssh.sh" "${SSH_KEY_FILE}" || exit
+  else
+    echo -e "\t\t${RED}SSH key not found!${NONE}"
+    exit 1
+  fi
 else
-  echo -e "\t\t${RED}missing!${NONE}"
-  mkdir -pv "$XDG_DATA_HOME"
+  echo -e "\t\t${YELLOW}No SSH key provided. Skipping SSH setup!${NONE}"
 fi
 
-echo -n "XDG CACHE HOME..."
-if [ -d "$XDG_CACHE_HOME" ]; then
-  echo -e "\t\t${GREEN}found!${NONE}"
+"${SCRIPT_DIR}/setup_dependencies.sh" || exit
+
+if command -v zsh &>/dev/null; then
+  zsh -c "source '${SCRIPT_DIR}/setup_env.sh'" || exit
+  zsh -c "${SCRIPT_DIR}/install_software.sh" || exit
+  echo -e "${YELLOW}REMINDER: logout for default shell change to be effective.${NONE}"
 else
-  echo -e "\t\t${RED}missing!${NONE}"
-  mkdir -pv "$XDG_CACHE_HOME"
+  echo -e "${RED}Zsh not found, skipping env setup and software installation!"
 fi
-
-echo -n "XDG CONFIG HOME..."
-if [ -d "$XDG_CONFIG_HOME" ]; then
-  echo -e "\t\t${GREEN}found!${NONE}"
-else
-  echo -e "\t\t${RED}missing!${NONE}"
-  mkdir -pv "$XDG_CONFIG_HOME"
-fi
-
-echo
-echo -e "${GREEN}Bootstrapping successful!${NONE}"
-
-echo
-echo "Handing off to software installation script..."
-# shellcheck source=/dev/null
-source ./scripts/install_software.sh
-
-exit 0

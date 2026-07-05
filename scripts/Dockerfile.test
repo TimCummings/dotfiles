@@ -1,0 +1,30 @@
+FROM ubuntu:latest
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    adduser \
+    ca-certificates \
+    curl \
+    git \
+    sudo \
+    && rm -rf /var/lib/apt/lists/*
+RUN adduser --disabled-password --gecos "" testuser && \
+    adduser testuser sudo && \
+    echo "testuser ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+
+ARG SSH_KEY_FILE
+COPY ${SSH_KEY_FILE:-.gitignore} /tmp/ssh_key_staged
+RUN if [ -n "$SSH_KEY_FILE" ]; then \
+      mv /tmp/ssh_key_staged "/home/testuser/$(basename "$SSH_KEY_FILE")"; \
+      chown testuser:testuser "/home/testuser/$(basename "$SSH_KEY_FILE")"; \
+    else \
+      rm -f /tmp/ssh_key_staged; \
+    fi
+
+ARG REMOTE=false
+COPY --chown=testuser:testuser .. /home/testuser/.local/share/chezmoi
+# yucky hack in place of a conditional COPY (which I've been unable to get working)
+# REMOTE run should pull remote (GitHub) dotfiles instead of using local files
+RUN if [ "$REMOTE" = "true" ]; then \
+    rm -rf /home/testuser/.local/share/chezmoi; \
+    fi
+WORKDIR /home/testuser
+USER testuser
