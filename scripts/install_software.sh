@@ -1,9 +1,9 @@
 #!/bin/bash
 
-RED=$(tput setaf 1)
-GREEN=$(tput setaf 2)
-# YELLOW=$(tput setaf 3)
-NONE=$(tput sgr0)
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[0;33m'
+NONE='\033[0m'
 
 echo
 echo "Starting software installation..."
@@ -52,5 +52,6 @@ fi
 
 # maybe add fonts here?
 
-echo '\nREMINDER: Consult `misc/manual_adjustments.md`.'
+echo
+echo 'REMINDER: Consult `misc/manual_adjustments.md`.'
 exit 0

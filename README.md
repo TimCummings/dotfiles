@@ -44,4 +44,7 @@ For reference:
 ```bash
 ~/.local/bin/chezmoi cd
 ./scripts/bootstrap.sh
+
+# or specify SSH key:
+./scripts/bootstrap.sh -k id_rsa
 ```
