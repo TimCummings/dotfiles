@@ -29,8 +29,6 @@ select-word-style bash
 alias {{ $key }}={{ $value | squote }}
 {{- end }}
 
-alias psf='ps aux | fzf'
-
 alias l='ls -al --color'
 if [[ $OSTYPE == "darwin"* ]]; then
   # MacOS

@@ -11,7 +11,7 @@
   d = diff
   dc = diff --cached
   f = fetch
-  fa = fetch -a
+  fa = fetch --all
   l = log
   p = pull
   r = rebase
