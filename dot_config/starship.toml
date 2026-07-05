@@ -47,17 +47,6 @@ format = '[$hostname| ]($style)'
 symbol = "✶"
 style = "cyan"
 
-[shell]
-disabled = true
-format = '[$indicator]($style)'
-style = 'cyan bold'
-bash_indicator = 'B'
-fish_indicator = '󰈺 '
-nu_indicator = 'N'
-powershell_indicator = 'P'
-unknown_indicator = '?'
-zsh_indicator = 'Z'
-
 [username]
 style_root = "bold red"
 style_user = "bold #1e4dab"
