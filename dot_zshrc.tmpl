@@ -37,14 +37,21 @@ fi
 
 alias nnn={{or (and (eq .chezmoi.os "darwin") "'nnn -eoR'") "'nnn-nerd-static -eoR'"}}
 
+# setup autocomplete
+zmodload zsh/complist
+autoload -Uz compinit
+compinit
+
 # highlight completion selection
 zstyle ':completion:*' menu select
 
-# auto completion:
 # - first try simple completion `''`
 # - then try case sensitive
 # - then try case insensitive
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z-_}={A-Za-z_-}' 'r:|=*' 'l:|=* r:|=*'
+
+# bind Shift + Tab to reverse cycle through autocomplete options
+bindkey '^[[Z' reverse-menu-complete
 
 # functions
 
