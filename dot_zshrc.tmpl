@@ -10,10 +10,10 @@ bindkey -e
 # CTRL-Left-Right jumps words
 bindkey "\e[1;5D" backward-word
 bindkey "\e[1;5C" forward-word
+# real delete (delete forward)
+bindkey "\e[3~" delete-char
 # MacOS specific
 if [[ $OSTYPE == "darwin"* ]]; then
-  # real delete (delete forward)
-  bindkey "\e[3~" delete-char
 # Home and end
   bindkey "^[[H" beginning-of-line
   bindkey "^[[F" end-of-line
