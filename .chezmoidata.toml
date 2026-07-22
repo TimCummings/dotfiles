@@ -18,6 +18,8 @@ gr = "git rebase"
 gri = "git rebase --interactive"
 gsh = "git show"
 gst = "git status"
+gsw = "git switch"
+gwt = "git worktree"
 lg = "lazygit"
 psf = "ps aux | fzf"
 

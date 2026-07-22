@@ -18,3 +18,5 @@
   ri = rebase --interactive
   sh = show
   st = status
+  sw = switch
+  wt = worktree
