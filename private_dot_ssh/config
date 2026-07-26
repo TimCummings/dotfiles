@@ -1,6 +1,12 @@
 Host *
   ServerAliveInterval 120
 
+Host github.com
+  HostName github.com
+  User git
+  Identityfile ~/.ssh/id_rsa_personal
+  IdentitiesOnly yes
+
 Host tjc
   HostName timothyjcummings.com
   User tjc

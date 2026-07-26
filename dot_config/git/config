@@ -20,3 +20,5 @@
   st = status
   sw = switch
   wt = worktree
+[init]
+  defaultBranch = main
