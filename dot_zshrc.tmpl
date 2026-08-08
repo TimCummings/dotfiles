@@ -53,6 +53,13 @@ zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z-_}={A-Za-z_-}' 'r:|=*' 'l:|=* 
 # bind Shift + Tab to reverse cycle through autocomplete options
 bindkey '^[[Z' reverse-menu-complete
 
+# CachyOS ssh authentication socket
+if [[ -z ${SSH_AUTH_SOCK:-} &&
+  -n ${XDG_RUNTIME_DIR:-} &&
+  -S "$XDG_RUNTIME_DIR/ssh-agent.socket" ]]; then
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+fi
+
 # functions
 
 # NNN: enable cd on quit with ^G

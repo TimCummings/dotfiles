@@ -1,4 +1,5 @@
 Host *
+  AddKeysToAgent 4h
   ServerAliveInterval 120
 
 Host github.com
