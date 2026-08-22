@@ -238,12 +238,6 @@ hl.config({
     },
 })
 
-hl.gesture({
-    fingers = 3,
-    direction = "horizontal",
-    action = "workspace"
-})
-
 hl.config({
   input = {
     repeat_rate = 30,   -- repeats per second
@@ -268,6 +262,7 @@ hl.device({
 
 local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 local ipc = "noctalia msg"
+local logicalWorkspaces = require("logical_workspaces").setup()
 
 -- TEMP DEBUG helpers
 hl.bind(mainMod .. " + SHIFT + B", hl.dsp.exec_cmd(os.getenv("HOME") .. "/.local/bin/hypr-black-screen-debug"))
@@ -304,23 +299,23 @@ hl.bind(mainMod .. " + k", hl.dsp.focus({ direction = "up" }))
 hl.bind(mainMod .. " + j", hl.dsp.focus({ direction = "down" }))
 
 -- switch to next/previous workspace
-hl.bind(mainMod .. " + CTRL + K",    hl.dsp.focus({ workspace = "-1" }))
-hl.bind(mainMod .. " + CTRL + up",   hl.dsp.focus({ workspace = "-1" }))
-hl.bind(mainMod .. " + CTRL + J",    hl.dsp.focus({ workspace = "+1" }))
-hl.bind(mainMod .. " + CTRL + down", hl.dsp.focus({ workspace = "+1" }))
+hl.bind(mainMod .. " + CTRL + K",    logicalWorkspaces.previous)
+hl.bind(mainMod .. " + CTRL + up",   logicalWorkspaces.previous)
+hl.bind(mainMod .. " + CTRL + J",    logicalWorkspaces.next)
+hl.bind(mainMod .. " + CTRL + down", logicalWorkspaces.next)
 
 -- move active window to next/previous workspace
-hl.bind(mainMod .. " + CTRL + SHIFT + K",    hl.dsp.window.move({ workspace = "-1" }))
-hl.bind(mainMod .. " + CTRL + SHIFT + up",   hl.dsp.window.move({ workspace = "-1" }))
-hl.bind(mainMod .. " + CTRL + SHIFT + J",    hl.dsp.window.move({ workspace = "+1" }))
-hl.bind(mainMod .. " + CTRL + SHIFT + down", hl.dsp.window.move({ workspace = "+1" }))
+hl.bind(mainMod .. " + CTRL + SHIFT + K",    logicalWorkspaces.move_previous)
+hl.bind(mainMod .. " + CTRL + SHIFT + up",   logicalWorkspaces.move_previous)
+hl.bind(mainMod .. " + CTRL + SHIFT + J",    logicalWorkspaces.move_next)
+hl.bind(mainMod .. " + CTRL + SHIFT + down", logicalWorkspaces.move_next)
 
 -- Switch workspaces with mainMod + [0-9]
 -- Move active window to a workspace with mainMod + SHIFT + [0-9]
 for i = 1, 10 do
     local key = i % 10 -- 10 maps to key 0
-    hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = i }))
-    hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
+    hl.bind(mainMod .. " + " .. key, function() logicalWorkspaces.focus(i) end)
+    hl.bind(mainMod .. " + SHIFT + " .. key, function() logicalWorkspaces.move_to(i) end)
 end
 
 -- move windows with mainMod + SHIFT + arrow keys
@@ -342,8 +337,8 @@ hl.bind(mainMod .. " + S",         hl.dsp.workspace.toggle_special("magic"))
 hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
 
 -- Scroll through existing workspaces with mainMod + scroll
-hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
-hl.bind(mainMod .. " + mouse_up",   hl.dsp.focus({ workspace = "e-1" }))
+hl.bind(mainMod .. " + mouse_down", logicalWorkspaces.next)
+hl.bind(mainMod .. " + mouse_up", logicalWorkspaces.previous)
 
 -- Move/resize windows with mainMod + LMB/RMB and dragging
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(),   { mouse = true })
