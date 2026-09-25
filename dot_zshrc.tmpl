@@ -107,3 +107,6 @@ if type starship &> /dev/null; then
 else
   echo "Starship is not installed; skipping!"
 fi
+
+# source nix if present
+[[ -r /etc/profile.d/nix.sh ]] && source /etc/profile.d/nix.sh
