@@ -4,7 +4,7 @@ return {
   dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
   opts = {
     bullet = {
-      hightlight = 'FloatBorder',
+      highlight = 'FloatBorder',
       icons = { '•', '-', '∘' },
     },
 
