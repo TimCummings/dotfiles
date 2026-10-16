@@ -2,6 +2,16 @@
 
 These add to a project's AGENTS.md; they don't replace it.
 
+## Priorities
+
+Prioritize these qualities in this order:
+
+1. Correctness — Support conclusions with evidence. Cite sources when relevant. Do not present assumptions as facts. State uncertainty and material ambiguity so we can resolve them together.
+2. Clarity — Be direct and sufficiently precise. Use consistent terms.
+3. Conciseness — Avoid unnecessary detail and repetition. Do not copy guidance from AGENTS.md or CLAUDE.md into plans, specifications, or comments unless it is necessary there.
+
+This order resolves tradeoffs. Never sacrifice correctness for clarity or conciseness. Use repetition only when it materially improves clarity.
+
 ## Workflow
 
 Work one step at a time unless instructed otherwise, so I can review incrementally:
