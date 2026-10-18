@@ -3,7 +3,8 @@ idiomatic_version_file_enable_tools = ['node', 'ruby', 'yarn']
 
 [tools]
 actionlint = '1.7.11'
-codex = '0.144.4'
+claude-code = '2.1.301'
+codex = '0.162.1'
 direnv = '2.37.1'
 elixir = '1.19.5-otp-28'
 erlang = '28.4.1'
