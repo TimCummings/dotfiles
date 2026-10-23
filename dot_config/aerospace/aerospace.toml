@@ -1,0 +1,170 @@
+config-version = 2
+
+# Keep login startup disabled during evaluation.
+start-at-login = false
+
+# Reload this file automatically after the first manual reload.
+auto-reload-config = true
+
+enable-normalization-flatten-containers = true
+enable-normalization-opposite-orientation-for-nested-containers = true
+
+default-root-container-layout = 'tiles'
+default-root-container-orientation = 'auto'
+
+# Match Hyprland when focus moves to another monitor.
+on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+
+focus-follows-mouse.enabled = false
+key-mapping.preset = 'qwerty'
+
+persistent-workspaces = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10']
+
+# Match the three-pixel Hyprland gaps.
+gaps.inner.horizontal = 3
+gaps.inner.vertical = 3
+gaps.outer.left = 3
+gaps.outer.bottom = 3
+gaps.outer.top = 3
+gaps.outer.right = 3
+
+[workspace-to-monitor-force-assignment]
+'01' = 'main'
+'02' = 'main'
+'03' = 'main'
+'04' = 'main'
+'05' = 'main'
+'06' = 'secondary'
+'07' = 'secondary'
+'08' = 'secondary'
+'09' = 'secondary'
+10 = 'secondary'
+
+[[on-window-detected]]
+if.app-id = 'com.1password.1password'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.finder'
+run = 'layout floating'
+
+[mode.main.binding]
+
+# Window controls.
+cmd-q = 'close'
+cmd-g = 'layout floating tiling'
+cmd-z = 'fullscreen'
+cmd-o = 'layout horizontal vertical'
+
+# Focus with arrows.
+cmd-left = 'focus --boundaries all-monitors-outer-frame left'
+cmd-down = 'focus --boundaries all-monitors-outer-frame down'
+cmd-up = 'focus --boundaries all-monitors-outer-frame up'
+cmd-right = 'focus --boundaries all-monitors-outer-frame right'
+
+# Focus with HJKL.
+cmd-h = 'focus --boundaries all-monitors-outer-frame left'
+cmd-j = 'focus --boundaries all-monitors-outer-frame down'
+cmd-k = 'focus --boundaries all-monitors-outer-frame up'
+cmd-l = 'focus --boundaries all-monitors-outer-frame right'
+
+# Move windows with arrows.
+cmd-shift-left = 'move --boundaries all-monitors-outer-frame left'
+cmd-shift-down = 'move --boundaries all-monitors-outer-frame down'
+cmd-shift-up = 'move --boundaries all-monitors-outer-frame up'
+cmd-shift-right = 'move --boundaries all-monitors-outer-frame right'
+
+# Move windows with HJKL.
+cmd-shift-h = 'move --boundaries all-monitors-outer-frame left'
+cmd-shift-j = 'move --boundaries all-monitors-outer-frame down'
+cmd-shift-k = 'move --boundaries all-monitors-outer-frame up'
+cmd-shift-l = 'move --boundaries all-monitors-outer-frame right'
+
+# Select workspaces.
+cmd-1 = 'workspace 01'
+cmd-2 = 'workspace 02'
+cmd-3 = 'workspace 03'
+cmd-4 = 'workspace 04'
+cmd-5 = 'workspace 05'
+cmd-6 = 'workspace 06'
+cmd-7 = 'workspace 07'
+cmd-8 = 'workspace 08'
+cmd-9 = 'workspace 09'
+cmd-0 = 'workspace 10'
+
+# Move the active window and follow it.
+cmd-shift-1 = 'move-node-to-workspace --focus-follows-window 01'
+cmd-shift-2 = 'move-node-to-workspace --focus-follows-window 02'
+cmd-shift-3 = 'move-node-to-workspace --focus-follows-window 03'
+cmd-shift-4 = 'move-node-to-workspace --focus-follows-window 04'
+cmd-shift-5 = 'move-node-to-workspace --focus-follows-window 05'
+cmd-shift-6 = 'move-node-to-workspace --focus-follows-window 06'
+cmd-shift-7 = 'move-node-to-workspace --focus-follows-window 07'
+cmd-shift-8 = 'move-node-to-workspace --focus-follows-window 08'
+cmd-shift-9 = 'move-node-to-workspace --focus-follows-window 09'
+cmd-shift-0 = 'move-node-to-workspace --focus-follows-window 10'
+
+# Select the next or previous workspace.
+cmd-ctrl-j = [
+    'workspace next',
+    'focus-monitor --wrap-around next',
+    'workspace next',
+    'focus-monitor --wrap-around next',
+]
+cmd-ctrl-down = [
+    'workspace next',
+    'focus-monitor --wrap-around next',
+    'workspace next',
+    'focus-monitor --wrap-around next',
+]
+cmd-ctrl-k = [
+    'workspace prev',
+    'focus-monitor --wrap-around next',
+    'workspace prev',
+    'focus-monitor --wrap-around next',
+]
+cmd-ctrl-up = [
+    'workspace prev',
+    'focus-monitor --wrap-around next',
+    'workspace prev',
+    'focus-monitor --wrap-around next',
+]
+
+# Move to the next or previous workspace.
+cmd-ctrl-shift-j = [
+    'move-node-to-workspace --focus-follows-window next',
+    'focus-monitor --wrap-around next',
+    'workspace next',
+    'focus-monitor --wrap-around next',
+]
+cmd-ctrl-shift-down = [
+    'move-node-to-workspace --focus-follows-window next',
+    'focus-monitor --wrap-around next',
+    'workspace next',
+    'focus-monitor --wrap-around next',
+]
+cmd-ctrl-shift-k = [
+    'move-node-to-workspace --focus-follows-window prev',
+    'focus-monitor --wrap-around next',
+    'workspace prev',
+    'focus-monitor --wrap-around next',
+]
+cmd-ctrl-shift-up = [
+    'move-node-to-workspace --focus-follows-window prev',
+    'focus-monitor --wrap-around next',
+    'workspace prev',
+    'focus-monitor --wrap-around next',
+]
+
+# Resize the focused window.
+cmd-minus = 'resize smart -50'
+cmd-equal = 'resize smart +50'
+
+# Enter maintenance mode.
+cmd-shift-semicolon = 'mode service'
+
+[mode.service.binding]
+
+esc = ['reload-config', 'mode main']
+r = ['flatten-workspace-tree', 'mode main']
+f = ['layout floating tiling', 'mode main']
