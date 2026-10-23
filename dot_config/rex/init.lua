@@ -20,6 +20,8 @@ rex.bind("ctrl+space>p", "client.tab.previous")
 -- Panes
 rex.bind("ctrl+space>c", "pane.close")
 rex.bind("ctrl+space>shift+t", "pane.move_to_new_tab")
+rex.bind("ctrl+space>shift+[", "pane.move.left")
+rex.bind("ctrl+space>shift+]", "pane.move.right")
 rex.bind("ctrl+space>z", "pane.zoom")
 rex.bind("ctrl+space>v", "pane.split", { direction = "right" })
 rex.bind("ctrl+space>x", "pane.split", { direction = "down" })
