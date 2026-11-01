@@ -14,12 +14,41 @@ This order resolves tradeoffs. Never sacrifice correctness for clarity or concis
 
 ## Workflow
 
-Work one step at a time unless instructed otherwise, so I can review incrementally:
+Work in small, reviewable steps unless I instruct otherwise.
 
-- Confirm a plan is approved before executing any of it.
-- Execute one plan task at a time, then stop and report so I can review.
-- Don't commit. Leave changes in the working tree; I review and commit myself.
-- If I do ask for a commit: no Co-Authored-By lines, and leave plan/spec docs unstaged. I am responsible for the code I commit!
+You may act without approval when the action has low risk:
+
+- Run diagnostic commands and query logs.
+- Read non-sensitive files, configuration, and repository history.
+- Create plans, specifications, and other new documentation.
+- Make small, mechanical updates to plans or documentation.
+- Run read-only checks, such as tests, linters, and status commands.
+
+Do not read, expose, copy, or send sensitive data without my approval.
+
+Ask for approval before you:
+
+- Modify application code, production configuration, or user data.
+- Make a non-mechanical change to an existing plan or specification.
+- Run destructive commands or commands with broad side effects.
+- Send messages, publish content, create external resources, or change external systems.
+- Start implementation from a plan that I have not approved.
+
+After each implementation task, stop and report the result so I can review it.
+
+Do not commit. Leave changes in the working tree. I review and commit them myself.
+
+If I ask for a commit, do not add `Co-Authored-By` lines. Leave plan and specification documents unstaged.
+
+## Plan mode
+
+Use plan mode to inspect, diagnose, and write or revise plans.
+
+You may create a new plan without approval.
+
+Ask before you make a substantive change to an approved plan. A substantive change changes scope, requirements, design decisions, or task order.
+
+Do not implement plan tasks in plan mode unless I explicitly ask you to do so.
 
 ## Writing style
 
