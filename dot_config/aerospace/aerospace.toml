@@ -105,30 +105,10 @@ cmd-shift-9 = 'move-node-to-workspace --focus-follows-window 09'
 cmd-shift-0 = 'move-node-to-workspace --focus-follows-window 10'
 
 # Select the next or previous workspace.
-cmd-ctrl-j = [
-    'workspace next',
-    'focus-monitor --wrap-around next',
-    'workspace next',
-    'focus-monitor --wrap-around next',
-]
-cmd-ctrl-down = [
-    'workspace next',
-    'focus-monitor --wrap-around next',
-    'workspace next',
-    'focus-monitor --wrap-around next',
-]
-cmd-ctrl-k = [
-    'workspace prev',
-    'focus-monitor --wrap-around next',
-    'workspace prev',
-    'focus-monitor --wrap-around next',
-]
-cmd-ctrl-up = [
-    'workspace prev',
-    'focus-monitor --wrap-around next',
-    'workspace prev',
-    'focus-monitor --wrap-around next',
-]
+cmd-ctrl-j = 'workspace next'
+cmd-ctrl-down = 'workspace next'
+cmd-ctrl-k = 'workspace prev'
+cmd-ctrl-up = 'workspace prev'
 
 # Move to the next or previous workspace.
 cmd-ctrl-shift-j = [
