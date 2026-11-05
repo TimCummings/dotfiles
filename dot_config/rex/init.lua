@@ -50,6 +50,11 @@ rex.bind("ctrl+space>j", "pane.focus", { direction = "down", wrap = false })
 rex.bind("ctrl+space>k", "pane.focus", { direction = "up", wrap = false })
 rex.bind("ctrl+space>l", "pane.focus", { direction = "right", wrap = false })
 
+rex.bind("ctrl+shift+pageup", "client.scroll.page_up")
+rex.bind("ctrl+shift+pagedown", "client.scroll.page_down")
+rex.bind("ctrl+shift+[", "client.prompt.previous")
+rex.bind("ctrl+shift+]", "client.prompt.next")
+
 rex.bind("ctrl+space>space", "pane.balance")
 rex.bind("ctrl+space>shift+,", "pane.resize", { direction = "left" })
 rex.bind("ctrl+space>shift+.", "pane.resize", { direction = "right" })
@@ -72,3 +77,12 @@ rex.bind("resize/k", "pane.resize", { direction = "up" })
 rex.bind("resize/l", "pane.resize", { direction = "right" })
 
 rex.bind("resize/=", "pane.balance")
+
+
+--- Keybindings: Scroll Mode
+rex.mode("scroll", { exclusive = true })
+rex.bind("ctrl+space>u", "client.mode.enter", { name = "scroll" })
+rex.bind("scroll/ctrl+u", "client.scroll.page_up")
+rex.bind("scroll/ctrl+d", "client.scroll.page_down")
+rex.bind("scroll/shift+[", "client.prompt.previous")
+rex.bind("scroll/shift+]", "client.prompt.next")
