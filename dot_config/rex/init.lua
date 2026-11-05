@@ -1,31 +1,32 @@
 local setup_grt = require("actions.setup_grt")
 
+-- Actions
 rex.action {
   name = "setup_grt",
   title = "Setup GRT sessions",
   run = setup_grt,
 }
 
+
+
+-- Keybindings
 rex.bind("ctrl+space>shift+r", "client.config.reload")
 rex.bind("ctrl+space>shift+;", "client.palette.toggle")
 
 
-
--- Sessions
+--- Keybindings: Sessions
 rex.bind("ctrl+space>shift+4", "session.rename")
 rex.bind("ctrl+space>s", "session.switch")
 
 
-
--- Tabs
+--- Keybindings: Tabs
 rex.bind("ctrl+space>,", "client.tab.rename")
 rex.bind("ctrl+space>t", "client.tab.new")
 rex.bind("ctrl+space>n", "client.tab.next")
 rex.bind("ctrl+space>p", "client.tab.previous")
 
 
-
--- Panes
+--- Keybindings: Panes
 rex.bind("ctrl+space>c", "pane.close")
 rex.bind("ctrl+space>shift+t", "pane.move_to_new_tab")
 rex.bind("ctrl+space>shift+[", "pane.move.left")
@@ -56,8 +57,7 @@ rex.bind("ctrl+space>-", "pane.resize", { direction = "down" })
 rex.bind("ctrl+space>shift+=", "pane.resize", { direction = "up" })
 
 
-
--- Pane Resize Mode
+--- Keybindings: Pane Resize Mode
 rex.mode("resize", { exclusive = true })
 rex.bind("ctrl+space>r", "client.mode.enter", { name = "resize" })
 
