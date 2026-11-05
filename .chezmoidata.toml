@@ -59,6 +59,7 @@ FZF_DEFAULT_OPTS = """\
   """
 
 [env.shared]
+# XDG vars are purposely defined in a prior step so they can be available for expansion here
 BUNDLE_USER_CACHE = "$XDG_CACHE_HOME/bundle"
 BUNDLE_USER_CONFIG = "$XDG_CONFIG_HOME/bundle"
 BUNDLE_USER_PLUGIN = "$XDG_DATA_HOME/bundle"
@@ -67,6 +68,3 @@ FZF_DEFAULT_COMMAND = "'fd --color=always'"
 LANG = "en_US.UTF-8"
 LESSHISTFILE = "-"
 NNN_TRASH = 2
-XDG_CACHE_HOME = "$HOME/.cache"
-XDG_CONFIG_HOME = "$HOME/.config"
-XDG_DATA_HOME = "$HOME/.local/share"
