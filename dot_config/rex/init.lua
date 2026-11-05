@@ -1,3 +1,11 @@
+local setup_grt = require("actions.setup_grt")
+
+rex.action {
+  name = "setup_grt",
+  title = "Setup GRT sessions",
+  run = setup_grt,
+}
+
 rex.bind("ctrl+space>shift+r", "client.config.reload")
 rex.bind("ctrl+space>shift+;", "client.palette.toggle")
 
