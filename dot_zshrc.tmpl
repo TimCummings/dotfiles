@@ -101,12 +101,45 @@ else
   echo "Mise is not installed; skipping!"
 fi
 
+
+
+# OSC 133 emission for jump to previous/next prompt
+typeset -gi _osc133_command_active=0
+
+function _osc133_emit() {
+  printf '\e]133;%s\e\\' "$1"
+}
+
+function _osc133_preexec() {
+  _osc133_command_active=1
+  _osc133_emit "C"
+}
+
+function _osc133_precmd() {
+  local command_status=$?
+
+  if (( _osc133_command_active )); then
+    _osc133_emit "D;${command_status}"
+    _osc133_command_active=0
+  fi
+
+  return "$command_status"
+}
+
+autoload -Uz add-zsh-hook
+add-zsh-hook preexec _osc133_preexec
+add-zsh-hook precmd _osc133_precmd
+
+
+
 # starship prompt
 if type starship &> /dev/null; then
   eval "$(starship init zsh)"
 else
   echo "Starship is not installed; skipping!"
 fi
+
+PROMPT=$'%{\e]133;A\e\\%}'"${PROMPT}"$'%{\e]133;B\e\\%}'
 
 # source nix if present
 [[ -r /etc/profile.d/nix.sh ]] && source /etc/profile.d/nix.sh
