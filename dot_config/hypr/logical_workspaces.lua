@@ -3,8 +3,10 @@ local M = {}
 local Policy = {}
 M.policy = Policy
 
-local MAX_WORKSPACE_ID = 2147483647
-local TEMP_ID_START = MAX_WORKSPACE_ID - 1024
+local MAX_WORKSPACE_ID = 2147483647 -- Largest signed 32-bit workspace ID.
+local TEMP_ID_START = MAX_WORKSPACE_ID - 1024 -- ID range for reindex staging.
+local MERGE_TEMP_ID_START = TEMP_ID_START - 50000 -- Separate range for monitor merges.
+local DEFAULT_TOPOLOGY_SETTLE_MS = 750 -- Wait for monitor reconnect events to settle.
 
 local function is_positive_integer(value)
   return type(value) == "number" and value > 0 and value == math.floor(value)
@@ -110,6 +112,13 @@ function Policy.sorted_monitor_names(monitors)
   return sorted
 end
 
+function Policy.retain_outage_snapshot(existing_snapshot, snapshot)
+  if existing_snapshot ~= nil then
+    return existing_snapshot
+  end
+  return snapshot
+end
+
 local function log(message)
   print("[logical-workspaces] " .. message)
 end
@@ -137,7 +146,8 @@ function M.setup(options)
     timer = nil,
     pending_snapshot = nil,
     pending_command = nil,
-    debounce_ms = options.debounce_ms or 40,
+    outage_snapshot = nil,
+    debounce_ms = options.debounce_ms or DEFAULT_TOPOLOGY_SETTLE_MS,
   }
 
   local manager = {}
@@ -357,7 +367,7 @@ function M.setup(options)
     end
 
     local temporary_rules = {}
-    local next_temporary = TEMP_ID_START - 50000
+    local next_temporary = MERGE_TEMP_ID_START
     for _, record in ipairs(records) do
       if record.owner and not active_names[record.owner] and (record.workspace.windows or 0) > 0 then
         local destination = nil
@@ -475,6 +485,20 @@ function M.setup(options)
     end
   end
 
+  local function report_remaining_temporary_workspaces()
+    local remaining = {}
+    for _, workspace in ipairs(hl.get_workspaces()) do
+      local id = workspace.id
+      if id and id >= MERGE_TEMP_ID_START and id <= TEMP_ID_START then
+        table.insert(remaining, id)
+      end
+    end
+    if #remaining > 0 then
+      table.sort(remaining)
+      notify_error("temporary workspace IDs remain after reconciliation: " .. table.concat(remaining, ", "))
+    end
+  end
+
   local function normalize(records)
     if state.disabled then
       return nil
@@ -485,7 +509,10 @@ function M.setup(options)
 
     local topology = live_monitors()
     if #topology == 0 then
-      state.topology = topology
+      -- A physical display power-off can remove every output for an arbitrary
+      -- time. Keep the last non-empty topology and its first snapshot so a
+      -- later reconnect does not reinterpret the outage as a new layout.
+      state.outage_snapshot = Policy.retain_outage_snapshot(state.outage_snapshot, records)
       return 0
     end
 
@@ -497,13 +524,15 @@ function M.setup(options)
           record_topology = topology
           state.current_row = focused_row(topology)
         end
-        records = records or workspace_records(record_topology)
+        records = records or state.outage_snapshot or workspace_records(record_topology)
         records = merge_removed_owners(records, topology)
         local compact = Policy.compaction(records, state.current_row)
         reindex(records, topology, compact)
         state.current_row = compact.current_row
         state.topology = topology
+        state.outage_snapshot = nil
         switch_to_row(state.current_row)
+        report_remaining_temporary_workspaces()
         return compact.occupied_count
       end)
     end)
@@ -675,7 +704,7 @@ function M.setup(options)
   end)
 
   local function topology_changed()
-    local snapshot = state.pending_snapshot or workspace_records(state.topology)
+    local snapshot = state.pending_snapshot or state.outage_snapshot or workspace_records(state.topology)
     schedule_normalize(snapshot)
   end
   subscribe("monitor.added", topology_changed)
