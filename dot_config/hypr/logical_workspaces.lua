@@ -313,7 +313,7 @@ function M.setup(options)
 
       for slot, entry in ipairs(topology) do
         local id = Policy.encode(row, slot, #topology)
-        entry.object:set_workspace({ workspace = tostring(id) })
+        entry.object:set_workspace(tostring(id))
       end
 
       for _, rule in ipairs(temporary_rules) do
