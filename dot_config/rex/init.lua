@@ -80,10 +80,7 @@ rex.bind("resize/l", "pane.resize", { direction = "right" })
 rex.bind("resize/=", "pane.balance")
 
 
---- Keybindings: Scroll Mode
-rex.mode("scroll", { exclusive = true })
-rex.bind("ctrl+space>u", "client.mode.enter", { name = "scroll" })
-rex.bind("scroll/ctrl+u", "client.scroll.page_up")
-rex.bind("scroll/ctrl+d", "client.scroll.page_down")
-rex.bind("scroll/shift+[", "client.prompt.previous")
-rex.bind("scroll/shift+]", "client.prompt.next")
+--- Keybindings: Copy Mode
+rex.bind("ctrl+space>u", "pane.copy_mode.enter")
+rex.bind("copy/shift+[", "client.prompt.previous")
+rex.bind("copy/shift+]", "client.prompt.next")
