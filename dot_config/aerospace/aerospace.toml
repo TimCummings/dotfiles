@@ -111,30 +111,10 @@ cmd-ctrl-k = 'workspace prev'
 cmd-ctrl-up = 'workspace prev'
 
 # Move to the next or previous workspace.
-cmd-ctrl-shift-j = [
-    'move-node-to-workspace --focus-follows-window next',
-    'focus-monitor --wrap-around next',
-    'workspace next',
-    'focus-monitor --wrap-around next',
-]
-cmd-ctrl-shift-down = [
-    'move-node-to-workspace --focus-follows-window next',
-    'focus-monitor --wrap-around next',
-    'workspace next',
-    'focus-monitor --wrap-around next',
-]
-cmd-ctrl-shift-k = [
-    'move-node-to-workspace --focus-follows-window prev',
-    'focus-monitor --wrap-around next',
-    'workspace prev',
-    'focus-monitor --wrap-around next',
-]
-cmd-ctrl-shift-up = [
-    'move-node-to-workspace --focus-follows-window prev',
-    'focus-monitor --wrap-around next',
-    'workspace prev',
-    'focus-monitor --wrap-around next',
-]
+cmd-ctrl-shift-j = 'move-node-to-workspace --focus-follows-window next'
+cmd-ctrl-shift-down = 'move-node-to-workspace --focus-follows-window next'
+cmd-ctrl-shift-k = 'move-node-to-workspace --focus-follows-window prev'
+cmd-ctrl-shift-up = 'move-node-to-workspace --focus-follows-window prev'
 
 # Resize the focused window.
 cmd-minus = 'resize smart -50'
