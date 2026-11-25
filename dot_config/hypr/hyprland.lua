@@ -283,7 +283,7 @@ hl.bind(mainMod .. " + O", hl.dsp.layout("togglesplit"))    -- dwindle only
 
 hl.bind(mainMod .. " + T", hl.dsp.exec_cmd("kitty"))
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("brave"))
-hl.bind(mainMod .. " + F", hl.dsp.exec_cmd("thunar"))
+hl.bind(mainMod .. " + F", hl.dsp.exec_cmd("luciole"))
 hl.bind(mainMod .. " + V", hl.dsp.exec_cmd(ipc .. " panel-toggle control-center notifications"))
 hl.bind(mainMod .. " + N", hl.dsp.exec_cmd(ipc .. " panel-toggle noctalia/notes:panel"))
 
