@@ -53,7 +53,7 @@ run = 'layout floating'
 # Window controls.
 cmd-q = 'close'
 cmd-g = 'layout floating tiling'
-cmd-z = 'fullscreen'
+cmd-m = 'fullscreen'
 cmd-o = 'layout horizontal vertical'
 
 # Focus with arrows.
